@@ -22,7 +22,8 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
         intl \
         opcache \
         bcmath \
-        mbstring
+        mbstring \
+        exif
 
 # Extension Redis
 RUN pecl install redis \
