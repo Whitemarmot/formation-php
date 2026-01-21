@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\OrderConfirmation;
 use App\Models\Cart;
 use App\Models\Download;
 use App\Models\Formation;
@@ -12,6 +13,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 use Stripe\Checkout\Session as StripeSession;
 use Stripe\Stripe;
@@ -423,7 +425,15 @@ class CheckoutController extends Controller
         });
 
         // Send confirmation email
-        // Mail::to($order->customer_email)->send(new OrderConfirmation($order));
+        try {
+            Mail::to($order->customer_email)->send(new OrderConfirmation($order));
+            Log::info('Order confirmation email sent', ['order_id' => $order->id, 'email' => $order->customer_email]);
+        } catch (\Exception $e) {
+            Log::error('Failed to send order confirmation email', [
+                'order_id' => $order->id,
+                'error' => $e->getMessage(),
+            ]);
+        }
 
         Log::info('Order completed', ['order_id' => $order->id, 'order_number' => $order->order_number]);
     }

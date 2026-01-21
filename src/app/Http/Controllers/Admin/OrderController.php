@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderConfirmation;
 use App\Models\Order;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\View\View;
 
 class OrderController extends Controller
@@ -108,9 +110,12 @@ class OrderController extends Controller
             return back()->with('error', 'Impossible d\'envoyer l\'email pour une commande non complétée.');
         }
 
-        // Mail::to($order->customer_email)->send(new OrderConfirmation($order));
-
-        return back()->with('success', 'Email de confirmation renvoyé.');
+        try {
+            Mail::to($order->customer_email)->send(new OrderConfirmation($order));
+            return back()->with('success', 'Email de confirmation renvoyé.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Erreur lors de l\'envoi de l\'email: ' . $e->getMessage());
+        }
     }
 
     /**

@@ -809,58 +809,85 @@ formation-php/
 
 ## 8. Planning de Développement
 
-### Phase 1 : Infrastructure (2-3 jours)
-- [ ] Configuration Docker complète
-- [ ] Installation Laravel 11
-- [ ] Configuration base de données
-- [ ] Setup environnement de développement
+### Phase 1 : Infrastructure ✅ TERMINÉ
+- [x] Configuration Docker complète (dev + prod)
+- [x] Installation Laravel 11
+- [x] Configuration base de données MySQL 8.0
+- [x] Setup Redis pour cache/sessions/queues
+- [x] Configuration Traefik pour production
 
-### Phase 2 : Backend Core (3-4 jours)
-- [ ] Modèles et migrations
-- [ ] Authentification (Breeze/Fortify)
-- [ ] CRUD Formations (admin)
-- [ ] Système de panier
+### Phase 2 : Backend Core ✅ TERMINÉ
+- [x] Modèles (User, Formation, Order, OrderItem, Download, Cart)
+- [x] Migrations complètes
+- [x] Authentification Laravel Breeze
+- [x] Spatie Permission (rôle admin)
+- [x] Système de panier session-based avec calcul bundle
 
-### Phase 3 : Paiements (2-3 jours)
-- [ ] Intégration Stripe Checkout
-- [ ] Intégration PayPal
-- [ ] Webhooks et confirmation
-- [ ] Génération factures
+### Phase 3 : Paiements ✅ TERMINÉ
+- [x] Intégration Stripe Checkout Session
+- [x] Intégration PayPal (srmklive/paypal)
+- [x] Webhooks Stripe
+- [x] Mode test pour développement
 
-### Phase 4 : PDFs (2-3 jours)
-- [ ] Templates LaTeX des 3 formations
-- [ ] Service de watermark
-- [ ] Système de téléchargement sécurisé
-- [ ] Liens signés avec expiration
+### Phase 4 : PDFs ✅ TERMINÉ
+- [x] Templates LaTeX des 3 formations
+- [x] Service PdfWatermarkService (multi-méthodes)
+- [x] Système de téléchargement sécurisé
+- [x] Liens avec token et expiration
 
-### Phase 5 : Frontend (3-4 jours)
-- [ ] Landing page
-- [ ] Pages formations
-- [ ] Processus de checkout
-- [ ] Espace client
-- [ ] Design industriel/tech
+### Phase 5 : Frontend ✅ TERMINÉ
+- [x] Landing page avec storytelling
+- [x] Catalogue formations
+- [x] Pages détails formations
+- [x] Processus checkout complet
+- [x] Espace client (téléchargements, commandes, profil)
+- [x] Pages légales (CGV, mentions, confidentialité, contact)
+- [x] Design industriel/tech
 
-### Phase 6 : Admin (2-3 jours)
-- [ ] Dashboard statistiques
-- [ ] Gestion commandes
-- [ ] Gestion clients
-- [ ] Export données
+### Phase 6 : Admin 🔄 EN COURS
+- [x] Contrôleurs Admin (Dashboard, Formations, Orders, Customers)
+- [x] Routes admin avec middleware role:admin
+- [ ] **Vues admin (dashboard, CRUD formations, commandes, clients)**
+- [ ] Export données CSV
 
-### Phase 7 : Finitions (1-2 jours)
+### Phase 7 : Finitions
+- [ ] Emails transactionnels (confirmation commande)
 - [ ] Tests fonctionnels
-- [ ] Optimisation performances
-- [ ] Documentation déploiement
+- [ ] Documentation utilisateur
+
+### Phase 8 : Déploiement ✅ PRÊT
+- [x] docker-compose.prod.yml avec Traefik
+- [x] Dockerfile.prod optimisé (opcache)
+- [x] Configuration nginx production
+- [x] GitHub Actions CI/CD
+- [x] Guide de déploiement VPS OVH
 
 ---
 
-## Prochaines Étapes
+## 9. Déploiement Production
 
-Je vais maintenant procéder au développement dans l'ordre suivant :
+### Infrastructure cible
+- **VPS** : OVH 4 Go RAM
+- **Domaine** : coach-luis.com (formations.coach-luis.com)
+- **Reverse Proxy** : Traefik v3 avec SSL Let's Encrypt automatique
+- **CI/CD** : GitHub Actions (push sur main → déploiement auto)
 
-1. **Configuration Docker** - Création de tous les containers
-2. **Installation Laravel** - Setup du projet
-3. **Développement des fonctionnalités** - Backend puis frontend
-4. **Génération des PDFs** - Templates LaTeX complets
-5. **Tests et déploiement**
+### Fichiers de production
+```
+docker-compose.prod.yml      # Stack production
+docker/php/Dockerfile.prod   # PHP optimisé
+docker/nginx/prod.conf       # Nginx sécurisé
+.env.production.example      # Template variables
+.github/workflows/deploy.yml # CI/CD
+```
 
-Voulez-vous que je commence ?
+### Guide complet
+Voir `docs/plans/2026-01-21-deploiement-production-vps.md`
+
+---
+
+## Prochaines Étapes Immédiates
+
+1. **Créer les vues admin** - Dashboard, CRUD formations, commandes, clients
+2. **Configurer les emails** - Confirmation de commande avec liens de téléchargement
+3. **Tester en production** - Déployer sur VPS OVH et vérifier le flux complet
