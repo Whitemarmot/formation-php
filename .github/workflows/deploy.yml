@@ -26,6 +26,16 @@ jobs:
             echo "=== Pulling latest changes ==="
             git pull origin main
 
+            echo "=== Setting up environment files ==="
+            [ ! -f .env ] && cp .env.example .env
+            [ ! -f .env.production ] && cp .env.production.example .env.production
+            [ ! -f src/.env ] && cp .env.production src/.env
+
+            echo "=== Generating APP_KEY if missing ==="
+            if ! grep -q "APP_KEY=base64" src/.env; then
+              docker compose -f docker-compose.prod.yml run --rm php php artisan key:generate --force 2>/dev/null || true
+            fi
+
             echo "=== Building Docker images ==="
             docker compose -f docker-compose.prod.yml build --pull
 
