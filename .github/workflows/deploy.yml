@@ -1,0 +1,64 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to VPS
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy to VPS
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            cd /var/www/formation-php
+
+            echo "=== Pulling latest changes ==="
+            git pull origin main
+
+            echo "=== Building Docker images ==="
+            docker compose -f docker-compose.prod.yml build --pull
+
+            echo "=== Starting containers ==="
+            docker compose -f docker-compose.prod.yml up -d
+
+            echo "=== Waiting for services ==="
+            sleep 10
+
+            echo "=== Installing Composer dependencies ==="
+            docker compose -f docker-compose.prod.yml exec -T php composer install --no-dev --optimize-autoloader --no-interaction
+
+            echo "=== Running migrations ==="
+            docker compose -f docker-compose.prod.yml exec -T php php artisan migrate --force
+
+            echo "=== Caching configuration ==="
+            docker compose -f docker-compose.prod.yml exec -T php php artisan config:cache
+            docker compose -f docker-compose.prod.yml exec -T php php artisan route:cache
+            docker compose -f docker-compose.prod.yml exec -T php php artisan view:cache
+            docker compose -f docker-compose.prod.yml exec -T php php artisan event:cache
+
+            echo "=== Restarting PHP and Queue workers ==="
+            docker compose -f docker-compose.prod.yml restart php queue
+
+            echo "=== Cleaning up old Docker images ==="
+            docker image prune -f
+
+            echo "=== Deployment complete! ==="
+
+      - name: Deployment status
+        if: success()
+        run: echo "Deployment to production successful!"
+
+      - name: Deployment failed
+        if: failure()
+        run: echo "Deployment failed! Check the logs above."

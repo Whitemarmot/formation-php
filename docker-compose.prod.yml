@@ -1,0 +1,110 @@
+services:
+  nginx:
+    image: nginx:alpine
+    container_name: formation_nginx
+    restart: always
+    volumes:
+      - ./src:/var/www/html:ro
+      - ./docker/nginx/prod.conf:/etc/nginx/conf.d/default.conf:ro
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.formation.rule=Host(`formations.TONDOMAINE.fr`)"
+      - "traefik.http.routers.formation.tls.certresolver=letsencrypt"
+      - "traefik.http.services.formation.loadbalancer.server.port=80"
+    networks:
+      - traefik-public
+      - formation-internal
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile.prod
+    container_name: formation_php
+    restart: always
+    working_dir: /var/www/html
+    volumes:
+      - ./src:/var/www/html
+      - ./formations-latex:/var/www/latex:ro
+    env_file:
+      - .env.production
+    networks:
+      - formation-internal
+    depends_on:
+      - mysql
+      - redis
+
+  mysql:
+    image: mysql:8.0
+    container_name: formation_mysql
+    restart: always
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    env_file:
+      - .env.production
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_USER: ${DB_USERNAME}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - formation-internal
+
+  redis:
+    image: redis:alpine
+    container_name: formation_redis
+    restart: always
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+    networks:
+      - formation-internal
+
+  queue:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile.prod
+    container_name: formation_queue
+    restart: always
+    working_dir: /var/www/html
+    volumes:
+      - ./src:/var/www/html
+      - ./formations-latex:/var/www/latex:ro
+    env_file:
+      - .env.production
+    command: php artisan queue:work --tries=3 --timeout=300
+    networks:
+      - formation-internal
+    depends_on:
+      - php
+      - redis
+
+  scheduler:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile.prod
+    container_name: formation_scheduler
+    restart: always
+    working_dir: /var/www/html
+    volumes:
+      - ./src:/var/www/html
+    env_file:
+      - .env.production
+    command: sh -c "while true; do php artisan schedule:run --verbose --no-interaction & sleep 60; done"
+    networks:
+      - formation-internal
+    depends_on:
+      - php
+
+networks:
+  traefik-public:
+    external: true
+  formation-internal:
+    driver: bridge
+
+volumes:
+  mysql_data:
+  redis_data:
