@@ -1,16 +1,17 @@
-FROM php:8.3-fpm-alpine
+FROM php:8.3-fpm
 
 # Dependances systeme
-RUN apk add --no-cache \
+RUN apt-get update && apt-get install -y --no-install-recommends \
     libpng-dev \
-    libjpeg-turbo-dev \
-    freetype-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
     libzip-dev \
-    icu-dev \
-    oniguruma-dev \
+    libicu-dev \
+    libonig-dev \
     poppler-utils \
     ghostscript \
-    pdftk
+    pdftk \
+    && rm -rf /var/lib/apt/lists/*
 
 # Extensions PHP
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
@@ -24,10 +25,8 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
         mbstring
 
 # Extension Redis
-RUN apk add --no-cache autoconf g++ make \
-    && pecl install redis \
-    && docker-php-ext-enable redis \
-    && apk del autoconf g++ make
+RUN pecl install redis \
+    && docker-php-ext-enable redis
 
 # Configuration PHP production
 RUN mv "$PHP_INI_DIR/php.ini-production" "$PHP_INI_DIR/php.ini"
