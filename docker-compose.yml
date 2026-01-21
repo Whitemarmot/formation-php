@@ -1,0 +1,159 @@
+services:
+  # Nginx - Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: formation_nginx
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./src:/var/www/html
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./docker/nginx/ssl:/etc/nginx/ssl
+    depends_on:
+      - php
+    networks:
+      - formation_network
+
+  # PHP-FPM avec Laravel
+  php:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: formation_php
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./src:/var/www/html
+      - ./formations-latex:/var/www/latex
+      - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    environment:
+      - PHP_MEMORY_LIMIT=512M
+      - PHP_MAX_EXECUTION_TIME=300
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - formation_network
+
+  # MySQL 8.0
+  mysql:
+    image: mysql:8.0
+    container_name: formation_mysql
+    restart: unless-stopped
+    ports:
+      - "33060:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-rootpassword}
+      MYSQL_DATABASE: ${DB_DATABASE:-formation_db}
+      MYSQL_USER: ${DB_USERNAME:-formation_user}
+      MYSQL_PASSWORD: ${DB_PASSWORD:-formation_password}
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    command: --default-authentication-plugin=mysql_native_password
+    networks:
+      - formation_network
+
+  # Redis pour cache et sessions
+  redis:
+    image: redis:alpine
+    container_name: formation_redis
+    restart: unless-stopped
+    # Port non exposé publiquement (usage interne uniquement)
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    networks:
+      - formation_network
+
+  # LaTeX pour génération des PDFs
+  latex:
+    build:
+      context: ./docker/latex
+      dockerfile: Dockerfile
+    container_name: formation_latex
+    volumes:
+      - ./formations-latex:/workspace
+      - ./src/storage/app/formations:/output
+    working_dir: /workspace
+    networks:
+      - formation_network
+
+  # Mailpit pour tests emails en développement
+  mailpit:
+    image: axllent/mailpit
+    container_name: formation_mailpit
+    restart: unless-stopped
+    ports:
+      - "8025:8025"  # Interface web
+      - "1025:1025"  # SMTP
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: 1
+      MP_SMTP_AUTH_ALLOW_INSECURE: 1
+    networks:
+      - formation_network
+
+  # phpMyAdmin pour gestion DB (dev uniquement)
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: formation_phpmyadmin
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: ${DB_USERNAME:-formation_user}
+      PMA_PASSWORD: ${DB_PASSWORD:-formation_password}
+    depends_on:
+      - mysql
+    networks:
+      - formation_network
+    profiles:
+      - dev
+
+  # Queue Worker pour jobs asynchrones
+  queue:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: formation_queue
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./src:/var/www/html
+      - ./formations-latex:/var/www/latex
+    command: php artisan queue:work --tries=3 --timeout=300
+    depends_on:
+      - php
+      - redis
+    networks:
+      - formation_network
+
+  # Scheduler pour tâches cron Laravel
+  scheduler:
+    build:
+      context: ./docker/php
+      dockerfile: Dockerfile
+    container_name: formation_scheduler
+    restart: unless-stopped
+    working_dir: /var/www/html
+    volumes:
+      - ./src:/var/www/html
+    command: >
+      sh -c "while true; do php artisan schedule:run --verbose --no-interaction & sleep 60; done"
+    depends_on:
+      - php
+    networks:
+      - formation_network
+
+networks:
+  formation_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local
+  redis_data:
+    driver: local

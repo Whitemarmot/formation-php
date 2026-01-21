@@ -1,0 +1,294 @@
+% Préambule commun pour toutes les formations
+% Spot Welding Pro - Formations PDF Premium
+
+\documentclass[11pt,a4paper,oneside]{book}
+
+% Encodage et langue
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[french]{babel}
+
+% Géométrie de page
+\usepackage[
+    top=2.5cm,
+    bottom=2.5cm,
+    left=2.5cm,
+    right=2.5cm,
+    headheight=14pt
+]{geometry}
+
+% Polices (utilise les polices TeX Live par défaut)
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
+\setmonofont{Latin Modern Mono}
+
+% Couleurs
+\usepackage{xcolor}
+\definecolor{primary}{HTML}{E94560}
+\definecolor{secondary}{HTML}{F39C12}
+\definecolor{darkbg}{HTML}{0F0F1A}
+\definecolor{darkcard}{HTML}{16213E}
+\definecolor{textcolor}{HTML}{EAEAEA}
+\definecolor{mutedtext}{HTML}{9CA3AF}
+\definecolor{success}{HTML}{22C55E}
+\definecolor{warning}{HTML}{F59E0B}
+\definecolor{danger}{HTML}{EF4444}
+
+% Graphiques et images
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Tableaux
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{multirow}
+\usepackage{makecell}
+\usepackage{colortbl}
+\usepackage{array}
+
+% Listes
+\usepackage{enumitem}
+\setlist[itemize]{leftmargin=*,itemsep=0.5em}
+\setlist[enumerate]{leftmargin=*,itemsep=0.5em}
+
+% Mathématiques
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\sisetup{
+    locale=FR,
+    output-decimal-marker={,},
+    group-separator={\,}
+}
+
+% Code et algorithmes
+\usepackage{listings}
+\lstset{
+    basicstyle=\ttfamily\small,
+    keywordstyle=\color{primary}\bfseries,
+    commentstyle=\color{mutedtext}\itshape,
+    stringstyle=\color{success},
+    numbers=left,
+    numberstyle=\tiny\color{mutedtext},
+    numbersep=10pt,
+    frame=single,
+    frameround=tttt,
+    backgroundcolor=\color{darkcard},
+    rulecolor=\color{mutedtext},
+    breaklines=true,
+    showstringspaces=false
+}
+
+% Boîtes colorées
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+
+% Boîte d'information
+\newtcolorbox{infobox}[1][]{
+    enhanced,
+    colback=darkcard,
+    colframe=primary,
+    coltitle=white,
+    fonttitle=\bfseries,
+    left=10pt,
+    right=10pt,
+    top=10pt,
+    bottom=10pt,
+    arc=4pt,
+    boxrule=1pt,
+    title=#1
+}
+
+% Boîte d'avertissement
+\newtcolorbox{warningbox}[1][Attention]{
+    enhanced,
+    colback=warning!10!darkbg,
+    colframe=warning,
+    coltitle=white,
+    fonttitle=\bfseries,
+    left=10pt,
+    right=10pt,
+    top=10pt,
+    bottom=10pt,
+    arc=4pt,
+    boxrule=1pt,
+    title=#1
+}
+
+% Boîte de danger
+\newtcolorbox{dangerbox}[1][Danger]{
+    enhanced,
+    colback=danger!10!darkbg,
+    colframe=danger,
+    coltitle=white,
+    fonttitle=\bfseries,
+    left=10pt,
+    right=10pt,
+    top=10pt,
+    bottom=10pt,
+    arc=4pt,
+    boxrule=1pt,
+    title=#1
+}
+
+% Boîte de conseil
+\newtcolorbox{tipbox}[1][Conseil]{
+    enhanced,
+    colback=success!10!darkbg,
+    colframe=success,
+    coltitle=white,
+    fonttitle=\bfseries,
+    left=10pt,
+    right=10pt,
+    top=10pt,
+    bottom=10pt,
+    arc=4pt,
+    boxrule=1pt,
+    title=#1
+}
+
+% En-têtes et pieds de page
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{mutedtext}{\leftmark}}
+\fancyhead[R]{\small\textcolor{mutedtext}{Spot Welding Pro}}
+\fancyfoot[C]{\small\textcolor{mutedtext}{\thepage}}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{primary}\leaders\hrule height \headrulewidth\hfill}}
+\renewcommand{\footrulewidth}{0pt}
+
+% Titres de chapitres
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+    {\normalfont\huge\bfseries\color{primary}}
+    {\chaptertitlename\ \thechapter}
+    {20pt}
+    {\Huge}
+\titleformat{\section}
+    {\normalfont\Large\bfseries\color{primary}}
+    {\thesection}
+    {1em}
+    {}
+\titleformat{\subsection}
+    {\normalfont\large\bfseries}
+    {\thesubsection}
+    {1em}
+    {}
+\titleformat{\subsubsection}
+    {\normalfont\normalsize\bfseries}
+    {\thesubsubsection}
+    {1em}
+    {}
+
+% Espacement
+\usepackage{setspace}
+\onehalfspacing
+
+% Table des matières
+\usepackage{tocloft}
+\renewcommand{\cftchapfont}{\bfseries\color{primary}}
+\renewcommand{\cftsecfont}{\color{textcolor}}
+\renewcommand{\cftsubsecfont}{\color{mutedtext}}
+\renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
+
+% Liens hypertexte
+\usepackage[
+    colorlinks=true,
+    linkcolor=primary,
+    urlcolor=secondary,
+    citecolor=success,
+    bookmarks=true,
+    bookmarksnumbered=true
+]{hyperref}
+
+% Références croisées améliorées
+\usepackage{cleveref}
+
+% Notes de bas de page
+\usepackage{footnote}
+
+% Bibliographie
+\usepackage[style=numeric,sorting=none]{biblatex}
+
+% Glossaire
+\usepackage[acronym,toc]{glossaries}
+\makeglossaries
+
+% Index
+\usepackage{makeidx}
+\makeindex
+
+% Diagrammes TikZ
+\usepackage{tikz}
+\usetikzlibrary{
+    shapes,
+    arrows,
+    positioning,
+    calc,
+    decorations.pathreplacing,
+    patterns
+}
+
+% Circuits électriques
+\usepackage{circuitikz}
+
+% Graphiques de données
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+
+% Commandes personnalisées
+\newcommand{\formation}[1]{\textbf{\textcolor{primary}{#1}}}
+\newcommand{\parametre}[1]{\texttt{#1}}
+\newcommand{\valeur}[2]{\SI{#1}{#2}}
+\newcommand{\marque}[1]{\textit{#1}}
+\newcommand{\attention}[1]{\textcolor{warning}{\textbf{#1}}}
+\newcommand{\danger}[1]{\textcolor{danger}{\textbf{#1}}}
+
+% Unités personnalisées
+\DeclareSIUnit{\ampere}{A}
+\DeclareSIUnit{\kiloampere}{kA}
+\DeclareSIUnit{\milliseconde}{ms}
+\DeclareSIUnit{\newton}{N}
+\DeclareSIUnit{\kilonewton}{kN}
+\DeclareSIUnit{\ohm}{\Omega}
+\DeclareSIUnit{\milliohm}{m\Omega}
+
+% Commande pour la loi de Joule
+\newcommand{\joule}{Q = R \cdot I^2 \cdot t}
+
+% Environnement pour les exercices
+\newcounter{exercice}[chapter]
+\newenvironment{exercice}[1][]{%
+    \refstepcounter{exercice}%
+    \begin{tcolorbox}[
+        enhanced,
+        colback=darkcard,
+        colframe=secondary,
+        coltitle=white,
+        fonttitle=\bfseries,
+        title={Exercice \theexercice\ifx&#1&\else: #1\fi},
+        breakable
+    ]
+}{%
+    \end{tcolorbox}
+}
+
+% Environnement pour les études de cas
+\newenvironment{casestudy}[1][]{%
+    \begin{tcolorbox}[
+        enhanced,
+        colback=darkcard,
+        colframe=primary,
+        coltitle=white,
+        fonttitle=\bfseries,
+        title={Étude de cas\ifx&#1&\else: #1\fi},
+        breakable
+    ]
+}{%
+    \end{tcolorbox}
+}

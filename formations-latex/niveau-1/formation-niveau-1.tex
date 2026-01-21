@@ -1,0 +1,943 @@
+% Formation Niveau 1 - Soudeuse à Points : Les Fondamentaux
+% Spot Welding Pro - Mang-Ky Ha
+% Comprendre, choisir et réussir ses premières soudures
+
+\input{../commun/preambule}
+
+% Métadonnées du document
+\title{Soudeuse à Points\\Les Fondamentaux}
+\author{Mang-Ky Ha}
+\date{Version 1.0 - 2024}
+
+\begin{document}
+
+% Page de titre personnalisée
+\begin{titlepage}
+    \centering
+    \vspace*{2cm}
+
+    % Logo
+    {\Huge\textcolor{primary}{\textbf{SPOT WELDING PRO}}}
+
+    \vspace{0.5cm}
+
+    {\large\textcolor{mutedtext}{Formations Professionnelles}}
+
+    \vspace{3cm}
+
+    {\fontsize{40}{48}\selectfont\textbf{Soudeuse à Points}}
+
+    \vspace{0.5cm}
+
+    {\Huge\textcolor{primary}{Les Fondamentaux}}
+
+    \vspace{1cm}
+
+    {\Large\textit{Comprendre, choisir et réussir ses premières soudures}}
+
+    \vspace{3cm}
+
+    {\large\textbf{Par Mang-Ky Ha}}
+
+    \vspace{0.3cm}
+
+    {\normalsize Ingénieur Procédés - Expert Batteries Lithium}
+
+    {\small 15 ans d'expérience industrielle}
+
+    \vfill
+
+    {\small Niveau 1 • Débutant • \textasciitilde80 pages}
+
+    \vspace{1cm}
+
+    {\footnotesize © 2024 Spot Welding Pro. Tous droits réservés.}
+
+\end{titlepage}
+
+% Page de copyright
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+    \textbf{Soudeuse à Points - Les Fondamentaux}
+
+    \vspace{1cm}
+
+    © 2024 Spot Welding Pro
+
+    Tous droits réservés.
+
+    \vspace{1cm}
+
+    Ce document est protégé par le droit d'auteur. Toute reproduction, même partielle,
+    est interdite sans autorisation écrite préalable de l'auteur.
+
+    \vspace{1cm}
+
+    \textbf{Avertissement}
+
+    Les informations contenues dans ce document sont fournies à titre éducatif.
+    L'auteur décline toute responsabilité en cas d'accident ou de dommage
+    résultant de l'application des techniques décrites.
+
+    Le soudage par points implique des risques électriques et thermiques.
+    Respectez toujours les consignes de sécurité applicables.
+
+\end{center}
+\vspace*{\fill}
+\newpage
+
+% Table des matières
+\tableofcontents
+\newpage
+
+% Introduction
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+Bienvenue dans cette formation sur le soudage par points.
+
+Si vous lisez ces lignes, c'est que vous souhaitez comprendre et maîtriser cette technique d'assemblage fondamentale. Que vous soyez maker passionné, technicien en reconversion, ou simplement curieux de savoir comment sont assemblés les packs de batteries de votre vélo électrique, vous êtes au bon endroit.
+
+\section*{Pourquoi cette formation ?}
+
+J'ai passé 15 ans dans l'industrie automobile à souder des batteries pour des constructeurs que vous connaissez tous. Pendant ces années, j'ai analysé plus de 50 000 soudures, documenté des centaines de paramètres, et surtout, commis et corrigé des erreurs que je vais vous aider à éviter.
+
+Les tutoriels YouTube vous montrent \textit{comment} souder. Cette formation vous explique \textit{pourquoi} et \textit{comment optimiser}.
+
+\section*{Ce que vous allez apprendre}
+
+\begin{itemize}
+    \item La physique du soudage par résistance (sans les maths compliquées)
+    \item Comment choisir votre équipement selon votre budget
+    \item Les 4 paramètres fondamentaux et comment les ajuster
+    \item Le diagnostic des 10 défauts les plus courants
+    \item Des exercices pratiques progressifs
+\end{itemize}
+
+\section*{Prérequis}
+
+Aucun prérequis technique. Seule la motivation compte.
+
+\vspace{1cm}
+
+Bonne lecture et bonne soudure !
+
+\vspace{0.5cm}
+
+\textit{Mang-Ky Ha}
+
+\newpage
+
+% ============================================
+% MODULE 1 : PHYSIQUE DU SOUDAGE PAR RÉSISTANCE
+% ============================================
+\chapter{Physique du Soudage par Résistance}
+
+Avant de brancher votre soudeuse, il est essentiel de comprendre ce qui se passe réellement lors d'une soudure par points. Cette compréhension vous permettra d'ajuster vos paramètres de manière rationnelle plutôt que par tâtonnement.
+
+\section{Principe de la soudure par résistance}
+
+Le soudage par résistance repose sur un principe simple : faire passer un courant électrique intense à travers des pièces métalliques en contact. La résistance électrique au passage du courant génère de la chaleur, suffisante pour faire fondre localement le métal.
+
+\subsection{La loi de Joule}
+
+Toute l'énergie thermique produite lors d'une soudure par points est décrite par une seule équation :
+
+\begin{equation}
+    \boxed{Q = R \times I^2 \times t}
+\end{equation}
+
+Où :
+\begin{itemize}
+    \item $Q$ = énergie thermique produite (Joules)
+    \item $R$ = résistance totale ($\Omega$)
+    \item $I$ = intensité du courant (Ampères)
+    \item $t$ = durée du passage du courant (secondes)
+\end{itemize}
+
+\begin{infobox}[Point clé]
+Le courant est au carré ! Doubler le courant quadruple l'énergie produite. C'est pourquoi le réglage du courant est si critique.
+\end{infobox}
+
+\subsection{Les zones de résistance}
+
+Lorsque vous réalisez une soudure par points, cinq zones de résistance se superposent :
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.2]
+        % Électrodes
+        \fill[darkcard] (-1,2) rectangle (1,3);
+        \fill[darkcard] (-1,-2) rectangle (1,-3);
+
+        % Pièces à souder
+        \fill[gray!40] (-2,0.5) rectangle (2,1.5);
+        \fill[gray!60] (-2,-0.5) rectangle (2,-1.5);
+
+        % Labels des résistances
+        \draw[<->, thick, primary] (2.5,2.5) -- (2.5,1.5) node[midway, right] {$R_1$};
+        \draw[<->, thick, primary] (2.5,1.5) -- (2.5,0.5) node[midway, right] {$R_2$};
+        \draw[<->, thick, primary] (2.5,0.5) -- (2.5,-0.5) node[midway, right] {$R_3$};
+        \draw[<->, thick, primary] (2.5,-0.5) -- (2.5,-1.5) node[midway, right] {$R_4$};
+        \draw[<->, thick, primary] (2.5,-1.5) -- (2.5,-2.5) node[midway, right] {$R_5$};
+
+        % Point de soudure
+        \fill[secondary] (0,0) circle (0.3);
+
+        % Légende
+        \node[right] at (4,2) {Électrode supérieure};
+        \node[right] at (4,1) {Pièce supérieure};
+        \node[right] at (4,0) {\textcolor{secondary}{Zone de fusion}};
+        \node[right] at (4,-1) {Pièce inférieure};
+        \node[right] at (4,-2) {Électrode inférieure};
+    \end{tikzpicture}
+    \caption{Distribution des résistances lors d'une soudure par points}
+\end{figure}
+
+\begin{description}
+    \item[$R_1$] Résistance de contact électrode/pièce supérieure
+    \item[$R_2$] Résistance volumique de la pièce supérieure
+    \item[$R_3$] \textbf{Résistance de contact pièce/pièce} (c'est là que la soudure se forme)
+    \item[$R_4$] Résistance volumique de la pièce inférieure
+    \item[$R_5$] Résistance de contact pièce/électrode inférieure
+\end{description}
+
+\begin{warningbox}
+La résistance de contact $R_3$ doit être la plus élevée pour que la fusion se produise au bon endroit. Si vos électrodes sont sales ($R_1$ ou $R_5$ trop élevées), la chaleur se développera au mauvais endroit.
+\end{warningbox}
+
+\subsection{Zones affectées thermiquement (ZAT)}
+
+Autour du point de fusion (noyau), plusieurs zones concentriques se forment :
+
+\begin{enumerate}
+    \item \textbf{Noyau fondu} : métal liquéfié puis resolidifié
+    \item \textbf{Zone de recristallisation} : structure métallurgique modifiée
+    \item \textbf{Zone affectée thermiquement (ZAT)} : propriétés mécaniques altérées
+    \item \textbf{Métal de base} : non affecté
+\end{enumerate}
+
+\section{Les 4 paramètres fondamentaux}
+
+Quatre paramètres contrôlent la qualité d'une soudure par points. Les maîtriser, c'est maîtriser le procédé.
+
+\subsection{Le courant (I)}
+
+Le courant de soudage est le paramètre le plus influent (rappelez-vous : il est au carré dans la loi de Joule).
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Type de soudeuse} & \textbf{Courant typique} & \textbf{Application} \\
+        \midrule
+        DIY / Hobby & 500 - 2000 A & Feuillards fins \\
+        Semi-pro & 2000 - 5000 A & Batteries, tôles fines \\
+        Industrielle & 5000 - 20000 A & Automobile, industrie \\
+        \bottomrule
+    \end{tabular}
+    \caption{Ordres de grandeur des courants de soudage}
+\end{table}
+
+\begin{infobox}[Pourquoi des kilo-ampères ?]
+Le courant doit être suffisant pour chauffer le métal au point de fusion (\textasciitilde1400°C pour l'acier, \textasciitilde1085°C pour le cuivre) en quelques millisecondes. Seuls des courants de plusieurs milliers d'ampères permettent ce transfert d'énergie.
+\end{infobox}
+
+\subsection{Le temps (t)}
+
+La durée de passage du courant se mesure en millisecondes (ms).
+
+\begin{itemize}
+    \item \textbf{Trop court} : pas assez d'énergie, soudure froide
+    \item \textbf{Trop long} : expulsion de métal, perçage
+\end{itemize}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Épaisseur totale} & \textbf{Temps typique} \\
+        \midrule
+        0.1 - 0.2 mm & 5 - 15 ms \\
+        0.2 - 0.4 mm & 15 - 50 ms \\
+        0.4 - 1.0 mm & 50 - 200 ms \\
+        > 1.0 mm & 200 - 500 ms \\
+        \bottomrule
+    \end{tabular}
+    \caption{Temps de soudage indicatifs}
+\end{table}
+
+\subsection{La force (F)}
+
+La force d'appui des électrodes a plusieurs rôles :
+
+\begin{enumerate}
+    \item Assurer un bon contact électrique
+    \item Contenir le métal fondu
+    \item Forger la soudure pendant le refroidissement
+\end{enumerate}
+
+\begin{tipbox}
+Une règle empirique : \textbf{1 kN par mm d'épaisseur totale} pour l'acier. Réduisez de 30-40\% pour le nickel.
+\end{tipbox}
+
+\subsection{La résistance de contact}
+
+C'est le paramètre souvent négligé, mais crucial :
+
+\begin{itemize}
+    \item \textbf{Propreté des surfaces} : dégraissage, absence d'oxyde
+    \item \textbf{État des électrodes} : propres, bien refroidies
+    \item \textbf{Pression suffisante} : écrase les micro-aspérités
+\end{itemize}
+
+\section{Métallurgie simplifiée}
+
+\subsection{Le nickel pur}
+
+Le nickel est le matériau le plus facile à souder par points :
+
+\begin{itemize}
+    \item Point de fusion : \SI{1455}{\celsius}
+    \item Résistivité électrique : \SI{69.3}{\nano\ohm\meter} (7x plus que le cuivre)
+    \item Excellente soudabilité
+\end{itemize}
+
+\begin{tipbox}
+Le feuillard de nickel pur est idéal pour débuter. Tolérant aux erreurs de paramétrage.
+\end{tipbox}
+
+\subsection{Le cuivre}
+
+Le cuivre pose problème :
+
+\begin{itemize}
+    \item Point de fusion : \SI{1085}{\celsius}
+    \item Résistivité très faible : \SI{16.8}{\nano\ohm\meter}
+    \item Conductivité thermique élevée : dissipe la chaleur rapidement
+\end{itemize}
+
+\begin{dangerbox}
+Le cuivre pur est très difficile à souder par points. Préférez le cuivre nickelé ou les assemblages nickel/cuivre.
+\end{dangerbox}
+
+\subsection{L'acier nickelé}
+
+Compromis courant dans les batteries :
+
+\begin{itemize}
+    \item Coût inférieur au nickel pur
+    \item Bonne soudabilité grâce au revêtement nickel
+    \item Attention à l'épaisseur du nickelage (\textasciitilde2-5 µm minimum)
+\end{itemize}
+
+\newpage
+
+% ============================================
+% MODULE 2 : ÉQUIPEMENTS ET COMPOSANTS
+% ============================================
+\chapter{Équipements et Composants}
+
+Ce chapitre vous guide dans le choix de votre équipement selon vos besoins et votre budget.
+
+\section{Anatomie d'une soudeuse à points}
+
+Toute soudeuse à points comprend quatre sous-systèmes :
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        block/.style={rectangle, draw=primary, fill=darkcard, text=white, minimum width=3cm, minimum height=1cm, align=center},
+        arrow/.style={->, thick, primary}
+    ]
+        % Blocs
+        \node[block] (source) at (0,0) {Source\\d'énergie};
+        \node[block] (commande) at (4,0) {Circuit de\\commande};
+        \node[block] (mecanique) at (8,0) {Système\\mécanique};
+        \node[block] (electrodes) at (4,-3) {Électrodes};
+
+        % Flèches
+        \draw[arrow] (source) -- (commande);
+        \draw[arrow] (commande) -- (mecanique);
+        \draw[arrow] (commande) -- (electrodes);
+        \draw[arrow] (mecanique) -- (electrodes);
+    \end{tikzpicture}
+    \caption{Architecture d'une soudeuse à points}
+\end{figure}
+
+\subsection{La source d'énergie}
+
+Deux technologies principales :
+
+\begin{description}
+    \item[Transformateur (AC)] Courant alternatif 50/60 Hz directement issu du secteur, abaissé en tension.
+    \item[Condensateurs (DC)] Stockage d'énergie puis décharge en courant continu.
+\end{description}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lcc}
+        \toprule
+        \textbf{Critère} & \textbf{Transformateur} & \textbf{Condensateurs} \\
+        \midrule
+        Courant disponible & Continu & Impulsion unique \\
+        Énergie par point & Limitée par le réseau & Stockée, indépendante \\
+        Coût & Moyen à élevé & Variable \\
+        Portabilité & Faible (lourd) & Bonne (compact) \\
+        Utilisation DIY & Difficile & Courante \\
+        \bottomrule
+    \end{tabular}
+    \caption{Comparaison des sources d'énergie}
+\end{table}
+
+\subsection{Le circuit de commande}
+
+Il gère :
+\begin{itemize}
+    \item Le déclenchement de la soudure
+    \item La durée du pulse
+    \item La séquence (simple, double, multi-pulse)
+    \item Les protections (surchauffe, court-circuit)
+\end{itemize}
+
+\subsection{Le système mécanique}
+
+Applique et maintient la force d'électrode :
+\begin{itemize}
+    \item \textbf{Manuel} : poignée à main
+    \item \textbf{Pneumatique} : vérin à air comprimé
+    \item \textbf{Servo-électrique} : moteur avec contrôle de force
+\end{itemize}
+
+\section{Comparatif des technologies}
+
+\subsection{Soudeuses à transformateur (AC)}
+
+\textbf{Avantages :}
+\begin{itemize}
+    \item Courant soutenu pour les matériaux épais
+    \item Technologie éprouvée
+    \item Robuste
+\end{itemize}
+
+\textbf{Inconvénients :}
+\begin{itemize}
+    \item Encombrante
+    \item Consommation électrique élevée
+    \item Pas adaptée aux cellules lithium (risque de chauffe excessive)
+\end{itemize}
+
+\subsection{Soudeuses à condensateurs (DC)}
+
+\textbf{Avantages :}
+\begin{itemize}
+    \item Pulse court et contrôlé
+    \item Énergie délivrée indépendante du réseau
+    \item Idéale pour batteries (minimise l'apport thermique)
+    \item Compacte
+\end{itemize}
+
+\textbf{Inconvénients :}
+\begin{itemize}
+    \item Temps de recharge entre les points
+    \item Énergie limitée par la taille des condensateurs
+\end{itemize}
+
+\subsection{Soudeuses inverter MFDC}
+
+Technologie industrielle récente combinant le meilleur des deux mondes :
+\begin{itemize}
+    \item Courant continu ondulé à moyenne fréquence (1-4 kHz)
+    \item Transformateur compact
+    \item Contrôle précis de l'énergie
+\end{itemize}
+
+\begin{infobox}[Pour quel usage ?]
+\begin{itemize}
+    \item \textbf{DIY/Hobby} : Condensateurs (budget < 500€)
+    \item \textbf{Semi-pro} : Condensateurs haute capacité ou transformateur (500-2000€)
+    \item \textbf{Industriel} : MFDC ou DC industriel (> 5000€)
+\end{itemize}
+\end{infobox}
+
+\section{Soudeuses DIY vs industrielles}
+
+\subsection{Budget < 500€}
+
+\begin{itemize}
+    \item Kits à condensateurs type "kWeld", "Malectrics"
+    \item Énergie : 100-500 J
+    \item Adapté : nickel jusqu'à 0.2 mm, petits packs batteries
+\end{itemize}
+
+\begin{warningbox}
+Les "spot welders" à base de batteries de visseuse (MOT mods) sont dangereux et donnent des résultats aléatoires. À éviter.
+\end{warningbox}
+
+\subsection{Budget 500-2000€}
+
+\begin{itemize}
+    \item Soudeuses semi-professionnelles (Sunko, Sunkko, etc.)
+    \item Énergie : 500-2000 J
+    \item Adapté : nickel jusqu'à 0.3 mm, cuivre nickelé, production occasionnelle
+\end{itemize}
+
+\subsection{Budget > 2000€}
+
+\begin{itemize}
+    \item Équipement industriel (Miyachi, Amada, ARO)
+    \item Contrôle de process complet
+    \item Certification qualité possible
+\end{itemize}
+
+\newpage
+
+% ============================================
+% MODULE 3 : CHOIX DES ÉLECTRODES
+% ============================================
+\chapter{Choix des Électrodes}
+
+Les électrodes sont l'interface entre votre soudeuse et les pièces à assembler. Leur choix est déterminant.
+
+\section{Matériaux d'électrodes}
+
+\subsection{Cuivre pur (Cu-ETP)}
+
+\begin{itemize}
+    \item Excellente conductivité électrique et thermique
+    \item Usure rapide
+    \item Convient pour les faibles séries et le nickel
+\end{itemize}
+
+\subsection{Alliages CuCr et CuCrZr}
+
+\begin{itemize}
+    \item Résistance mécanique améliorée
+    \item Durée de vie 2-5x supérieure au cuivre pur
+    \item Standard industriel
+\end{itemize}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lccc}
+        \toprule
+        \textbf{Matériau} & \textbf{Conductivité} & \textbf{Dureté} & \textbf{Usage} \\
+        \midrule
+        Cu-ETP & 100\% IACS & 50 HV & DIY, nickel \\
+        CuCr & 80\% IACS & 110 HV & Semi-pro \\
+        CuCrZr & 80\% IACS & 140 HV & Industriel \\
+        \bottomrule
+    \end{tabular}
+    \caption{Comparaison des matériaux d'électrodes}
+\end{table}
+
+\section{Géométrie des électrodes}
+
+\subsection{Électrodes plates}
+
+\begin{itemize}
+    \item Surface de contact large
+    \item Densité de courant faible
+    \item Adaptées aux feuillards fins
+\end{itemize}
+
+\subsection{Électrodes bombées (dôme)}
+
+\begin{itemize}
+    \item Contact ponctuel
+    \item Densité de courant élevée
+    \item Meilleure pénétration
+    \item Standard pour batteries
+\end{itemize}
+
+\begin{tipbox}
+Pour les batteries 18650/21700, utilisez des électrodes de diamètre 3-4 mm avec une pointe légèrement bombée (rayon 20-40 mm).
+\end{tipbox}
+
+\section{Entretien et durée de vie}
+
+\begin{enumerate}
+    \item \textbf{Nettoyage régulier} : papier abrasif fin (400-600) toutes les 100-500 soudures
+    \item \textbf{Rafraîchissement} : lime douce pour restaurer la géométrie
+    \item \textbf{Remplacement} : dès que le diamètre de contact augmente de plus de 20\%
+\end{enumerate}
+
+\begin{dangerbox}
+Des électrodes usées ou sales entraînent :
+\begin{itemize}
+    \item Collage sur les pièces
+    \item Échauffement excessif
+    \item Soudures irrégulières
+\end{itemize}
+\end{dangerbox}
+
+\newpage
+
+% ============================================
+% MODULE 4 : PREMIERS PAS PRATIQUES
+% ============================================
+\chapter{Premiers Pas Pratiques}
+
+Passons à la pratique. Ce chapitre vous guide pas à pas vers vos premières soudures réussies.
+
+\section{Installation et sécurité}
+
+\subsection{Alimentation électrique}
+
+\begin{itemize}
+    \item Vérifiez la puissance disponible (soudeuse DIY : 10A suffit, semi-pro : 16A min)
+    \item Utilisez une prise avec terre
+    \item Évitez les rallonges sous-dimensionnées
+\end{itemize}
+
+\subsection{Environnement de travail}
+
+\begin{itemize}
+    \item Surface non conductrice (bois, plastique)
+    \item Éclairage suffisant
+    \item Ventilation (vapeurs métalliques)
+    \item Extincteur CO2 à proximité
+\end{itemize}
+
+\subsection{EPI obligatoires}
+
+\begin{dangerbox}[Équipements de Protection Individuelle]
+\begin{itemize}
+    \item Lunettes de protection (projections)
+    \item Gants de travail (chaleur, arêtes)
+    \item Vêtements en coton (pas de synthétique)
+    \item Chaussures fermées
+\end{itemize}
+\end{dangerbox}
+
+\subsection{Risques spécifiques batteries lithium}
+
+\begin{dangerbox}
+Les cellules lithium peuvent entrer en emballement thermique si surchauffées :
+\begin{itemize}
+    \item Ne jamais souder sur une cellule chargée à > 50\%
+    \item Limiter le temps de soudure (< 20 ms par point)
+    \item Espacer les points d'au moins 5 secondes
+    \item Prévoir un seau de sable à proximité
+\end{itemize}
+\end{dangerbox}
+
+\section{Votre première soudure}
+
+\subsection{Préparation des pièces}
+
+\begin{enumerate}
+    \item Dégraisser les surfaces (alcool isopropylique)
+    \item Vérifier l'absence de rouille ou d'oxydation
+    \item Positionner les pièces bien à plat
+\end{enumerate}
+
+\subsection{Paramètres de départ recommandés}
+
+Pour du feuillard nickel 0.15 mm sur nickel 0.15 mm :
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lc}
+        \toprule
+        \textbf{Paramètre} & \textbf{Valeur de départ} \\
+        \midrule
+        Énergie & 30-50 J \\
+        Temps (si réglable) & 5-10 ms \\
+        Force & Pression manuelle modérée \\
+        \bottomrule
+    \end{tabular}
+    \caption{Paramètres de départ pour feuillard nickel 0.15 mm}
+\end{table}
+
+\subsection{Procédure}
+
+\begin{enumerate}
+    \item Positionnez les électrodes perpendiculairement aux pièces
+    \item Appliquez une pression ferme et constante
+    \item Déclenchez la soudure
+    \item Maintenez la pression 0.5-1 seconde après le flash
+    \item Relevez les électrodes
+\end{enumerate}
+
+\subsection{Analyse visuelle du résultat}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        % Bonne soudure
+        \draw (0,0) circle (0.5);
+        \fill[success!30] (0,0) circle (0.4);
+        \node at (0,-1) {Bonne};
+
+        % Soudure faible
+        \draw (3,0) circle (0.5);
+        \fill[warning!30] (3,0) circle (0.2);
+        \node at (3,-1) {Faible};
+
+        % Expulsion
+        \draw (6,0) circle (0.5);
+        \fill[danger!30] (6,0) circle (0.4);
+        \draw[danger, thick] (5.7,0.3) -- (6.3,-0.3);
+        \draw[danger, thick] (5.7,-0.3) -- (6.3,0.3);
+        \node at (6,-1) {Expulsion};
+    \end{tikzpicture}
+    \caption{Interprétation visuelle des soudures}
+\end{figure}
+
+\section{Exercices progressifs}
+
+\begin{exercice}[Strip nickel sur nickel]
+\textbf{Objectif :} Réaliser 10 soudures consécutives de qualité uniforme.
+
+\textbf{Matériel :}
+\begin{itemize}
+    \item 2 bandes de nickel 0.15 mm × 8 mm × 50 mm
+\end{itemize}
+
+\textbf{Procédure :}
+\begin{enumerate}
+    \item Superposez les deux bandes
+    \item Réalisez 5 points espacés de 8 mm
+    \item Testez chaque soudure en tirant modérément
+    \item Ajustez les paramètres si nécessaire
+\end{enumerate}
+
+\textbf{Critère de réussite :} Aucune soudure ne se décolle sous une traction de 2 kg.
+\end{exercice}
+
+\begin{exercice}[Strip nickel sur acier nickelé]
+\textbf{Objectif :} Adapter les paramètres pour un assemblage hétérogène.
+
+\textbf{Matériel :}
+\begin{itemize}
+    \item Bande de nickel 0.15 mm
+    \item Plaquette acier nickelé
+\end{itemize}
+
+\textbf{Note :} Augmentez légèrement l'énergie (+10-20\%) par rapport à l'exercice 1.
+\end{exercice}
+
+\begin{exercice}[Strip sur cellule 18650]
+\textbf{Objectif :} Souder sur un pôle de cellule lithium.
+
+\textbf{Précautions :}
+\begin{itemize}
+    \item Cellule déchargée (< 3.5V)
+    \item Temps minimal
+    \item Refroidissement entre chaque point
+\end{itemize}
+
+\textbf{Paramètres :} Identiques à l'exercice 1, mais avec un temps de soudure réduit.
+\end{exercice}
+
+\newpage
+
+% ============================================
+% MODULE 5 : DIAGNOSTIC DES DÉFAUTS
+% ============================================
+\chapter{Diagnostic des Défauts}
+
+Savoir reconnaître et corriger les défauts de soudure est une compétence essentielle.
+
+\section{Les 10 défauts les plus courants}
+
+\subsection{Soudure froide (cold weld)}
+
+\textbf{Symptômes :}
+\begin{itemize}
+    \item Pas de marque visible ou marque très faible
+    \item La pièce se décolle sans effort
+\end{itemize}
+
+\textbf{Causes :}
+\begin{itemize}
+    \item Courant insuffisant
+    \item Temps trop court
+    \item Mauvais contact (surfaces sales)
+\end{itemize}
+
+\textbf{Solutions :}
+\begin{itemize}
+    \item Augmenter le courant/énergie de 10-20\%
+    \item Vérifier la propreté des surfaces
+    \item Augmenter la pression
+\end{itemize}
+
+\subsection{Projection de métal}
+
+\textbf{Symptômes :}
+\begin{itemize}
+    \item Éclaboussures visibles
+    \item Trou ou cratère au centre du point
+    \item Bruit de claquement
+\end{itemize}
+
+\textbf{Causes :}
+\begin{itemize}
+    \item Courant trop élevé
+    \item Temps trop long
+    \item Pression insuffisante
+\end{itemize}
+
+\textbf{Solutions :}
+\begin{itemize}
+    \item Réduire le courant de 10-15\%
+    \item Augmenter la force d'électrode
+\end{itemize}
+
+\subsection{Perçage}
+
+\textbf{Symptômes :}
+\begin{itemize}
+    \item Trou traversant
+    \item Métal fondu sur l'électrode
+\end{itemize}
+
+\textbf{Causes :}
+\begin{itemize}
+    \item Énergie beaucoup trop élevée
+    \item Pièce trop fine pour les paramètres
+\end{itemize}
+
+\subsection{Collage d'électrode}
+
+\textbf{Symptômes :}
+\begin{itemize}
+    \item L'électrode reste collée à la pièce
+    \item Dégradation de la surface de l'électrode
+\end{itemize}
+
+\textbf{Causes :}
+\begin{itemize}
+    \item Électrodes sales ou usées
+    \item Force trop faible
+    \item Temps trop long
+\end{itemize}
+
+\textbf{Solutions :}
+\begin{itemize}
+    \item Nettoyer/rafraîchir les électrodes
+    \item Augmenter la force
+    \item Réduire le temps
+\end{itemize}
+
+\section{Arbre de diagnostic}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        node distance=1.5cm,
+        decision/.style={diamond, draw=primary, fill=darkcard, text=white, text width=2cm, align=center, inner sep=1pt},
+        block/.style={rectangle, draw=secondary, fill=darkcard, text=white, text width=3cm, align=center, minimum height=1cm},
+        arrow/.style={->, thick}
+    ]
+        \node[decision] (start) {Soudure OK ?};
+        \node[block, below left=of start, xshift=-1cm] (good) {Continuer};
+        \node[decision, below right=of start, xshift=1cm] (weak) {Résistance ?};
+
+        \node[block, below left=of weak] (inc) {↑ Courant\\↑ Temps};
+        \node[block, below right=of weak] (dec) {↓ Courant\\↑ Force};
+
+        \draw[arrow] (start) -- node[above left] {Oui} (good);
+        \draw[arrow] (start) -- node[above right] {Non} (weak);
+        \draw[arrow] (weak) -- node[above left] {Faible} (inc);
+        \draw[arrow] (weak) -- node[above right] {Expulsion} (dec);
+    \end{tikzpicture}
+    \caption{Arbre de diagnostic simplifié}
+\end{figure}
+
+\section{Tableau paramètres vs défauts}
+
+\begin{table}[H]
+    \centering
+    \small
+    \begin{tabular}{lccccc}
+        \toprule
+        \textbf{Défaut} & \textbf{Courant} & \textbf{Temps} & \textbf{Force} & \textbf{Électrodes} & \textbf{Surfaces} \\
+        \midrule
+        Soudure froide & ↑ & ↑ & ↑ & Nettoyer & Nettoyer \\
+        Expulsion & ↓ & ↓ & ↑ & - & - \\
+        Perçage & ↓↓ & ↓↓ & ↑ & - & - \\
+        Collage & - & ↓ & ↑ & Nettoyer & - \\
+        Déformation & ↓ & ↓ & ↓ & - & - \\
+        \bottomrule
+    \end{tabular}
+    \caption{Actions correctives par type de défaut}
+\end{table}
+
+\newpage
+
+% ============================================
+% ANNEXES
+% ============================================
+\appendix
+\chapter{Glossaire Technique}
+
+\begin{description}
+    \item[ZAT] Zone Affectée Thermiquement - région du métal de base dont les propriétés ont été modifiées par la chaleur
+    \item[MFDC] Medium Frequency Direct Current - technologie de soudage à courant continu moyenne fréquence
+    \item[Lobe de soudure] Diagramme courant/temps délimitant la zone de paramètres acceptables
+    \item[Noyau] Zone centrale de métal fondu lors d'une soudure par points
+    \item[Expulsion] Projection de métal fondu hors de la zone de soudure
+\end{description}
+
+\chapter{Tableau de Conversion}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{lccc}
+        \toprule
+        \textbf{Grandeur} & \textbf{Unité SI} & \textbf{Conversion} \\
+        \midrule
+        Courant & A & 1 kA = 1000 A \\
+        Temps & s & 1 ms = 0.001 s \\
+        Force & N & 1 kN = 1000 N ≈ 102 kgf \\
+        Énergie & J & 1 J = 1 W·s \\
+        Résistance & Ω & 1 mΩ = 0.001 Ω \\
+        \bottomrule
+    \end{tabular}
+    \caption{Conversions utiles}
+\end{table}
+
+\chapter{Fournisseurs Recommandés}
+
+\textbf{Soudeuses DIY/Semi-pro :}
+\begin{itemize}
+    \item kWeld (Allemagne)
+    \item Malectrics (Allemagne)
+    \item Sunko/Sunkko (Chine)
+\end{itemize}
+
+\textbf{Feuillard nickel :}
+\begin{itemize}
+    \item Nkon (Pays-Bas)
+    \item Aliexpress (vérifier les specs)
+\end{itemize}
+
+\textbf{Électrodes :}
+\begin{itemize}
+    \item Fournisseurs industriels locaux
+    \item CMW (matériaux spéciaux)
+\end{itemize}
+
+\vspace{2cm}
+
+\begin{center}
+    \textbf{Fin de la Formation Niveau 1}
+
+    \vspace{1cm}
+
+    Prêt à aller plus loin ?
+
+    \textcolor{primary}{\textbf{Formation Niveau 2 : Maîtrise Avancée}}
+
+    Optimisation des paramètres, batteries lithium, contrôle qualité
+
+    \vspace{1cm}
+
+    \textit{www.spotweldingpro.com}
+\end{center}
+
+\end{document}

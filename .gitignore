@@ -1,0 +1,80 @@
+# Laravel
+/src/vendor/
+/src/node_modules/
+/src/.env
+/src/.env.backup
+/src/.env.production
+/src/storage/*.key
+/src/Homestead.json
+/src/Homestead.yaml
+/src/auth.json
+/src/npm-debug.log
+/src/yarn-error.log
+/src/.phpunit.result.cache
+/src/.php-cs-fixer.cache
+
+# Compiled assets
+/src/public/build/
+/src/public/hot
+/src/public/storage
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker
+docker/nginx/ssl/*.crt
+docker/nginx/ssl/*.key
+docker/nginx/ssl/*.pem
+
+# Logs
+*.log
+/src/storage/logs/*
+!/src/storage/logs/.gitkeep
+
+# Cache
+/src/bootstrap/cache/*
+!/src/bootstrap/cache/.gitkeep
+
+# LaTeX temporary files
+*.aux
+*.log
+*.out
+*.toc
+*.lof
+*.lot
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.bbl
+*.blg
+*.nav
+*.snm
+*.vrb
+*.idx
+*.ilg
+*.ind
+
+# PDFs générés (sauf exemples)
+/formations-latex/**/*.pdf
+!/formations-latex/examples/*.pdf
+
+# Environment local
+.env
+.env.local
+.env.*.local
+
+# Tests
+/src/coverage/
+
+# Misc
+*.bak
+*.tmp
+*.temp
