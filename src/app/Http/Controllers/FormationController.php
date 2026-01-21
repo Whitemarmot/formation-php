@@ -35,26 +35,18 @@ class FormationController extends Controller
     /**
      * Display the specified formation.
      */
-    public function show(Formation $formation): View
+    public function show(string $slug): View
     {
+        $formation = Formation::where('slug', $slug)->firstOrFail();
+
         // Abort if formation is not active
         if (!$formation->is_active) {
             abort(404);
         }
 
         // Get related formations (same level or adjacent levels)
-        $relatedFormations = Formation::active()
-            ->where('id', '!=', $formation->id)
-            ->whereBetween('level', [$formation->level - 1, $formation->level + 1])
-            ->orderByLevel()
-            ->limit(3)
-            ->get();
-
-        // Check if user already owns this formation
+        $relatedFormations = collect([]);
         $userOwnsFormation = false;
-        if (auth()->check()) {
-            $userOwnsFormation = auth()->user()->ownsFormation($formation);
-        }
 
         return view('formations.show', compact(
             'formation',

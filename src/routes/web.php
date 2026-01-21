@@ -32,7 +32,7 @@ Route::get('/politique-confidentialite', [HomeController::class, 'confidentialit
 Route::prefix('formations')->name('formations.')->group(function () {
     Route::get('/', [FormationController::class, 'index'])->name('index');
     Route::get('/niveau/{level}', [FormationController::class, 'byLevel'])->name('level');
-    Route::get('/{formation:slug}', [FormationController::class, 'show'])->name('show');
+    Route::get('/{slug}', [FormationController::class, 'show'])->name('show');
 });
 
 // Cart
