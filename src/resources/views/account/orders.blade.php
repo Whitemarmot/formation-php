@@ -99,9 +99,11 @@
             @endforeach
         </div>
 
+        @if($orders->hasPages())
         <div class="mt-8">
             {{ $orders->links() }}
         </div>
+        @endif
         @endif
     </div>
 </div>
