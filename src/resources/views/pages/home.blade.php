@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Formations Soudage par Points | Mang-Ky Ha - Expert Industriel')
+@section('title', 'Formations Soudage par Points | Kangy Ham - Expert Industriel')
 
 @section('content')
     <!-- Hero Section -->
@@ -45,7 +45,7 @@
 
                     <!-- Subheadline -->
                     <p class="text-lg md:text-xl text-gray-400 mb-10 leading-relaxed max-w-xl mx-auto lg:mx-0">
-                        Formations techniques 100% PDF par <span class="text-cyber font-semibold">Mang-Ky Ha</span> — Expert en soudage de batteries lithium pour l'industrie automobile.
+                        Formations techniques 100% PDF par <span class="text-cyber font-semibold">Kangy Ham</span> — Expert en soudage de batteries lithium pour l'industrie automobile.
                     </p>
 
                     <!-- CTA Buttons -->
@@ -94,7 +94,7 @@
 
                         <!-- Central content -->
                         <div class="absolute inset-24 bg-gradient-to-br from-steel to-abyss rounded-full flex items-center justify-center border border-cyber/30 overflow-hidden manga-filter scanlines">
-                            <img src="/images/formateur-original.jpg" alt="Mang-Ky Ha" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'text-6xl font-display font-black gradient-text\'>MK</div>'">
+                            <img src="/images/formateur-original.jpg" alt="Kangy Ham" class="w-full h-full object-cover" onerror="this.parentElement.innerHTML='<div class=\'text-6xl font-display font-black gradient-text\'>MK</div>'">
                         </div>
 
                         <!-- Floating badges -->
@@ -339,17 +339,15 @@
                             <div class="price-tag text-6xl font-black mb-2">279€</div>
                             <p class="text-gray-400 mb-8">Paiement unique • Accès immédiat</p>
 
-                            @php
-                                $bundleFormation = $formations->where('is_bundle', true)->first();
-                            @endphp
-                            @if($bundleFormation)
-                            <form action="{{ route('cart.add', $bundleFormation->slug) }}" method="POST">
+                            <form action="{{ route('cart.add-bundle') }}" method="POST">
                                 @csrf
-                                <button type="submit" class="w-full btn-cyber px-8 py-5 rounded-xl font-display text-lg">
-                                    Commander le Pack Complet
+                                <button type="submit" class="w-full btn-cyber px-8 py-5 rounded-xl font-display text-lg flex items-center justify-center gap-3">
+                                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                    Ajouter le Pack au Panier
                                 </button>
                             </form>
-                            @endif
 
                             <p class="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
                                 <svg class="w-4 h-4 text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -376,10 +374,10 @@
 
                         <!-- Main image container -->
                         <div class="relative aspect-[4/5] rounded-2xl overflow-hidden border-2 border-cyber/20 manga-filter scanlines">
-                            <img src="/images/formateur-original.jpg" alt="Mang-Ky Ha - Expert Soudage" class="w-full h-full object-cover"
+                            <img src="/images/formateur-original.jpg" alt="Kangy Ham - Expert Soudage" class="w-full h-full object-cover"
                                  onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                             <div class="hidden w-full h-full bg-gradient-to-br from-steel to-abyss items-center justify-center">
-                                <span class="text-8xl font-display font-black gradient-text">MK</span>
+                                <span class="text-8xl font-display font-black gradient-text">KH</span>
                             </div>
 
                             <!-- Overlay gradient -->
@@ -404,7 +402,7 @@
                     <span class="inline-block px-4 py-1.5 bg-plasma/10 border border-plasma/30 rounded-full text-plasma text-sm font-display tracking-wider mb-6">VOTRE FORMATEUR</span>
 
                     <h2 class="text-3xl md:text-4xl lg:text-5xl font-display font-black text-white mb-6">
-                        Mang-Ky <span class="gradient-text">Ha</span>
+                        Kangy <span class="gradient-text">Ham</span>
                     </h2>
 
                     <blockquote class="text-xl text-gray-300 italic mb-8 pl-6 border-l-4 border-cyber">

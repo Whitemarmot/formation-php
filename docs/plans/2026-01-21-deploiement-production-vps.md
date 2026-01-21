@@ -140,7 +140,7 @@ services:
     labels:
       # Dashboard Traefik
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik.rule=Host(`traefik.TONDOMAINE.fr`)"
+      - "traefik.http.routers.traefik.rule=Host(`traefik.coach-luis.com`)"
       - "traefik.http.routers.traefik.tls.certresolver=letsencrypt"
       - "traefik.http.routers.traefik.service=api@internal"
       - "traefik.http.routers.traefik.middlewares=auth"
@@ -239,7 +239,7 @@ services:
       - ./docker/nginx/prod.conf:/etc/nginx/conf.d/default.conf:ro
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.formation.rule=Host(`formations.TONDOMAINE.fr`)"
+      - "traefik.http.routers.formation.rule=Host(`formations.coach-luis.com`)"
       - "traefik.http.routers.formation.tls.certresolver=letsencrypt"
       - "traefik.http.services.formation.loadbalancer.server.port=80"
     networks:
@@ -459,7 +459,7 @@ APP_NAME="Formations Soudeuse"
 APP_ENV=production
 APP_KEY=
 APP_DEBUG=false
-APP_URL=https://formations.TONDOMAINE.fr
+APP_URL=https://formations.coach-luis.com
 
 LOG_CHANNEL=stack
 LOG_LEVEL=error
@@ -483,10 +483,10 @@ QUEUE_CONNECTION=redis
 MAIL_MAILER=smtp
 MAIL_HOST=ssl0.ovh.net
 MAIL_PORT=465
-MAIL_USERNAME=contact@TONDOMAINE.fr
+MAIL_USERNAME=contact@coach-luis.com
 MAIL_PASSWORD=MOT_DE_PASSE_EMAIL
 MAIL_ENCRYPTION=ssl
-MAIL_FROM_ADDRESS=contact@TONDOMAINE.fr
+MAIL_FROM_ADDRESS=contact@coach-luis.com
 MAIL_FROM_NAME="${APP_NAME}"
 
 STRIPE_KEY=pk_live_xxx
@@ -568,7 +568,7 @@ jobs:
 ### 4.1 Accéder à la zone DNS
 
 1. Connecte-toi à l'espace client OVH
-2. Va dans **Noms de domaine** > **TONDOMAINE.fr** > **Zone DNS**
+2. Va dans **Noms de domaine** > **coach-luis.com** > **Zone DNS**
 
 ### 4.2 Ajouter les enregistrements
 
@@ -579,8 +579,8 @@ jobs:
 
 ### 4.3 Configuration SMTP OVH
 
-1. Va dans **Emails** > **TONDOMAINE.fr**
-2. Crée une adresse email `contact@TONDOMAINE.fr`
+1. Va dans **Emails** > **coach-luis.com**
+2. Crée une adresse email `contact@coach-luis.com`
 3. Note le mot de passe pour le fichier `.env.production`
 
 **Paramètres SMTP OVH** :
@@ -700,9 +700,9 @@ docker compose -f docker-compose.prod.yml exec php php artisan storage:link
 
 ### 6.6 Vérifier le site
 
-1. Ouvre `https://formations.TONDOMAINE.fr`
+1. Ouvre `https://formations.coach-luis.com`
 2. Vérifie que le SSL est actif (cadenas vert)
-3. Teste le dashboard Traefik : `https://traefik.TONDOMAINE.fr`
+3. Teste le dashboard Traefik : `https://traefik.coach-luis.com`
 
 ---
 

@@ -6,7 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('title', config('app.name'))</title>
-    <meta name="description" content="@yield('meta_description', 'Formations PDF premium sur les soudeuses à points par Mang-Ky Ha, expert industriel batteries lithium.')">
+    <meta name="description" content="@yield('meta_description', 'Formations PDF premium sur les soudeuses à points par Kangy Ham, expert industriel batteries lithium.')">
 
     <!-- Fonts - Distinctive choices -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -341,9 +341,10 @@
 
                 <!-- Navigation Desktop -->
                 <nav class="hidden md:flex items-center gap-10">
+                    <a href="{{ route('home') }}" class="nav-link font-medium">Accueil</a>
                     <a href="{{ route('formations.index') }}" class="nav-link font-medium">Formations</a>
-                    <a href="#formateur" class="nav-link font-medium">Le Formateur</a>
-                    <a href="#contact" class="nav-link font-medium">Contact</a>
+                    <a href="{{ route('formateur') }}" class="nav-link font-medium">Le Formateur</a>
+                    <a href="{{ route('contact') }}" class="nav-link font-medium">Contact</a>
                 </nav>
 
                 <!-- Actions -->
@@ -438,9 +439,10 @@
                  x-transition:enter-end="opacity-100 translate-y-0"
                  class="md:hidden py-4 border-t border-cyber/10">
                 <nav class="flex flex-col gap-2">
+                    <a href="{{ route('home') }}" class="px-4 py-3 text-gray-300 hover:text-cyber hover:bg-cyber/5 rounded-lg transition-colors">Accueil</a>
                     <a href="{{ route('formations.index') }}" class="px-4 py-3 text-gray-300 hover:text-cyber hover:bg-cyber/5 rounded-lg transition-colors">Formations</a>
-                    <a href="#formateur" class="px-4 py-3 text-gray-300 hover:text-cyber hover:bg-cyber/5 rounded-lg transition-colors">Le Formateur</a>
-                    <a href="#contact" class="px-4 py-3 text-gray-300 hover:text-cyber hover:bg-cyber/5 rounded-lg transition-colors">Contact</a>
+                    <a href="{{ route('formateur') }}" class="px-4 py-3 text-gray-300 hover:text-cyber hover:bg-cyber/5 rounded-lg transition-colors">Le Formateur</a>
+                    <a href="{{ route('contact') }}" class="px-4 py-3 text-gray-300 hover:text-cyber hover:bg-cyber/5 rounded-lg transition-colors">Contact</a>
                     @guest
                         <a href="{{ route('login') }}" class="px-4 py-3 text-gray-300 hover:text-cyber hover:bg-cyber/5 rounded-lg transition-colors">Connexion</a>
                     @endguest
@@ -502,7 +504,7 @@
                         <span class="font-display font-bold text-xl text-white tracking-wider">SPOT WELDING PRO</span>
                     </div>
                     <p class="text-gray-400 leading-relaxed mb-6 max-w-md">
-                        Formations professionnelles sur le soudage par points par <span class="text-cyber">Mang-Ky Ha</span>,
+                        Formations professionnelles sur le soudage par points par <span class="text-cyber">Kangy Ham</span>,
                         expert industriel avec 15 ans d'expérience dans l'assemblage de batteries lithium haute performance.
                     </p>
                     <div class="flex items-center gap-4">
@@ -528,11 +530,11 @@
 
                 <!-- Legal -->
                 <div class="md:col-span-2">
-                    <h4 class="font-display font-semibold text-white mb-6 tracking-wider">LÉGAL</h4>
+                    <h4 class="font-display font-semibold text-white mb-6 tracking-wider">LEGAL</h4>
                     <ul class="space-y-4 text-gray-400">
-                        <li><a href="#" class="hover:text-cyber transition-colors">Mentions légales</a></li>
-                        <li><a href="#" class="hover:text-cyber transition-colors">CGV</a></li>
-                        <li><a href="#" class="hover:text-cyber transition-colors">Confidentialité</a></li>
+                        <li><a href="{{ route('mentions-legales') }}" class="hover:text-cyber transition-colors">Mentions legales</a></li>
+                        <li><a href="{{ route('cgv') }}" class="hover:text-cyber transition-colors">CGV</a></li>
+                        <li><a href="{{ route('confidentialite') }}" class="hover:text-cyber transition-colors">Confidentialite</a></li>
                     </ul>
                 </div>
 
@@ -540,8 +542,8 @@
                 <div class="md:col-span-2">
                     <h4 class="font-display font-semibold text-white mb-6 tracking-wider">CONTACT</h4>
                     <ul class="space-y-4 text-gray-400">
-                        <li><a href="mailto:contact@spotweldingpro.com" class="hover:text-cyber transition-colors">Email</a></li>
-                        <li><a href="#" class="hover:text-cyber transition-colors">Support</a></li>
+                        <li><a href="{{ route('contact') }}" class="hover:text-cyber transition-colors">Nous contacter</a></li>
+                        <li><a href="{{ route('formateur') }}" class="hover:text-cyber transition-colors">Le formateur</a></li>
                     </ul>
                 </div>
             </div>

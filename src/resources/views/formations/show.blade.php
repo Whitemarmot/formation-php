@@ -196,10 +196,10 @@
                     <div class="mt-6 card-techno rounded-xl p-6">
                         <div class="flex items-center gap-4 mb-4">
                             <div class="w-14 h-14 bg-gradient-to-br from-cyber/20 to-neon/20 rounded-xl flex items-center justify-center border border-cyber/20">
-                                <span class="text-xl font-display font-black gradient-text">MK</span>
+                                <span class="text-xl font-display font-black gradient-text">KH</span>
                             </div>
                             <div>
-                                <h4 class="text-white font-display font-semibold">Mang-Ky Ha</h4>
+                                <h4 class="text-white font-display font-semibold">Kangy Ham</h4>
                                 <p class="text-cyber text-sm">Expert Soudage par Points</p>
                             </div>
                         </div>

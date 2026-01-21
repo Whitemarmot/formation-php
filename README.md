@@ -4,7 +4,7 @@ Plateforme e-commerce de vente de formations PDF premium sur le soudage par poin
 
 ## Aperçu
 
-- **Formateur** : Mang-Ky Ha - Expert batteries & procédés de soudage industriel
+- **Formateur** : Kangy Ham - Expert batteries & procédés de soudage industriel
 - **Produit** : Formations 100% PDF téléchargeables
 - **Stack** : Laravel 11 + MySQL + Docker + LaTeX
 

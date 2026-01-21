@@ -1,0 +1,1593 @@
+% Formation Niveau 2 - Soudeuse à Points : Maîtrise Avancée
+% Spot Welding Pro - Kangy Ham
+% Version 2.0 - Optimisation, DIY, batteries lithium et contrôle qualité
+
+\input{../commun/preambule}
+
+% Métadonnées du document
+\title{Soudeuse à Points\\Maîtrise Avancée}
+\author{Kangy Ham}
+\date{Version 2.0 - 2025}
+
+\begin{document}
+
+% ============================================
+% PAGE DE TITRE
+% ============================================
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+
+    {\fontsize{28}{34}\selectfont\textcolor{primary}{\textbf{SPOT WELDING PRO}}}
+
+    \vspace{0.3cm}
+
+    {\large\textcolor{textmuted}{Formations Professionnelles en Soudage}}
+
+    \vspace{2cm}
+
+    \includegraphics[width=0.7\textwidth]{robot-soudage.jpg}
+
+    \vspace{1.5cm}
+
+    {\fontsize{36}{44}\selectfont\textbf{Soudeuse à Points}}
+
+    \vspace{0.3cm}
+
+    {\Huge\textcolor{secondary}{Maîtrise Avancée}}
+
+    \vspace{0.8cm}
+
+    {\Large\textit{Optimisation, DIY et applications industrielles}}
+
+    \vspace{2cm}
+
+    {\large\textbf{Par Kangy Ham}}
+
+    \vspace{0.2cm}
+
+    {\normalsize Ingénieur Procédés $\cdot$ Expert Batteries Lithium}
+
+    \vfill
+
+    \begin{tcolorbox}[
+        enhanced,
+        colback=secondary!10!white,
+        colframe=secondary,
+        width=8cm,
+        arc=8pt,
+        boxrule=2pt,
+        halign=center
+    ]
+        {\large\textbf{Niveau 2}} $\cdot$ Intermédiaire $\cdot$ \textasciitilde180 pages
+    \end{tcolorbox}
+
+    \vspace{0.8cm}
+
+    {\footnotesize © 2025 Spot Welding Pro. Tous droits réservés.}
+
+\end{titlepage}
+
+% Page de copyright
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+    \textbf{\Large Soudeuse à Points --- Maîtrise Avancée}
+
+    \vspace{1.5cm}
+
+    © 2025 Spot Welding Pro --- Tous droits réservés.
+
+    \vspace{1cm}
+
+    \textcolor{textmuted}{Prérequis : Formation Niveau 1 complétée}
+\end{center}
+\vspace*{\fill}
+\newpage
+
+\tableofcontents
+\newpage
+
+% ============================================
+% LE MOT DU FORMATEUR
+% ============================================
+\chapter*{Le Mot du Formateur}
+\addcontentsline{toc}{chapter}{Le Mot du Formateur}
+
+\begin{wrapfigure}{r}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.2\textwidth]{formateur.jpg}
+\end{wrapfigure}
+
+Bienvenue dans ce niveau 2. Si vous êtes ici, c'est que vous avez assimilé les bases et que vous voulez aller plus loin. Je me souviens encore de ma propre progression : après des mois à faire des soudures « qui tiennent », j'ai voulu comprendre \textit{pourquoi} certaines configurations fonctionnaient mieux que d'autres.
+
+C'est en construisant ma première soudeuse DIY à base d'Arduino que j'ai vraiment commencé à comprendre les subtilités du procédé. Voir les signaux sur l'oscilloscope, mesurer les temps réels de pulse, comparer avec les données constructeur... cette approche pratique m'a appris plus qu'aucun manuel.
+
+\section*{Mon parcours dans le DIY}
+
+En 2016, j'ai commandé mon premier kit kWeld sur Kickstarter. Le projet de Keenlab promettait une révolution : le contrôle par énergie plutôt que par temps. J'étais sceptique, mais après les premiers tests, j'ai été converti.
+
+Depuis, j'ai testé une dizaine de soudeuses différentes, de la Sunkko 737G chinoise à moins de 100€ jusqu'aux machines industrielles Miyachi à plusieurs dizaines de milliers d'euros. Cette expérience m'a permis de comprendre ce qui fait vraiment la différence.
+
+\section*{Ce que vous allez découvrir}
+
+Dans cette formation, je vais partager :
+\begin{itemize}
+    \item Les lobes de soudure --- l'outil fondamental de l'optimisation
+    \item Un comparatif honnête des soudeuses DIY du marché
+    \item Comment construire et calibrer votre propre système
+    \item Les techniques avancées pour les batteries lithium
+    \item Les cycles multi-pulse et le contrôle adaptatif
+    \item La maintenance préventive pour des années de fiabilité
+\end{itemize}
+
+Prêt à passer au niveau supérieur ? Allons-y !
+
+\vspace{1cm}
+\hfill\textit{Kangy Ham}
+
+\newpage
+
+% ============================================
+% INTRODUCTION
+% ============================================
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+Félicitations ! Vous avez complété le Niveau 1 et maîtrisez les bases du soudage par points. Cette formation de niveau intermédiaire va vous permettre de passer à un niveau supérieur.
+
+\section*{Ce que vous allez apprendre}
+
+\begin{objectives}
+    \item Comprendre et utiliser les lobes de soudure
+    \item Comparer et choisir une soudeuse DIY adaptée
+    \item Construire ou améliorer votre propre système
+    \item Maîtriser le soudage des batteries lithium
+    \item Mettre en place un contrôle qualité efficace
+    \item Comprendre les séquences multi-pulse
+    \item Résoudre les problèmes complexes
+    \item Maintenir votre équipement pour durer
+\end{objectives}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.8\textwidth]{miller-spot-welder.jpg}
+    \caption{Soudeuse industrielle Miller --- le standard de référence}
+\end{figure}
+
+\newpage
+
+% ============================================
+% CHAPITRE 1 : LOBES DE SOUDURE
+% ============================================
+\chapter{Les Lobes de Soudure}
+
+\begin{objectives}
+    \item Comprendre le concept de lobe de soudure
+    \item Construire un lobe expérimental
+    \item Identifier la fenêtre de paramètres optimale
+    \item Utiliser le lobe pour l'optimisation
+\end{objectives}
+
+\section{Concept du lobe de soudure}
+
+\begin{defbox}[Lobe de soudure (Weld Lobe)]
+Le \textbf{lobe de soudure} est un diagramme bidimensionnel (généralement courant vs temps) qui délimite la zone de paramètres produisant des soudures acceptables. C'est l'outil fondamental d'optimisation du procédé.
+\end{defbox}
+
+Le concept de lobe de soudure a été formalisé dans les années 1960 par les ingénieurs de l'industrie automobile. Avant cela, les paramètres étaient déterminés par essai-erreur, ce qui menait à une grande variabilité.
+
+\subsection{Les quatre frontières du lobe}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1.3]
+        % Axes
+        \draw[->, thick] (0,0) -- (8,0) node[right] {Temps (ms)};
+        \draw[->, thick] (0,0) -- (0,5.5) node[above] {Courant (kA)};
+
+        % Zone de soudure acceptable (lobe)
+        \fill[success!20] (1.5,1.5) -- (2,3.8) -- (4.5,4.5) -- (6,3.2) -- (5.5,1.3) -- (2.5,1) -- cycle;
+        \draw[success, very thick] (1.5,1.5) -- (2,3.8) -- (4.5,4.5) -- (6,3.2) -- (5.5,1.3) -- (2.5,1) -- cycle;
+
+        % Zone optimale (plus petite, au centre)
+        \fill[primary!30] (2.8,2) -- (3,3) -- (4.2,3.3) -- (4.5,2.5) -- (4,1.8) -- cycle;
+        \draw[primary, thick, dashed] (2.8,2) -- (3,3) -- (4.2,3.3) -- (4.5,2.5) -- (4,1.8) -- cycle;
+
+        % Point optimal
+        \fill[primary] (3.7,2.6) circle (0.12);
+        \node[primary, font=\small\bfseries] at (3.7,2.1) {Optimum};
+
+        % Labels des frontières avec flèches
+        \draw[->, danger, thick] (0.8,2.5) -- (1.3,2);
+        \node[danger, font=\footnotesize, align=center] at (0.5,3.2) {Soudure\\froide};
+
+        \draw[->, danger, thick] (3.2,5) -- (3.5,4.3);
+        \node[danger, font=\footnotesize] at (3.2,5.3) {Expulsion};
+
+        \draw[->, danger, thick] (6.8,2.5) -- (6.2,2.8);
+        \node[danger, font=\footnotesize, align=center] at (7.2,2) {Perçage\\indentation};
+
+        \draw[->, danger, thick] (4,0.5) -- (4,0.9);
+        \node[danger, font=\footnotesize] at (4,0.2) {Énergie insuffisante};
+
+        % Graduations
+        \foreach \x in {1,2,3,4,5,6,7} {
+            \draw (\x,0) -- (\x,-0.1) node[below, font=\tiny] {\x 0};
+        }
+        \foreach \y in {1,2,3,4,5} {
+            \draw (0,\y) -- (-0.1,\y) node[left, font=\tiny] {\y};
+        }
+
+        % Légende
+        \draw[success, very thick] (0.5,-1) -- (1.5,-1) node[right, font=\footnotesize, textdark] {Zone acceptable};
+        \draw[primary, thick, dashed] (4,-1) -- (5,-1) node[right, font=\footnotesize, textdark] {Zone optimale};
+    \end{tikzpicture}
+    \caption{Structure typique d'un lobe de soudure}
+\end{figure}
+
+Les quatre frontières du lobe correspondent aux quatre modes de défaillance :
+
+\begin{enumerate}
+    \item \textbf{Frontière inférieure} : énergie insuffisante → soudure froide, pas de fusion
+    \item \textbf{Frontière gauche} : temps trop court → fusion incomplète, noyau trop petit
+    \item \textbf{Frontière supérieure} : courant trop élevé → expulsion du métal fondu
+    \item \textbf{Frontière droite} : temps trop long → perçage, déformation excessive, ZAT trop large
+\end{enumerate}
+
+\section{Construction d'un lobe expérimental}
+
+\subsection{Méthodologie systématique}
+
+La construction d'un lobe nécessite une approche méthodique :
+
+\begin{enumerate}
+    \item \textbf{Définir la configuration} : matériaux, épaisseurs, électrodes, force
+    \item \textbf{Créer une matrice de test} : typiquement 5×5 ou 7×7 points
+    \item \textbf{Réaliser les soudures} : 2-3 échantillons par condition
+    \item \textbf{Évaluer chaque point} : inspection visuelle + test de pelage
+    \item \textbf{Classifier les résultats} : OK / Froid / Expulsion / Perçage
+    \item \textbf{Tracer les frontières} : délimiter les zones
+\end{enumerate}
+
+\begin{exercice}[Construction d'un lobe pour nickel 0.15mm sur 18650]
+\textbf{Matériel :}
+\begin{itemize}
+    \item 50+ échantillons de nickel 0.15mm
+    \item 25 cellules 18650 (ou simulateurs)
+    \item Soudeuse à condensateurs réglable
+    \item Dynamomètre pour test de pelage
+\end{itemize}
+
+\textbf{Procédure :}
+\begin{enumerate}
+    \item Fixer la force à la valeur nominale (ex: 2 kg)
+    \item Créer une matrice 5×5 :
+    \begin{itemize}
+        \item Énergie : 15, 25, 35, 45, 55 J
+        \item Temps : 4, 8, 12, 16, 20 ms
+    \end{itemize}
+    \item Réaliser 2 soudures par combinaison (50 points total)
+    \item Pour chaque point, noter :
+    \begin{itemize}
+        \item Aspect visuel (empreinte, expulsion, coloration)
+        \item Force de pelage (en kg)
+        \item Mode de rupture (bouton, décollage, arrachement)
+    \end{itemize}
+    \item Classifier : $\geq$ 2 kg avec bouton = OK
+    \item Tracer le lobe sur papier millimétré
+\end{enumerate}
+
+\textbf{Résultat attendu :} Un lobe en forme de « banane » inclinée vers la droite, avec une zone optimale autour de 30-40 J et 10-14 ms.
+\end{exercice}
+
+\subsection{Interprétation du lobe}
+
+\begin{infobox}[Règle des 80\%]
+Pour une production stable, travaillez au \textbf{centre du lobe} avec une marge de sécurité d'au moins 20\% par rapport à chaque frontière. Cela absorbe les variations naturelles du procédé (épaisseur, état de surface, usure des électrodes).
+\end{infobox}
+
+\subsection{Facteurs qui modifient le lobe}
+
+Le lobe de soudure n'est pas fixe --- il se déplace selon plusieurs facteurs :
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{4cm}L{4cm}L{4cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Facteur} & \textbf{Effet sur le lobe} & \textbf{Compensation} \\
+        \midrule
+        Épaisseur ↑ & Lobe déplacé vers haute énergie & Augmenter courant/temps \\
+        Résistivité ↑ & Lobe rétréci, décalé vers bas courant & Réduire le courant \\
+        Force ↑ & Lobe élargi, décalé vers haut courant & Augmenter légèrement le courant \\
+        Diamètre électrode ↑ & Lobe déplacé vers haute énergie & Augmenter courant \\
+        État de surface sale & Lobe rétréci, instable & Nettoyer les pièces \\
+        \bottomrule
+    \end{tabular}
+    \caption{Influence des paramètres sur le lobe de soudure}
+\end{table}
+
+\begin{keypoints}
+    \item Le lobe de soudure définit la fenêtre de paramètres acceptables
+    \item Chaque configuration matériau/épaisseur a son propre lobe
+    \item Travaillez au centre du lobe pour maximiser la robustesse
+    \item Un lobe large indique un procédé tolérant
+    \item Un lobe étroit nécessite un contrôle précis des paramètres
+    \item Refaites le lobe après tout changement significatif
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% CHAPITRE 2 : COMPARATIF SOUDEUSES DIY
+% ============================================
+\chapter{Soudeuses DIY : Le Grand Comparatif}
+
+\begin{objectives}
+    \item Comprendre les différentes technologies disponibles
+    \item Comparer objectivement les solutions DIY
+    \item Choisir la soudeuse adaptée à vos besoins
+    \item Évaluer le rapport qualité/prix
+\end{objectives}
+
+\section{Le marché des soudeuses DIY}
+
+Le marché des soudeuses par points pour particuliers et petits ateliers a explosé depuis 2015, porté par la demande croissante en assemblage de batteries lithium pour vélos électriques, powerwalls et autres projets DIY.
+
+On distingue trois grandes catégories :
+
+\begin{enumerate}
+    \item \textbf{Les kits premium} : kWeld, Malectrics --- contrôle avancé, prix élevé
+    \item \textbf{Les machines chinoises} : Sunkko, KNOKOO --- bon marché, qualité variable
+    \item \textbf{Les projets open source} : Arduino Spot Welder --- flexible, demande du travail
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{soudeuse-pedestre.jpg}
+    \caption{Soudeuse industrielle pédale --- inspiration pour les projets DIY}
+\end{figure}
+
+\section{kWeld --- La référence premium}
+
+\subsection{Présentation}
+
+Le kWeld, développé par Keenlab en Allemagne, est considéré comme la référence des soudeuses DIY. Son innovation majeure : le contrôle par énergie plutôt que par temps.
+
+\begin{defbox}[Contrôle par énergie]
+Au lieu de définir un temps de pulse fixe, le kWeld mesure en temps réel la résistance et ajuste le temps pour délivrer une \textbf{énergie constante}. Cela compense automatiquement les variations de résistance de contact.
+\end{defbox}
+
+\subsection{Caractéristiques techniques}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{5cm}L{7cm}}
+        \toprule
+        \rowcolor{primary!20}
+        \textbf{Caractéristique} & \textbf{kWeld (2024)} \\
+        \midrule
+        Type de contrôle & Énergie (Joules) \\
+        Plage d'énergie & 5 --- 250 J (par pulse) \\
+        Résolution & 1 J \\
+        Source d'alimentation & Batterie LiPo externe (14.8V min) \\
+        Courant max théorique & 2000 A (dépend de la batterie) \\
+        Double pulse & Oui, programmable \\
+        Mesure de résistance & Oui, en temps réel \\
+        Connexion PC & USB, logiciel de diagnostic \\
+        Prix (2024) & \textasciitilde 130€ (module seul) \\
+        \bottomrule
+    \end{tabular}
+    \caption{Spécifications du kWeld}
+\end{table}
+
+\subsection{Avantages et inconvénients}
+
+\begin{minipage}{0.48\textwidth}
+\textbf{Avantages :}
+\begin{itemize}
+    \item Contrôle précis par énergie
+    \item Compensation automatique
+    \item Documentation excellente
+    \item Support communautaire actif
+    \item Évolutif (firmware open)
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+\textbf{Inconvénients :}
+\begin{itemize}
+    \item Nécessite une batterie LiPo puissante
+    \item Prix total élevé (+ batterie + électrodes)
+    \item Courbe d'apprentissage
+    \item Pas de boîtier inclus
+\end{itemize}
+\end{minipage}
+
+\subsection{Mon expérience personnelle}
+
+\begin{tipbox}[Retour d'expérience --- 5 ans avec le kWeld]
+J'utilise mon kWeld depuis 2019. Après avoir assemblé plus de 50 packs batterie (de 10S3P à 20S14P), voici mes conclusions :
+
+\textbf{Points forts confirmés :}
+\begin{itemize}
+    \item La régularité est impressionnante --- moins de 2\% de variation entre les points
+    \item Le double pulse élimine quasiment les expulsions
+    \item Le logiciel de diagnostic m'a sauvé plusieurs fois
+\end{itemize}
+
+\textbf{Points à surveiller :}
+\begin{itemize}
+    \item Investissez dans une bonne batterie LiPo (au moins 75C de décharge)
+    \item Les câbles fournis sont corrects mais pas optimaux
+    \item Prévoyez un budget pour des électrodes de qualité
+\end{itemize}
+
+Total investi : kWeld 130€ + Batterie 4S 1500mAh 75C 45€ + Électrodes 25€ = \textbf{200€}
+\end{tipbox}
+
+\section{Arduino Spot Welder (Malectrics)}
+
+\subsection{Présentation}
+
+L'Arduino Spot Welder, conçu par Malectrics, est un projet intermédiaire entre l'open source pur et le produit commercial. Le design est publié, mais des kits pré-assemblés sont disponibles.
+
+\subsection{Caractéristiques techniques}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{5cm}L{7cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Caractéristique} & \textbf{Arduino Spot Welder V5} \\
+        \midrule
+        Type de contrôle & Temps (millisecondes) \\
+        Plage de temps & 1 --- 100 ms \\
+        Résolution & 1 ms \\
+        Source d'alimentation & Batterie auto 12V (recommandé) \\
+        Courant max théorique & 800-1200 A (selon batterie) \\
+        Double pulse & Oui (V4+) \\
+        Affichage & OLED ou LCD \\
+        Open source & Partiellement (schémas publiés) \\
+        Prix (kit) & \textasciitilde 50€ (module) \\
+        \bottomrule
+    \end{tabular}
+    \caption{Spécifications de l'Arduino Spot Welder}
+\end{table}
+
+\subsection{Avantages et inconvénients}
+
+\begin{minipage}{0.48\textwidth}
+\textbf{Avantages :}
+\begin{itemize}
+    \item Prix très accessible
+    \item Utilise des batteries auto courantes
+    \item Schémas disponibles
+    \item Communauté active (forum, YouTube)
+    \item Bon pour apprendre
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+\textbf{Inconvénients :}
+\begin{itemize}
+    \item Contrôle par temps uniquement
+    \item Puissance limitée (0.2mm max)
+    \item Qualité variable selon composants
+    \item Nécessite du tuning
+    \item Moins précis que le kWeld
+\end{itemize}
+\end{minipage}
+
+\section{Sunkko --- Le choix économique}
+
+\subsection{Présentation}
+
+Sunkko est une marque chinoise qui domine le marché des soudeuses économiques. Le modèle 737G est probablement la soudeuse DIY la plus vendue au monde.
+
+\subsection{Caractéristiques techniques}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{5cm}L{7cm}}
+        \toprule
+        \rowcolor{accent!20}
+        \textbf{Caractéristique} & \textbf{Sunkko 737G} \\
+        \midrule
+        Type de contrôle & Temps + Énergie (combiné) \\
+        Plage d'énergie & 1-99 (unités arbitraires) \\
+        Source d'alimentation & 230V secteur \\
+        Courant max annoncé & 1.5 kW (contesté) \\
+        Double pulse & Oui \\
+        Pédale & Incluse \\
+        Stylet mobile & Inclus \\
+        Prix (2024) & 80 --- 150€ (selon version) \\
+        \bottomrule
+    \end{tabular}
+    \caption{Spécifications de la Sunkko 737G}
+\end{table}
+
+\subsection{Avantages et inconvénients}
+
+\begin{minipage}{0.48\textwidth}
+\textbf{Avantages :}
+\begin{itemize}
+    \item Prix imbattable
+    \item Solution tout-en-un
+    \item Fonctionne « out of the box »
+    \item Pédale et stylet inclus
+    \item Pièces de rechange faciles
+\end{itemize}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+\textbf{Inconvénients :}
+\begin{itemize}
+    \item Qualité de fabrication variable
+    \item Puissance réelle << annoncée
+    \item Pas de mesure de résistance
+    \item Interface peu intuitive
+    \item Fiabilité long terme incertaine
+\end{itemize}
+\end{minipage}
+
+\begin{warningbox}[Attention aux contrefaçons]
+Le marché est inondé de contrefaçons Sunkko. Les « Sunkko » vendus sur certaines plateformes chinoises peuvent être des copies de copies, avec des composants de qualité encore inférieure. Privilégiez les revendeurs établis (Amazon, AliExpress vendeurs Gold, etc.) et lisez les avis récents.
+\end{warningbox}
+
+\section{Tableau comparatif complet}
+
+\begin{table}[H]
+    \centering
+    \small
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{2.5cm}C{2cm}C{2.5cm}C{2.5cm}C{2.5cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Critère} & \textbf{kWeld} & \textbf{Arduino SW} & \textbf{Sunkko 737G} & \textbf{Industriel} \\
+        \midrule
+        Prix total & 200€ & 100€ & 100€ & 2000€+ \\
+        Type contrôle & Énergie & Temps & Temps/Énergie & Variable \\
+        Précision & ★★★★★ & ★★★☆☆ & ★★☆☆☆ & ★★★★★ \\
+        Facilité & ★★★☆☆ & ★★☆☆☆ & ★★★★☆ & ★★★★☆ \\
+        Fiabilité & ★★★★☆ & ★★★☆☆ & ★★☆☆☆ & ★★★★★ \\
+        Puissance max & 0.3mm & 0.2mm & 0.2mm & 1mm+ \\
+        Double pulse & Oui & Oui & Oui & Oui \\
+        Support & Forum actif & YouTube & Limité & SAV pro \\
+        Évolutivité & Haute & Moyenne & Faible & Selon modèle \\
+        \bottomrule
+    \end{tabular}
+    \caption{Comparatif des principales solutions de soudage DIY}
+\end{table}
+
+\section{Quelle soudeuse choisir ?}
+
+\subsection{Arbre de décision}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        decision/.style={diamond, draw=primary, fill=primary!10, text width=3cm, align=center, inner sep=2pt},
+        result/.style={rectangle, draw=success, fill=success!10, text width=2.5cm, align=center, rounded corners},
+        arrow/.style={->, thick, primary}
+    ]
+        % Nodes
+        \node[decision] (budget) {Budget > 150€ ?};
+        \node[decision, below left=1.5cm and 1cm of budget] (precision) {Précision critique ?};
+        \node[decision, below right=1.5cm and 1cm of budget] (simple) {Solution simple ?};
+        \node[result, below left=1.5cm and 0cm of precision] (kweld) {kWeld};
+        \node[result, below right=1.5cm and 0cm of precision] (arduino) {Arduino SW};
+        \node[result, below left=1.5cm and 0cm of simple] (sunkko) {Sunkko};
+        \node[result, below right=1.5cm and 0cm of simple] (diy) {DIY complet};
+
+        % Arrows
+        \draw[arrow] (budget) -- node[above left] {Oui} (precision);
+        \draw[arrow] (budget) -- node[above right] {Non} (simple);
+        \draw[arrow] (precision) -- node[left] {Oui} (kweld);
+        \draw[arrow] (precision) -- node[right] {Non} (arduino);
+        \draw[arrow] (simple) -- node[left] {Oui} (sunkko);
+        \draw[arrow] (simple) -- node[right] {Non} (diy);
+    \end{tikzpicture}
+    \caption{Arbre de décision pour le choix d'une soudeuse}
+\end{figure}
+
+\subsection{Recommandations par profil}
+
+\begin{description}
+    \item[Débutant / Premier projet] Sunkko 737G ou clone --- pour apprendre sans trop investir
+    \item[Maker / DIY sérieux] Arduino Spot Welder --- bon compromis, permet d'apprendre
+    \item[Production petite série] kWeld --- la précision justifie l'investissement
+    \item[Professionnel] Machine industrielle --- le coût est amorti sur le volume
+\end{description}
+
+\begin{keypoints}
+    \item Le kWeld offre le meilleur contrôle mais nécessite une batterie externe
+    \item L'Arduino Spot Welder est idéal pour apprendre et bricoler
+    \item Sunkko offre une solution complète à petit prix, mais qualité variable
+    \item Le choix dépend de votre budget, volume et exigences de qualité
+    \item Prévoyez toujours un budget pour des électrodes et consommables de qualité
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% CHAPITRE 3 : CONSTRUIRE SA SOUDEUSE
+% ============================================
+\chapter{Construire et Améliorer sa Soudeuse}
+
+\begin{objectives}
+    \item Comprendre les composants d'une soudeuse DIY
+    \item Dimensionner correctement les éléments
+    \item Réaliser les câblages en toute sécurité
+    \item Optimiser les performances
+\end{objectives}
+
+\section{Architecture d'une soudeuse DIY}
+
+\subsection{Schéma bloc}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[
+        block/.style={rectangle, draw=secondary, fill=lightgray, minimum width=2.5cm, minimum height=1cm, align=center, rounded corners=4pt},
+        arrow/.style={->, thick, primary}
+    ]
+        % Blocs
+        \node[block] (source) {Source\\d'énergie};
+        \node[block, right=1.5cm of source] (switch) {Commutateur\\de puissance};
+        \node[block, right=1.5cm of switch] (cables) {Câbles\\haute intensité};
+        \node[block, right=1.5cm of cables] (electrodes) {Électrodes};
+
+        \node[block, below=1cm of switch] (control) {Contrôleur\\(Arduino/kWeld)};
+        \node[block, below=1cm of control] (ui) {Interface\\utilisateur};
+
+        % Flèches
+        \draw[arrow] (source) -- (switch);
+        \draw[arrow] (switch) -- (cables);
+        \draw[arrow] (cables) -- (electrodes);
+        \draw[arrow] (control) -- (switch);
+        \draw[arrow] (ui) -- (control);
+
+        % Annotations
+        \node[below=0.3cm of source, font=\footnotesize, textmuted] {Batterie/Condensateurs};
+        \node[below=0.3cm of switch, font=\footnotesize, textmuted] {MOSFET/Thyristor};
+        \node[below=0.3cm of cables, font=\footnotesize, textmuted] {6-16 mm²};
+    \end{tikzpicture}
+    \caption{Architecture typique d'une soudeuse DIY}
+\end{figure}
+
+\section{La source d'énergie}
+
+\subsection{Batteries vs Condensateurs}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{3cm}L{5cm}L{5cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Critère} & \textbf{Batterie LiPo} & \textbf{Condensateurs} \\
+        \midrule
+        Énergie disponible & Très élevée & Limitée \\
+        Courant de pointe & Dépend du C-rating & Très élevé \\
+        Temps de recharge & Lent (heures) & Rapide (secondes) \\
+        Durée de vie & 300-500 cycles & 10000+ cycles \\
+        Coût initial & Modéré & Élevé \\
+        Complexité & BMS requis & Simple \\
+        \bottomrule
+    \end{tabular}
+    \caption{Comparaison batteries vs condensateurs}
+\end{table}
+
+\subsection{Dimensionnement de la batterie}
+
+Pour le kWeld et systèmes similaires, la batterie doit fournir un courant très élevé pendant un temps court :
+
+\begin{formulabox}
+\[
+I_{max} = \frac{E}{t \times V} \times \eta^{-1}
+\]
+Où :
+\begin{itemize}
+    \item $I_{max}$ : courant de pointe (A)
+    \item $E$ : énergie souhaitée (J)
+    \item $t$ : temps de pulse (s)
+    \item $V$ : tension de la batterie (V)
+    \item $\eta$ : rendement (\textasciitilde 0.7-0.8)
+\end{itemize}
+\end{formulabox}
+
+\begin{exercice}[Calcul de courant de pointe]
+\textbf{Données :}
+\begin{itemize}
+    \item Énergie souhaitée : 50 J
+    \item Temps de pulse : 10 ms
+    \item Batterie : 4S LiPo (14.8V nominal)
+    \item Rendement estimé : 75\%
+\end{itemize}
+
+\textbf{Calcul :}
+\[
+I_{max} = \frac{50}{0.010 \times 14.8 \times 0.75} = 450 \text{ A}
+\]
+
+\textbf{Conclusion :} Il faut une batterie capable de fournir au moins 450 A de pointe. Pour une batterie 1500 mAh, cela correspond à un C-rating de 300C minimum. En pratique, on utilise des batteries 75C ou plus avec une capacité suffisante (ex: 1500 mAh × 75C = 112 A continu, mais le pic est plus élevé).
+\end{exercice}
+
+\section{Le commutateur de puissance}
+
+\subsection{MOSFETs pour haute intensité}
+
+Les MOSFETs de puissance sont le choix standard pour les soudeuses DIY modernes :
+
+\begin{itemize}
+    \item \textbf{IRFB3607} : 80V, 80A, $R_{DS(on)}$ = 9 mΩ --- classique, abordable
+    \item \textbf{IRFB7430} : 40V, 195A, $R_{DS(on)}$ = 1.3 mΩ --- haute performance
+    \item \textbf{IPB019N08N3G} : 80V, 180A, $R_{DS(on)}$ = 1.9 mΩ --- premium
+\end{itemize}
+
+\begin{warningbox}[Montage en parallèle]
+Pour augmenter la capacité en courant, on monte plusieurs MOSFETs en parallèle. Cependant :
+\begin{itemize}
+    \item Utilisez des composants du même lot (matching)
+    \item Ajoutez des résistances de gate (10-22Ω) pour éviter les oscillations
+    \item Montez-les sur le même dissipateur thermique
+    \item La résistance totale $R_{DS(on)}$ se divise par le nombre de MOSFETs
+\end{itemize}
+\end{warningbox}
+
+\section{Les câbles et connexions}
+
+\subsection{Dimensionnement des câbles}
+
+La résistance des câbles est critique --- elle absorbe une partie de l'énergie et génère de la chaleur :
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{C{2cm}C{3cm}C{3cm}C{3cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Section (mm²)} & \textbf{Résistance (/m)} & \textbf{Courant max pulse} & \textbf{Usage} \\
+        \midrule
+        6 & 3.1 mΩ & 300 A & Arduino SW \\
+        10 & 1.8 mΩ & 500 A & Standard \\
+        16 & 1.15 mΩ & 800 A & kWeld \\
+        25 & 0.73 mΩ & 1200 A & Haute puissance \\
+        \bottomrule
+    \end{tabular}
+    \caption{Dimensionnement des câbles cuivre}
+\end{table}
+
+\begin{tipbox}[Conseil pratique]
+Pour les connexions vers les électrodes, utilisez des câbles de démarrage auto de qualité (pas les premiers prix). Ils sont conçus pour des courants de plusieurs centaines d'ampères et sont faciles à trouver. Coupez-les à la longueur minimale nécessaire.
+\end{tipbox}
+
+\section{Améliorations et modifications}
+
+\subsection{Améliorer une Sunkko}
+
+Les modifications les plus courantes sur les Sunkko :
+
+\begin{enumerate}
+    \item \textbf{Remplacer les câbles internes} par du 10 mm² minimum
+    \item \textbf{Ajouter un voltmètre} pour surveiller la tension des condensateurs
+    \item \textbf{Remplacer les électrodes} par des électrodes cuivre-chrome
+    \item \textbf{Améliorer la ventilation} (perçage + ventilateur)
+    \item \textbf{Remplacer le thyristor} par un modèle de meilleure qualité
+\end{enumerate}
+
+\subsection{Construire un système hybride}
+
+Une approche intéressante combine les avantages de plusieurs systèmes :
+
+\begin{itemize}
+    \item Contrôleur kWeld (précision)
+    \item Alimentation par supercondensateurs (recharge rapide)
+    \item Électrodes industrielles (durabilité)
+    \item Pied de presse manuel (force constante)
+\end{itemize}
+
+\begin{keypoints}
+    \item La source d'énergie (batterie ou condensateurs) détermine les performances
+    \item Les câbles doivent être dimensionnés pour minimiser les pertes
+    \item Les MOSFETs en parallèle augmentent la capacité en courant
+    \item Les machines bon marché peuvent être significativement améliorées
+    \item La sécurité électrique est primordiale --- ces systèmes manipulent des courants mortels
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% CHAPITRE 4 : BATTERIES LITHIUM AVANCÉ
+% ============================================
+\chapter{Soudage des Batteries Lithium}
+
+\begin{objectives}
+    \item Comprendre les contraintes spécifiques aux cellules lithium
+    \item Maîtriser les paramètres critiques
+    \item Concevoir des assemblages sûrs et fiables
+    \item Éviter les modes de défaillance catastrophiques
+\end{objectives}
+
+\section{Contraintes thermiques des cellules}
+
+Les cellules lithium-ion sont extrêmement sensibles à la chaleur. Le soudage par points représente un défi car il génère une chaleur intense, même si elle est très localisée.
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{4cm}C{3cm}L{5cm}}
+        \toprule
+        \rowcolor{danger!20}
+        \textbf{Température} & \textbf{Seuil} & \textbf{Effet} \\
+        \midrule
+        Fonctionnement normal & < 45°C & Aucun effet \\
+        Zone de stress & 45--60°C & Vieillissement accéléré \\
+        Zone critique & 60--80°C & Dégradation de l'électrolyte \\
+        Danger imminent & > 80°C & Risque d'emballement \\
+        Point critique & > 100°C & SEI layer breakdown \\
+        Emballement thermique & > 130°C & Réaction en chaîne \\
+        \bottomrule
+    \end{tabular}
+    \caption{Seuils de température critiques pour les cellules lithium-ion}
+\end{table}
+
+\begin{dangerbox}[Emballement thermique]
+L'emballement thermique est une réaction en chaîne auto-entretenue :
+\begin{enumerate}
+    \item La chaleur déclenche des réactions chimiques exothermiques
+    \item Ces réactions produisent plus de chaleur
+    \item La température augmente exponentiellement
+    \item La cellule peut exploser ou s'enflammer
+    \item Les cellules adjacentes peuvent être entraînées (propagation)
+\end{enumerate}
+Une fois déclenché, l'emballement ne peut pas être arrêté. La seule solution est la prévention.
+\end{dangerbox}
+
+\section{Configurations de packs batterie}
+
+\subsection{Notation xSyP}
+
+\begin{defbox}[Configuration série/parallèle]
+La notation \textbf{xSyP} décrit l'architecture d'un pack :
+\begin{itemize}
+    \item \textbf{x} = nombre de cellules en série → détermine la tension
+    \item \textbf{y} = nombre de cellules en parallèle → détermine la capacité
+\end{itemize}
+Exemple : \textbf{10S4P} = 10 cellules en série (37V nominal) × 4 en parallèle (ex: 12 Ah avec cellules 3 Ah)
+\end{defbox}
+
+\subsection{Architectures courantes}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{3cm}C{2cm}C{2.5cm}L{4cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Application} & \textbf{Config.} & \textbf{Tension} & \textbf{Cellules typiques} \\
+        \midrule
+        Vélo électrique & 10S4P - 14S5P & 36-52V & 18650, 21700 \\
+        Trottinette & 10S2P - 10S4P & 36V & 18650 \\
+        Powerwall & 7S jusqu'à 16S & 24-48V & 18650 recyclées \\
+        Outillage portatif & 5S1P - 10S2P & 18-36V & 18650, 21700 \\
+        Modélisme & 3S-6S & 11-22V & LiPo packs \\
+        \bottomrule
+    \end{tabular}
+    \caption{Configurations courantes par application}
+\end{table}
+
+\section{Paramètres optimisés pour batteries}
+
+\subsection{Règles fondamentales}
+
+\begin{enumerate}
+    \item \textbf{Pulses courts} : < 15 ms idéalement, 20 ms maximum absolue
+    \item \textbf{Énergie minimale} : juste assez pour une bonne soudure
+    \item \textbf{Cellules déchargées} : < 30\% SOC recommandé
+    \item \textbf{Espacement temporel} : 5+ secondes entre les points sur la même cellule
+    \item \textbf{Espacement spatial} : points non adjacents en séquence
+    \item \textbf{Ventilation} : travaillez dans un espace ventilé
+\end{enumerate}
+
+\subsection{Paramètres recommandés par configuration}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{4cm}C{2.5cm}C{2cm}C{2.5cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Configuration} & \textbf{Énergie} & \textbf{Temps max} & \textbf{Force} \\
+        \midrule
+        Ni 0.10mm sur 18650 & 15--25 J & 8 ms & 1.5-2 kg \\
+        Ni 0.15mm sur 18650 & 25--40 J & 12 ms & 2-2.5 kg \\
+        Ni 0.20mm sur 21700 & 40--60 J & 15 ms & 2.5-3 kg \\
+        Ni 0.25mm sur prismatique & 60--80 J & 18 ms & 3-4 kg \\
+        Ni plaqué Cu 0.15mm & 35--50 J & 12 ms & 2.5-3 kg \\
+        \bottomrule
+    \end{tabular}
+    \caption{Paramètres recommandés pour le soudage de batteries}
+\end{table}
+
+\section{Conception des assemblages}
+
+\subsection{Patterns de soudure}
+
+Pour les cellules cylindriques (18650, 21700), les patterns recommandés sont :
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.9]
+        % Cellule 1 - 2 points
+        \draw[thick] (0,0) circle (1);
+        \node[above, font=\footnotesize] at (0,1.2) {Pôle +};
+        \fill[primary] (-0.3,0) circle (0.15);
+        \fill[primary] (0.3,0) circle (0.15);
+        \node[below] at (0,-1.3) {2 points};
+        \node[below, font=\footnotesize, textmuted] at (0,-1.8) {Standard (< 10A)};
+
+        % Cellule 2 - 3 points triangle
+        \draw[thick] (4,0) circle (1);
+        \fill[primary] (4,0.4) circle (0.15);
+        \fill[primary] (3.65,-0.3) circle (0.15);
+        \fill[primary] (4.35,-0.3) circle (0.15);
+        \node[below] at (4,-1.3) {3 points};
+        \node[below, font=\footnotesize, textmuted] at (4,-1.8) {Intensité (10-20A)};
+
+        % Cellule 3 - 4 points
+        \draw[thick] (8,0) circle (1);
+        \fill[primary] (7.7,0.3) circle (0.15);
+        \fill[primary] (8.3,0.3) circle (0.15);
+        \fill[primary] (7.7,-0.3) circle (0.15);
+        \fill[primary] (8.3,-0.3) circle (0.15);
+        \node[below] at (8,-1.3) {4 points};
+        \node[below, font=\footnotesize, textmuted] at (8,-1.8) {Haute intensité (>20A)};
+
+        % Cellule 4 - 6 points
+        \draw[thick] (12,0) circle (1);
+        \fill[primary] (11.7,0.4) circle (0.12);
+        \fill[primary] (12.3,0.4) circle (0.12);
+        \fill[primary] (11.5,0) circle (0.12);
+        \fill[primary] (12.5,0) circle (0.12);
+        \fill[primary] (11.7,-0.4) circle (0.12);
+        \fill[primary] (12.3,-0.4) circle (0.12);
+        \node[below] at (12,-1.3) {6 points};
+        \node[below, font=\footnotesize, textmuted] at (12,-1.8) {Très haute (>30A)};
+    \end{tikzpicture}
+    \caption{Patterns de points de soudure selon l'intensité nominale}
+\end{figure}
+
+\subsection{Séquence de soudage optimale}
+
+Pour un pack de plusieurs cellules, ne soudez jamais tous les points d'une cellule à la suite :
+
+\begin{infobox}[Séquence « saut de grenouille »]
+Pour un pack 4S2P (8 cellules, 2 points par cellule = 16 points) :
+\begin{enumerate}
+    \item Point 1, Cellule A1
+    \item Point 1, Cellule B1
+    \item Point 1, Cellule A2
+    \item Point 1, Cellule B2
+    \item ... (continuer pour toutes les cellules)
+    \item Point 2, Cellule A1
+    \item Point 2, Cellule B1
+    \item ... (continuer)
+\end{enumerate}
+Chaque cellule a au moins 30 secondes pour refroidir entre deux points.
+\end{infobox}
+
+\section{Intégration du BMS}
+
+\subsection{Rôle du BMS}
+
+Le Battery Management System (BMS) est indispensable pour tout pack lithium :
+
+\begin{itemize}
+    \item \textbf{Protection} contre surcharge, sous-charge, surintensité
+    \item \textbf{Équilibrage} des cellules en série
+    \item \textbf{Monitoring} de la température et tension
+    \item \textbf{Communication} avec le système hôte (optionnel)
+\end{itemize}
+
+\subsection{Connexion du BMS}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.8]
+        % Cellules
+        \foreach \x in {0,2,4,6} {
+            \draw[thick, fill=lightgray] (\x,0) rectangle (\x+1.5,3);
+            \node at (\x+0.75,1.5) {Cell};
+        }
+
+        % Connexions série (bus bars)
+        \draw[very thick, primary] (1.5,2.5) -- (2,2.5);
+        \draw[very thick, primary] (3.5,0.5) -- (4,0.5);
+        \draw[very thick, primary] (5.5,2.5) -- (6,2.5);
+
+        % BMS
+        \draw[thick, fill=secondary!20] (0,-2) rectangle (7.5,-1);
+        \node at (3.75,-1.5) {\textbf{BMS}};
+
+        % Fils d'équilibrage
+        \draw[thin, success] (0.75,0) -- (0.75,-1);
+        \draw[thin, success] (2.75,0) -- (2.75,-1);
+        \draw[thin, success] (4.75,0) -- (4.75,-1);
+        \draw[thin, success] (6.75,0) -- (6.75,-1);
+
+        % Sorties
+        \draw[very thick, danger] (0,1.5) -- (-0.5,1.5) -- (-0.5,-2.5) node[below] {B-};
+        \draw[very thick, primary] (7.5,1.5) -- (8,1.5) -- (8,-2.5) node[below] {B+};
+
+        % Labels
+        \node[above] at (0.75,3) {1S};
+        \node[above] at (2.75,3) {2S};
+        \node[above] at (4.75,3) {3S};
+        \node[above] at (6.75,3) {4S};
+
+        \node[success, font=\footnotesize] at (3.75,-0.5) {Fils d'équilibrage};
+    \end{tikzpicture}
+    \caption{Schéma de connexion BMS sur pack 4S}
+\end{figure}
+
+\begin{keypoints}
+    \item Les cellules lithium sont très sensibles à la chaleur
+    \item Privilégiez les pulses courts et l'énergie minimale
+    \item Espacez les points dans le temps et l'espace
+    \item Le nombre de points dépend du courant nominal
+    \item Le BMS est obligatoire pour la sécurité
+    \item Surveillez la température des cellules pendant le soudage
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% CHAPITRE 5 : CYCLES MULTI-PULSE
+% ============================================
+\chapter{Cycles Multi-Pulse et Contrôle Adaptatif}
+
+\begin{objectives}
+    \item Comprendre les avantages du multi-pulse
+    \item Configurer des séquences optimisées
+    \item Implémenter un contrôle adaptatif
+    \item Résoudre les problèmes spécifiques
+\end{objectives}
+
+\section{Principe du multi-pulse}
+
+Au lieu d'un seul pulse de courant, on utilise plusieurs pulses successifs séparés par des temps de repos. Cette technique, issue de l'industrie automobile, améliore significativement la qualité sur les matériaux difficiles.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.85]
+        % Axe du temps
+        \draw[->, thick] (0,0) -- (14,0) node[right] {Temps};
+        \draw[->, thick] (0,0) -- (0,4) node[above] {Courant};
+
+        % Simple pulse (référence)
+        \draw[secondary, very thick] (0.5,0) -- (0.5,2.8) -- (2.5,2.8) -- (2.5,0);
+        \node[secondary, below, font=\footnotesize] at (1.5,-0.4) {Simple pulse};
+
+        % Double pulse
+        \draw[primary, very thick] (4,0) -- (4,1.8) -- (4.8,1.8) -- (4.8,0);
+        \draw[primary, very thick] (5.5,0) -- (5.5,3.2) -- (7,3.2) -- (7,0);
+        \node[primary, below, font=\footnotesize] at (5.5,-0.4) {Double pulse};
+        \node[primary, font=\tiny, above] at (4.4,1.8) {Pré-chauffe};
+        \node[primary, font=\tiny, above] at (6.25,3.2) {Soudage};
+
+        % Triple pulse avec recuit
+        \draw[success, very thick] (8.5,0) -- (8.5,1.5) -- (9.2,1.5) -- (9.2,0);
+        \draw[success, very thick] (10,0) -- (10,3) -- (11,3) -- (11,0);
+        \draw[success, very thick] (11.8,0) -- (11.8,2) -- (12.8,2) -- (12.8,0);
+        \node[success, below, font=\footnotesize] at (10.5,-0.4) {Triple pulse};
+        \node[success, font=\tiny, above] at (12.3,2) {Recuit};
+
+        % Annotations
+        \draw[<->, thin] (4.8,0.5) -- (5.5,0.5);
+        \node[font=\tiny] at (5.15,0.8) {Repos};
+    \end{tikzpicture}
+    \caption{Comparaison des profils de courant simple et multi-pulse}
+\end{figure}
+
+\section{Types de séquences}
+
+\subsection{Double pulse (pré-chauffe)}
+
+\begin{description}
+    \item[Pulse 1 (pré-chauffe)] Courant modéré (50-70\% du nominal), ramollit le métal et améliore le contact électrique en « nettoyant » l'interface.
+    \item[Temps de repos] 50-100 ms, permet aux électrodes de se repositionner sous l'effet de la force.
+    \item[Pulse 2 (soudage)] Courant principal (100\%), crée le noyau de soudure.
+\end{description}
+
+\textbf{Applications idéales :}
+\begin{itemize}
+    \item Matériaux revêtus (galvanisés, pré-peints)
+    \item Surfaces oxydées ou légèrement contaminées
+    \item Assemblages avec jeu initial
+\end{itemize}
+
+\subsection{Triple pulse (avec recuit)}
+
+Ajoute un troisième pulse à courant réduit après le soudage pour un recuit contrôlé :
+
+\begin{description}
+    \item[Pulse 1] Pré-chauffe (comme ci-dessus)
+    \item[Pulse 2] Soudage (courant maximal)
+    \item[Pulse 3] Recuit (30-50\% du nominal, durée plus longue)
+\end{description}
+
+\textbf{Applications idéales :}
+\begin{itemize}
+    \item Aciers à haute limite élastique (HSLA)
+    \item Aciers martensitiques
+    \item Applications où la ductilité de la ZAT est critique
+\end{itemize}
+
+\section{Paramètres typiques}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{2.5cm}C{2cm}C{2cm}C{2cm}L{3cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Phase} & \textbf{Courant} & \textbf{Temps} & \textbf{Repos après} & \textbf{Objectif} \\
+        \midrule
+        Pré-chauffe & 50--70\% & 20--40\% & 50--100 ms & Ramollir, nettoyer \\
+        Soudage & 100\% & 100\% & 0--50 ms & Fusion \\
+        Recuit (opt.) & 30--50\% & 50--100\% & -- & Détente contraintes \\
+        \bottomrule
+    \end{tabular}
+    \caption{Paramètres typiques d'une séquence triple pulse}
+\end{table}
+
+\section{Contrôle adaptatif}
+
+\subsection{Principe}
+
+Les systèmes avancés (kWeld, machines industrielles) implémentent un contrôle adaptatif qui ajuste les paramètres en temps réel :
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{resistance-dynamique.png}
+    \caption{Courbe de résistance dynamique pendant un pulse de soudage}
+\end{figure}
+
+\begin{defbox}[Résistance dynamique]
+Pendant le pulse de soudage, la résistance du point évolue :
+\begin{enumerate}
+    \item \textbf{Phase 1} : Résistance élevée (contact froid)
+    \item \textbf{Phase 2} : Chute rapide (ramollissement)
+    \item \textbf{Phase 3} : Minimum (fusion commencée)
+    \item \textbf{Phase 4} : Légère remontée (expansion du noyau)
+\end{enumerate}
+Le système adaptatif détecte ces phases et peut couper le courant au moment optimal.
+\end{defbox}
+
+\subsection{Modes de contrôle}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{3cm}L{4cm}L{5cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Mode} & \textbf{Principe} & \textbf{Avantages} \\
+        \midrule
+        Temps constant & Pulse de durée fixe & Simple, reproductible \\
+        Énergie constante & Mesure et ajuste pour délivrer une énergie fixe & Compense les variations de résistance \\
+        Résistance dynamique & Coupe quand R atteint un seuil & Optimal pour chaque point \\
+        Déplacement & Surveille l'enfoncement des électrodes & Détecte l'expulsion précoce \\
+        \bottomrule
+    \end{tabular}
+    \caption{Modes de contrôle adaptatif}
+\end{table}
+
+\begin{keypoints}
+    \item Le multi-pulse améliore la qualité sur matériaux difficiles
+    \item Le pré-chauffe améliore le contact et réduit les expulsions
+    \item Le recuit réduit les contraintes résiduelles dans la ZAT
+    \item Le contrôle adaptatif compense les variations du procédé
+    \item Chaque application nécessite une optimisation spécifique
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% CHAPITRE 6 : CONTRÔLE QUALITÉ
+% ============================================
+\chapter{Contrôle Qualité}
+
+\begin{objectives}
+    \item Mettre en place un système de contrôle qualité
+    \item Utiliser les méthodes de test destructives et non destructives
+    \item Interpréter les résultats et prendre des décisions
+\end{objectives}
+
+\section{Tests destructifs}
+
+\subsection{Test de pelage (peel test)}
+
+Le test le plus simple et le plus courant :
+
+\begin{enumerate}
+    \item Fixer une extrémité de l'assemblage
+    \item Tirer sur l'autre extrémité à 90° du plan
+    \item Observer le mode de rupture
+    \item Mesurer la force de rupture
+\end{enumerate}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\textwidth]{types-ruptures.png}
+    \caption{Modes de rupture au test de pelage}
+\end{figure}
+
+\textbf{Critères d'acceptation :}
+\begin{itemize}
+    \item Le feuillard doit se déchirer \textbf{autour} du point (bouton)
+    \item Force de rupture $\geq$ 2 kg pour feuillard 0.15 mm
+    \item Pas de décollement interfacial (soudure froide)
+\end{itemize}
+
+\subsection{Test de cisaillement}
+
+Pour les applications structurelles :
+
+\begin{itemize}
+    \item Traction dans le plan des pièces
+    \item Mesure de la force de rupture
+    \item Comparaison aux spécifications
+    \item Plus représentatif des sollicitations réelles
+\end{itemize}
+
+\subsection{Coupe métallographique}
+
+Examen de la structure interne (pour analyse approfondie) :
+
+\begin{enumerate}
+    \item Découpe de l'échantillon au centre du point
+    \item Enrobage dans une résine
+    \item Polissage progressif (jusqu'à 1 µm)
+    \item Attaque chimique pour révéler la structure
+    \item Observation au microscope
+\end{enumerate}
+
+\textbf{Mesures :}
+\begin{itemize}
+    \item Diamètre du noyau
+    \item Pénétration dans chaque pièce
+    \item Étendue de la ZAT
+    \item Présence de défauts (porosités, fissures, retassures)
+\end{itemize}
+
+\section{Tests non destructifs}
+
+\subsection{Mesure de résistance électrique}
+
+\begin{itemize}
+    \item Mesure en micro-ohms de la résistance du point
+    \item Une bonne soudure : typiquement < 0.5 mΩ
+    \item Augmentation progressive = dégradation ou mauvaise soudure
+    \item Nécessite un micro-ohmmètre (coût : 100-500€)
+\end{itemize}
+
+\subsection{Inspection visuelle}
+
+Critères visuels d'acceptation :
+\begin{itemize}
+    \item Empreinte régulière et centrée
+    \item Pas d'expulsion visible (projections de métal)
+    \item Coloration uniforme (pas de brûlure localisée)
+    \item Pas d'indentation excessive (< 15\% de l'épaisseur)
+    \item Pas de fissure visible autour du point
+\end{itemize}
+
+\subsection{Contrôle par ultrasons}
+
+Pour applications critiques (automobile, aéronautique) :
+\begin{itemize}
+    \item Détection des défauts internes
+    \item Mesure du diamètre du noyau
+    \item Équipement spécialisé requis (> 10 000€)
+    \item Formation spécifique nécessaire
+\end{itemize}
+
+\section{Plan de contrôle type}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{4cm}C{3cm}L{4.5cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Fréquence} & \textbf{Type de test} & \textbf{Action si échec} \\
+        \midrule
+        Chaque point & Visuel & Retouche immédiate \\
+        Toutes les 50 pièces & Pelage (destructif) & Arrêt + ajustement paramètres \\
+        Début/fin de série & Résistance électrique & Validation avant/après \\
+        Chaque changement & Lobe complet & Validation avant reprise \\
+        Hebdomadaire & Métallographie & Analyse tendance \\
+        \bottomrule
+    \end{tabular}
+    \caption{Plan de contrôle type pour production en série}
+\end{table}
+
+\begin{keypoints}
+    \item Combinez tests destructifs et non destructifs
+    \item Le test de pelage est le minimum obligatoire
+    \item Documentez tous les résultats pour l'analyse de tendance
+    \item Définissez des critères d'acceptation clairs AVANT la production
+    \item Agissez immédiatement en cas de dérive
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% CHAPITRE 7 : MAINTENANCE ET DÉPANNAGE
+% ============================================
+\chapter{Maintenance et Dépannage}
+
+\begin{objectives}
+    \item Mettre en place une maintenance préventive
+    \item Diagnostiquer les problèmes courants
+    \item Identifier les causes racines
+    \item Prolonger la durée de vie de l'équipement
+\end{objectives}
+
+\section{Maintenance préventive}
+
+\subsection{Programme de maintenance}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{3cm}L{6cm}C{2.5cm}}
+        \toprule
+        \rowcolor{success!20}
+        \textbf{Fréquence} & \textbf{Opération} & \textbf{Durée} \\
+        \midrule
+        Quotidien & Inspection visuelle des électrodes & 2 min \\
+        & Nettoyage des pointes & 5 min \\
+        Hebdomadaire & Vérification des câbles et connexions & 10 min \\
+        & Test de résistance de contact & 5 min \\
+        Mensuel & Nettoyage complet du système & 30 min \\
+        & Vérification calibration & 15 min \\
+        Trimestriel & Remplacement des électrodes (si nécessaire) & 30 min \\
+        & Inspection des composants électroniques & 20 min \\
+        Annuel & Révision complète & 2-4 h \\
+        \bottomrule
+    \end{tabular}
+    \caption{Programme de maintenance préventive}
+\end{table}
+
+\subsection{Entretien des électrodes}
+
+Les électrodes sont le consommable principal. Leur état conditionne directement la qualité :
+
+\begin{itemize}
+    \item \textbf{Nettoyage} : Utilisez du papier abrasif fin (400-600) ou une lime spéciale
+    \item \textbf{Rafraîchissement} : Reformez la pointe quand le diamètre augmente de 20\%
+    \item \textbf{Remplacement} : Quand la longueur utilisable est épuisée
+\end{itemize}
+
+\begin{tipbox}[Astuce du pro]
+Gardez un jeu d'électrodes de rechange prêtes. Quand vous rafraîchissez vos électrodes, faites-le sur le jeu de rechange et échangez. Ainsi, vous n'avez jamais de temps d'arrêt.
+\end{tipbox}
+
+\section{Dépannage des problèmes courants}
+
+\subsection{Méthodologie structurée}
+
+\begin{casestudy}[Soudures froides récurrentes l'après-midi]
+\textbf{Problème :} Les soudures sont acceptables le matin mais deviennent froides l'après-midi.
+
+\textbf{Analyse 5 pourquoi :}
+\begin{enumerate}
+    \item Pourquoi les soudures sont froides ? → Énergie insuffisante au point
+    \item Pourquoi l'énergie est insuffisante ? → La résistance de contact augmente
+    \item Pourquoi la résistance augmente ? → Les électrodes s'usent/s'encrassent
+    \item Pourquoi l'usure s'accélère l'après-midi ? → Production plus intensive sans pause
+    \item Pourquoi pas de pause ? → Planning non adapté à la cadence réelle
+\end{enumerate}
+
+\textbf{Solution :} Planifier des pauses de rafraîchissement des électrodes toutes les 200-500 points selon le matériau.
+\end{casestudy}
+
+\subsection{Guide de diagnostic}
+
+\begin{table}[H]
+    \centering
+    \small
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{3.5cm}L{4cm}L{4.5cm}}
+        \toprule
+        \rowcolor{warning!20}
+        \textbf{Symptôme} & \textbf{Causes possibles} & \textbf{Actions} \\
+        \midrule
+        Soudure froide & Énergie insuffisante & Augmenter énergie/temps \\
+        & Électrodes usées & Rafraîchir/remplacer \\
+        & Mauvais contact & Nettoyer pièces et électrodes \\
+        \midrule
+        Expulsion & Énergie excessive & Réduire courant ou temps \\
+        & Force insuffisante & Augmenter la force \\
+        & Contamination & Nettoyer les surfaces \\
+        \midrule
+        Points décentrés & Alignement électrodes & Réaligner \\
+        & Jeu mécanique & Resserrer fixations \\
+        \midrule
+        Indentation excessive & Force trop élevée & Réduire la force \\
+        & Électrodes trop pointues & Rafraîchir avec rayon correct \\
+        \midrule
+        Variation aléatoire & Source d'énergie instable & Vérifier batteries/condensateurs \\
+        & Connexions desserrées & Resserrer toutes les connexions \\
+        \bottomrule
+    \end{tabular}
+    \caption{Guide de diagnostic rapide}
+\end{table}
+
+\section{Outils de diagnostic avancé}
+
+\subsection{Monitoring en temps réel}
+
+Les soudeuses modernes (kWeld, industrielles) permettent de surveiller :
+
+\begin{itemize}
+    \item Courbe de courant vs temps
+    \item Résistance dynamique
+    \item Énergie réellement délivrée
+    \item Déplacement des électrodes (si capteur)
+\end{itemize}
+
+\subsection{Analyse des tendances}
+
+Tracez l'évolution des paramètres clés pour anticiper les problèmes :
+
+\begin{itemize}
+    \item Énergie moyenne par point
+    \item Taux de rejet
+    \item Fréquence de rafraîchissement des électrodes
+    \item Temps entre les défauts
+\end{itemize}
+
+\begin{keypoints}
+    \item La maintenance préventive évite 80\% des problèmes
+    \item Les électrodes sont le premier élément à vérifier
+    \item Utilisez une approche structurée (5 pourquoi, Ishikawa)
+    \item Distinguez les problèmes progressifs des changements brutaux
+    \item Documentez les problèmes et solutions pour capitaliser
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% ANNEXES
+% ============================================
+\appendix
+
+\chapter{Ressources Complémentaires}
+
+\section{Communautés et forums}
+
+\begin{description}
+    \item[Endless Sphere] Forum international sur les véhicules électriques, section battery building très active
+    \item[Forum kWeld] Support officiel et retours d'expérience
+    \item[Reddit r/batterypack] Communauté anglophone sur l'assemblage de batteries
+    \item[Second Life Storage] Forum sur le recyclage de batteries (powerwalls)
+\end{description}
+
+\section{Fournisseurs recommandés}
+
+\begin{description}
+    \item[Keenlab] kWeld et accessoires (keenlab.de)
+    \item[Malectrics] Arduino Spot Welder (malectrics.eu)
+    \item[Vruzend] Systèmes sans soudure et accessoires
+    \item[NKON] Cellules et feuillards nickel (nkon.nl)
+    \item[AliExpress] Sunkko et pièces génériques (vérifier les avis)
+\end{description}
+
+\chapter{Formulaires de Contrôle}
+
+\section{Fiche de paramètres}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|L{4cm}|L{6cm}|}
+        \hline
+        \rowcolor{secondary!20}
+        \multicolumn{2}{|c|}{\textbf{FICHE DE PARAMÈTRES SOUDAGE}} \\
+        \hline
+        Date & \rule{5cm}{0.4pt} \\
+        \hline
+        Opérateur & \rule{5cm}{0.4pt} \\
+        \hline
+        Matériau pièce 1 & \rule{5cm}{0.4pt} \\
+        \hline
+        Épaisseur pièce 1 & \rule{5cm}{0.4pt} \\
+        \hline
+        Matériau pièce 2 & \rule{5cm}{0.4pt} \\
+        \hline
+        Épaisseur pièce 2 & \rule{5cm}{0.4pt} \\
+        \hline
+        Énergie / Courant & \rule{5cm}{0.4pt} \\
+        \hline
+        Temps & \rule{5cm}{0.4pt} \\
+        \hline
+        Force & \rule{5cm}{0.4pt} \\
+        \hline
+        Type électrodes & \rule{5cm}{0.4pt} \\
+        \hline
+        Résultat test pelage & $\square$ OK \quad $\square$ NOK \\
+        \hline
+        Force de rupture & \rule{5cm}{0.4pt} kg \\
+        \hline
+        Observations & \rule{5cm}{0.4pt} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\section{Checklist maintenance}
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|L{6cm}|C{2cm}|L{4cm}|}
+        \hline
+        \rowcolor{success!20}
+        \multicolumn{3}{|c|}{\textbf{CHECKLIST MAINTENANCE HEBDOMADAIRE}} \\
+        \hline
+        \textbf{Élément} & \textbf{OK / NOK} & \textbf{Remarques} \\
+        \hline
+        État des électrodes & $\square$ & \rule{3cm}{0.4pt} \\
+        \hline
+        Propreté des pointes & $\square$ & \rule{3cm}{0.4pt} \\
+        \hline
+        Câbles et connexions & $\square$ & \rule{3cm}{0.4pt} \\
+        \hline
+        Tension batterie (si applicable) & $\square$ & \rule{3cm}{0.4pt} \\
+        \hline
+        Test de soudure échantillon & $\square$ & \rule{3cm}{0.4pt} \\
+        \hline
+        Force de pelage OK & $\square$ & \rule{3cm}{0.4pt} \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\vspace{2cm}
+
+\begin{center}
+    \rule{0.5\textwidth}{1pt}
+
+    \vspace{1cm}
+
+    {\Large\textbf{Fin de la Formation Niveau 2}}
+
+    \vspace{1cm}
+
+    Prêt pour le niveau expert ?
+
+    \vspace{0.5cm}
+
+    {\LARGE\textcolor{primary}{\textbf{Formation Niveau 3 : Expert}}}
+
+    \vspace{0.5cm}
+
+    Métallurgie avancée $\cdot$ Automatisation\\
+    Normes et certifications $\cdot$ Études de cas industrielles
+
+    \vspace{1cm}
+
+    \textit{www.spotweldingpro.com}
+
+    \vspace{1cm}
+
+    \rule{0.5\textwidth}{1pt}
+\end{center}
+
+\end{document}

@@ -61,19 +61,25 @@
                     <span class="price-tag text-4xl font-black">{{ number_format($total, 0, ',', ' ') }}€</span>
                 </div>
 
-                <div class="grid sm:grid-cols-2 gap-4">
-                    <a href="{{ route('checkout.stripe') }}" class="flex items-center justify-center gap-3 py-4 px-6 bg-[#635BFF] hover:bg-[#635BFF]/80 text-white font-display font-semibold rounded-xl transition-all hover:scale-[1.02]">
-                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                <a href="{{ route('checkout.index') }}" class="w-full flex items-center justify-center gap-3 py-4 px-6 btn-cyber rounded-xl font-display font-semibold text-lg transition-all hover:scale-[1.02]">
+                    <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                    Passer a la caisse
+                </a>
+                <div class="flex items-center justify-center gap-4 mt-4 text-gray-500 text-sm">
+                    <span class="flex items-center gap-2">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M13.976 9.15c-2.172-.806-3.356-1.426-3.356-2.409 0-.831.683-1.305 1.901-1.305 2.227 0 4.515.858 6.09 1.631l.89-5.494C18.252.975 15.697 0 12.165 0 9.667 0 7.589.654 6.104 1.872 4.56 3.147 3.757 4.992 3.757 7.218c0 4.039 2.467 5.76 6.476 7.219 2.585.92 3.445 1.574 3.445 2.583 0 .98-.84 1.545-2.354 1.545-1.875 0-4.965-.921-6.99-2.109l-.9 5.555C5.175 22.99 8.385 24 11.714 24c2.641 0 4.843-.624 6.328-1.813 1.664-1.305 2.525-3.236 2.525-5.732 0-4.128-2.524-5.851-6.594-7.305h.003z"/>
                         </svg>
-                        Payer avec Stripe
-                    </a>
-                    <a href="{{ route('checkout.paypal') }}" class="flex items-center justify-center gap-3 py-4 px-6 bg-[#0070BA] hover:bg-[#0070BA]/80 text-white font-display font-semibold rounded-xl transition-all hover:scale-[1.02]">
-                        <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                        Stripe
+                    </span>
+                    <span class="flex items-center gap-2">
+                        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797h-2.19c-.524 0-.968.382-1.05.9l-1.12 7.106zm14.146-14.42a3.35 3.35 0 0 0-.607-.541c-.013.076-.026.175-.041.254-.59 3.025-2.566 6.082-8.558 6.082h-2.19c-1.717 0-3.146 1.27-3.4 2.922l-.757 4.793-.343 2.177a.767.767 0 0 0 .757.886h4.606c.472 0 .87-.343.943-.806l.038-.21.75-4.76.049-.266c.073-.463.471-.806.944-.806h.594c3.851 0 6.866-1.564 7.748-6.087.37-1.889.176-3.463-.533-4.638z"/>
                         </svg>
-                        Payer avec PayPal
-                    </a>
+                        PayPal
+                    </span>
                 </div>
 
                 <p class="text-center text-gray-500 text-sm mt-6 flex items-center justify-center gap-2">

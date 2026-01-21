@@ -1,0 +1,1361 @@
+% Formation Niveau 3 - Soudeuse à Points : Expert
+% Spot Welding Pro - Kangy Ham
+% Version 2.0 - Métallurgie, automatisation, certification et études de cas industrielles
+
+\input{../commun/preambule}
+
+% Métadonnées du document
+\title{Soudeuse à Points\\Expert}
+\author{Kangy Ham}
+\date{Version 2.0 - 2025}
+
+\begin{document}
+
+% ============================================
+% PAGE DE TITRE
+% ============================================
+\begin{titlepage}
+    \centering
+    \vspace*{1cm}
+
+    {\fontsize{28}{34}\selectfont\textcolor{primary}{\textbf{SPOT WELDING PRO}}}
+
+    \vspace{0.3cm}
+
+    {\large\textcolor{textmuted}{Formations Professionnelles en Soudage}}
+
+    \vspace{2cm}
+
+    \includegraphics[width=0.7\textwidth]{usine-bmw.jpg}
+
+    \vspace{1.5cm}
+
+    {\fontsize{36}{44}\selectfont\textbf{Soudeuse à Points}}
+
+    \vspace{0.3cm}
+
+    {\Huge\textcolor{accent}{Expert}}
+
+    \vspace{0.8cm}
+
+    {\Large\textit{Métallurgie avancée, automatisation et certification}}
+
+    \vspace{2cm}
+
+    {\large\textbf{Par Kangy Ham}}
+
+    \vspace{0.2cm}
+
+    {\normalsize Ingénieur Procédés $\cdot$ Expert Batteries Lithium}
+
+    \vfill
+
+    \begin{tcolorbox}[
+        enhanced,
+        colback=accent!10!white,
+        colframe=accent,
+        width=8cm,
+        arc=8pt,
+        boxrule=2pt,
+        halign=center
+    ]
+        {\large\textbf{Niveau 3}} $\cdot$ Expert $\cdot$ \textasciitilde200 pages
+    \end{tcolorbox}
+
+    \vspace{0.8cm}
+
+    {\footnotesize © 2025 Spot Welding Pro. Tous droits réservés.}
+
+\end{titlepage}
+
+% Page de copyright
+\thispagestyle{empty}
+\vspace*{\fill}
+\begin{center}
+    \textbf{\Large Soudeuse à Points --- Expert}
+
+    \vspace{1.5cm}
+
+    © 2025 Spot Welding Pro --- Tous droits réservés.
+
+    \vspace{1cm}
+
+    \textcolor{textmuted}{Prérequis : Formations Niveau 1 et 2 complétées\\
+    Expérience pratique recommandée : 6+ mois}
+\end{center}
+\vspace*{\fill}
+\newpage
+
+\tableofcontents
+\newpage
+
+% ============================================
+% LE MOT DU FORMATEUR
+% ============================================
+\chapter*{Le Mot du Formateur}
+\addcontentsline{toc}{chapter}{Le Mot du Formateur}
+
+\begin{wrapfigure}{r}{0.25\textwidth}
+    \centering
+    \includegraphics[width=0.2\textwidth]{formateur.jpg}
+\end{wrapfigure}
+
+Bienvenue dans ce niveau Expert. Si vous êtes arrivé jusqu'ici, c'est que vous avez une vraie passion pour ce métier. Cette formation représente l'aboutissement de plus de 15 ans d'expérience dans l'industrie automobile et des batteries.
+
+\section*{Mon parcours vers l'expertise}
+
+J'ai commencé ma carrière comme technicien de production chez un équipementier automobile. Ma première mission ? Résoudre un problème de fissuration sur des points de soudure en acier DP600. Trois mois d'investigation, des centaines de coupes métallographiques, des nuits à analyser des courbes de résistance dynamique... C'est là que j'ai compris que le soudage par points était bien plus qu'un simple « appui sur le bouton ».
+
+Depuis, j'ai eu la chance de travailler avec des ingénieurs de BMW, Tesla, et BYD sur des projets de pointe. Chaque projet m'a apporté de nouvelles perspectives sur ce procédé fascinant.
+
+\section*{Ce qui fait un expert}
+
+Un expert n'est pas quelqu'un qui sait tout --- c'est quelqu'un qui sait :
+\begin{itemize}
+    \item Poser les bonnes questions face à un problème
+    \item Utiliser les bons outils d'analyse
+    \item Tirer des conclusions valides des données
+    \item Communiquer efficacement avec toutes les parties prenantes
+    \item Continuer à apprendre, toujours
+\end{itemize}
+
+\section*{Ce que vous allez maîtriser}
+
+Dans cette formation, nous allons explorer ensemble :
+\begin{itemize}
+    \item La métallurgie avancée --- comprendre ce qui se passe à l'échelle microscopique
+    \item La simulation numérique --- prédire avant d'expérimenter
+    \item L'automatisation robotique --- l'état de l'art industriel
+    \item Les normes et certifications --- parler le langage de la qualité
+    \item Des études de cas réelles --- apprendre des succès et des échecs
+\end{itemize}
+
+Prêt à devenir un expert ? Allons-y !
+
+\vspace{1cm}
+\hfill\textit{Kangy Ham}
+
+\newpage
+
+% ============================================
+% INTRODUCTION
+% ============================================
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+Bienvenue dans la formation Expert. Ce niveau s'adresse aux professionnels qui souhaitent atteindre l'excellence dans le domaine du soudage par points.
+
+\section*{Ce que vous allez apprendre}
+
+\begin{objectives}
+    \item Comprendre la métallurgie avancée du soudage par résistance
+    \item Maîtriser la simulation et la modélisation
+    \item Concevoir et mettre en œuvre des systèmes automatisés
+    \item Naviguer dans les normes et certifications industrielles
+    \item Analyser des études de cas industrielles réelles
+    \item Résoudre les problèmes les plus complexes
+\end{objectives}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{spot-welding-robot2.jpg}
+    \caption{Robot de soudage industriel moderne --- la robotisation a révolutionné la production automobile}
+\end{figure}
+
+\newpage
+
+% ============================================
+% CHAPITRE 1 : MÉTALLURGIE AVANCÉE
+% ============================================
+\chapter{Métallurgie Avancée}
+
+\begin{objectives}
+    \item Comprendre les transformations métallurgiques pendant le soudage
+    \item Analyser la microstructure des soudures
+    \item Prédire et contrôler les propriétés mécaniques
+    \item Maîtriser les défis des aciers modernes
+\end{objectives}
+
+\section{Transformations de phase}
+
+Pendant le soudage par points, le métal subit des transformations complexes en quelques millisecondes. Comprendre ces transformations est essentiel pour maîtriser le procédé.
+
+\subsection{Cycle thermique}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        % Axes
+        \draw[->, thick] (0,0) -- (11,0) node[right] {Temps (ms)};
+        \draw[->, thick] (0,0) -- (0,5.5) node[above] {T (°C)};
+
+        % Courbe de température au centre
+        \draw[primary, very thick]
+            (0,0.5) -- (0.5,0.5) -- (1,3.8) -- (1.5,4.8) -- (2,4.8) -- (2.5,3.2) -- (4,1.8) -- (6,1) -- (10,0.6);
+        \node[primary, font=\footnotesize] at (1.8,5.2) {Centre};
+
+        % Courbe de température en ZAT
+        \draw[secondary, thick, dashed]
+            (0,0.5) -- (0.5,0.5) -- (1.2,2.8) -- (2,3.2) -- (2.5,2.5) -- (4,1.5) -- (6,0.9) -- (10,0.6);
+        \node[secondary, font=\footnotesize] at (2.5,3.5) {ZAT};
+
+        % Lignes de référence température
+        \draw[dotted, textmuted] (0,4.3) -- (10,4.3);
+        \node[right, font=\tiny] at (10.1,4.3) {T$_{fusion}$ ($\sim$1500°C)};
+
+        \draw[dotted, textmuted] (0,2.8) -- (10,2.8);
+        \node[right, font=\tiny] at (10.1,2.8) {Ac3 ($\sim$900°C)};
+
+        \draw[dotted, textmuted] (0,2.2) -- (10,2.2);
+        \node[right, font=\tiny] at (10.1,2.2) {Ac1 ($\sim$720°C)};
+
+        % Phases du cycle
+        \fill[danger!30, opacity=0.5] (1,3.8) -- (1.5,4.8) -- (2,4.8) -- (2.5,3.2) -- (2,3.2) -- cycle;
+        \node[font=\tiny, danger] at (1.7,4) {Liquide};
+
+        % Annotations du cycle
+        \draw[<->, thick] (0.5,5) -- (2.5,5) node[midway, above, font=\tiny] {Chauffage};
+        \draw[<->, thick] (2.5,5) -- (6,5) node[midway, above, font=\tiny] {Refroidissement rapide};
+    \end{tikzpicture}
+    \caption{Cycle thermique typique au centre d'un point de soudure et en ZAT}
+\end{figure}
+
+Le cycle thermique se caractérise par :
+\begin{itemize}
+    \item \textbf{Vitesse de chauffage} : jusqu'à 100 000 °C/s au centre
+    \item \textbf{Température maximale} : 1500-1800°C (fusion de l'acier)
+    \item \textbf{Temps à haute température} : quelques millisecondes
+    \item \textbf{Vitesse de refroidissement} : 1000-10 000 °C/s
+\end{itemize}
+
+Ces vitesses extrêmes créent des microstructures qu'on ne peut pas obtenir par d'autres procédés.
+
+\subsection{Zones métallurgiques}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.9]
+        % Coupe schématique du point
+        \draw[thick] (-5,0) -- (5,0); % Interface
+        \draw[thick] (-5,1) -- (5,1); % Surface supérieure
+        \draw[thick] (-5,-1) -- (5,-1); % Surface inférieure
+
+        % Zone fondue (ellipse)
+        \fill[danger!40] (0,0) ellipse (2cm and 0.7cm);
+        \draw[danger, thick] (0,0) ellipse (2cm and 0.7cm);
+
+        % ZAT (ellipse plus grande)
+        \draw[warning, thick, dashed] (0,0) ellipse (3cm and 0.9cm);
+
+        % Labels
+        \node[font=\footnotesize] at (0,0) {Zone Fondue (FZ)};
+        \node[warning, font=\footnotesize] at (3.5,0.7) {ZAT};
+        \node[font=\footnotesize] at (4.5,0) {Métal de base};
+
+        % Électrodes
+        \fill[gray!50] (-0.8,1) rectangle (0.8,1.8);
+        \fill[gray!50] (-0.8,-1) rectangle (0.8,-1.8);
+        \node[font=\tiny] at (0,1.5) {Électrode};
+        \node[font=\tiny] at (0,-1.5) {Électrode};
+
+        % Cotation
+        \draw[<->, thick] (-2,-1.5) -- (2,-1.5);
+        \node[below, font=\tiny] at (0,-1.5) {Diamètre noyau};
+    \end{tikzpicture}
+    \caption{Coupe schématique d'un point de soudure montrant les différentes zones}
+\end{figure}
+
+\begin{description}
+    \item[Zone fondue (FZ)] Métal liquéfié puis solidifié. Structure de solidification dendritique orientée vers le centre. Composition homogénéisée par convection.
+
+    \item[Zone affectée thermiquement (ZAT)] Métal resté solide mais ayant subi des transformations de phase. Divisée en sous-zones :
+    \begin{itemize}
+        \item ZAT à gros grains (près de la fusion)
+        \item ZAT à grains fins (température intermédiaire)
+        \item ZAT intercritique (entre Ac1 et Ac3)
+        \item ZAT sous-critique (en dessous de Ac1)
+    \end{itemize}
+
+    \item[Zone de transition] Interface entre ZAT et métal de base. Gradient de propriétés. Zone souvent critique pour les ruptures.
+
+    \item[Métal de base (MB)] Non affecté thermiquement. Propriétés d'origine conservées.
+\end{description}
+
+\section{Aciers avancés à haute résistance (AHSS)}
+
+\subsection{Classification des aciers automobiles}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.85]
+        % Axes
+        \draw[->, thick] (0,0) -- (10,0) node[right] {Allongement (\%)};
+        \draw[->, thick] (0,0) -- (0,6) node[above] {Résistance (MPa)};
+
+        % Graduations
+        \foreach \x/\label in {2/10,4/20,6/30,8/40} {
+            \draw (\x,0) -- (\x,-0.1) node[below, font=\tiny] {\label};
+        }
+        \foreach \y/\label in {1/200,2/400,3/600,4/800,5/1000} {
+            \draw (0,\y) -- (-0.1,\y) node[left, font=\tiny] {\label};
+        }
+
+        % Zones aciers
+        \fill[blue!20] (4,0.5) -- (8,0.5) -- (8,1.5) -- (4,1.5) -- cycle;
+        \node[font=\footnotesize] at (6,1) {Aciers doux};
+
+        \fill[green!20] (2,1.5) -- (6,1.5) -- (5,2.5) -- (2,2.5) -- cycle;
+        \node[font=\footnotesize] at (3.5,2) {BH, IF-HS};
+
+        \fill[yellow!30] (1.5,2.5) -- (5,2.5) -- (4,4) -- (1.5,4) -- cycle;
+        \node[font=\footnotesize] at (3,3.2) {DP, TRIP};
+
+        \fill[orange!30] (0.8,4) -- (3,4) -- (2.5,5) -- (0.8,5) -- cycle;
+        \node[font=\footnotesize] at (1.8,4.5) {CP, MS};
+
+        \fill[red!20] (0.3,5) -- (2,5) -- (1.5,5.8) -- (0.3,5.8) -- cycle;
+        \node[font=\footnotesize] at (1,5.4) {PHS};
+
+        % Légende
+        \node[font=\tiny] at (8,5) {PHS = Press Hardened Steel};
+        \node[font=\tiny] at (8,4.5) {MS = Martensitic Steel};
+        \node[font=\tiny] at (8,4) {CP = Complex Phase};
+        \node[font=\tiny] at (8,3.5) {DP = Dual Phase};
+        \node[font=\tiny] at (8,3) {TRIP = Transformation Induced Plasticity};
+    \end{tikzpicture}
+    \caption{Diagramme résistance-allongement des aciers automobiles (« banana diagram »)}
+\end{figure}
+
+\subsection{Défis du soudage des AHSS}
+
+\begin{dangerbox}[Adoucissement de la ZAT]
+Les aciers AHSS subissent un \textbf{adoucissement} dans la ZAT en raison du revenu de la martensite. La dureté peut chuter de 30 à 50\% dans cette zone, créant un point faible potentiel pour la fatigue.
+
+Ce phénomène est particulièrement critique pour :
+\begin{itemize}
+    \item Aciers DP (Dual Phase) : 590, 780, 980 MPa
+    \item Aciers martensitiques : MS1200, MS1500
+    \item Aciers PHS (Press Hardened Steel) : 22MnB5
+\end{itemize}
+\end{dangerbox}
+
+\textbf{Solutions pour limiter l'adoucissement :}
+\begin{enumerate}
+    \item \textbf{Optimiser le cycle thermique} : temps court, courant élevé → ZAT étroite
+    \item \textbf{Séquences multi-pulse} : pulse de recuit pour réduire les gradients
+    \item \textbf{Conception adaptée} : éviter les sollicitations dans la ZAT
+    \item \textbf{Post-traitement} : traitement thermique localisé (rare)
+\end{enumerate}
+
+\subsection{Profils de dureté caractéristiques}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=1]
+        % Axes
+        \draw[->, thick] (0,0) -- (11,0) node[right] {Distance du centre (mm)};
+        \draw[->, thick] (0,0) -- (0,5) node[above] {Dureté (HV)};
+
+        % Graduations
+        \foreach \x in {1,2,3,4,5,6,7,8,9,10} {
+            \draw (\x,0) -- (\x,-0.1) node[below, font=\tiny] {\x};
+        }
+        \foreach \y/\label in {1/100,2/200,3/300,4/400,5/500} {
+            \draw (0,\y) -- (-0.1,\y) node[left, font=\tiny] {\label};
+        }
+
+        % Profil acier doux
+        \draw[secondary, thick] (0.5,1.5) -- (2,2) -- (3.5,2.2) -- (5,2) -- (7,1.7) -- (10,1.7);
+        \node[secondary, font=\tiny] at (8,2.2) {Acier doux};
+
+        % Profil DP600
+        \draw[primary, very thick] (0.5,2.8) -- (2,3.2) -- (3,2.2) -- (4,1.8) -- (5.5,2.5) -- (7,2.8) -- (10,2.8);
+        \node[primary, font=\tiny] at (8,3.3) {DP600};
+
+        % Profil MS1200
+        \draw[danger, thick, dashed] (0.5,3.5) -- (2,3.8) -- (2.5,2.5) -- (3.5,2) -- (5,2.8) -- (6,4) -- (10,4);
+        \node[danger, font=\tiny] at (8,4.5) {MS1200};
+
+        % Zone adoucie
+        \draw[<->, thick] (2.5,1) -- (5,1);
+        \node[below, font=\tiny] at (3.75,0.8) {Zone adoucie};
+
+        % Annotations zones
+        \draw[dotted] (2,0) -- (2,5);
+        \node[font=\tiny, rotate=90] at (1.5,4) {FZ};
+        \draw[dotted] (5.5,0) -- (5.5,5);
+        \node[font=\tiny] at (3.75,4.5) {ZAT};
+        \node[font=\tiny] at (7.5,4.5) {MB};
+    \end{tikzpicture}
+    \caption{Profils de dureté comparés --- l'adoucissement est marqué pour les AHSS}
+\end{figure}
+
+\section{Analyse microstructurale}
+
+\subsection{Techniques d'observation}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{3.5cm}L{4cm}C{2.5cm}C{2.5cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Technique} & \textbf{Information} & \textbf{Résolution} & \textbf{Coût} \\
+        \midrule
+        Microscopie optique & Microstructure générale & $\sim$1 µm & Faible \\
+        MEB (électrons) & Détails fins, fracture & $\sim$10 nm & Moyen \\
+        EBSD & Orientation des grains & $\sim$50 nm & Élevé \\
+        Micro-dureté & Profil de dureté & Zone 50 µm & Faible \\
+        EDS/WDS & Composition chimique & $\sim$1 µm & Moyen \\
+        \bottomrule
+    \end{tabular}
+    \caption{Techniques d'analyse microstructurale}
+\end{table}
+
+\subsection{Préparation des échantillons}
+
+\begin{enumerate}
+    \item \textbf{Découpe} : Scie diamantée sous eau, éviter l'échauffement
+    \item \textbf{Enrobage} : Résine époxy ou acrylique
+    \item \textbf{Polissage} : Papiers SiC (120 → 2400), puis pâte diamantée (6 µm → 1 µm)
+    \item \textbf{Attaque chimique} : Nital 2\% (aciers au carbone), Kalling (inox)
+    \item \textbf{Observation} : Microscopie optique, puis MEB si nécessaire
+\end{enumerate}
+
+\begin{tipbox}[Conseil pratique]
+Pour une analyse métallographique de qualité, le polissage est l'étape critique. Prenez le temps de polir correctement --- un polissage bâclé donnera des images inexploitables. Changez de direction de polissage entre chaque grade de papier.
+\end{tipbox}
+
+\begin{keypoints}
+    \item Le soudage crée des zones à propriétés différentes (FZ, ZAT, MB)
+    \item Les aciers AHSS peuvent s'adoucir de 30-50\% dans la ZAT
+    \item L'analyse microstructurale permet de comprendre et optimiser
+    \item Chaque matériau nécessite une approche métallurgique adaptée
+    \item Les profils de dureté sont essentiels pour caractériser la soudure
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% CHAPITRE 2 : SIMULATION ET MODÉLISATION
+% ============================================
+\chapter{Simulation et Modélisation}
+
+\begin{objectives}
+    \item Comprendre les modèles physiques du soudage par points
+    \item Utiliser la simulation pour optimiser les paramètres
+    \item Prédire les résultats avant expérimentation
+    \item Interpréter les résultats de simulation
+\end{objectives}
+
+\section{Modèles physiques}
+
+Le soudage par points implique des phénomènes couplés multi-physiques :
+
+\subsection{Couplage électro-thermique}
+
+L'équation de la chaleur avec source Joule :
+
+\begin{formulabox}
+\begin{equation}
+    \rho c_p \frac{\partial T}{\partial t} = \nabla \cdot (k \nabla T) + \frac{J^2}{\sigma}
+\end{equation}
+
+Où :
+\begin{itemize}
+    \item $\rho c_p$ : capacité thermique volumique (J/m³·K)
+    \item $k$ : conductivité thermique (W/m·K)
+    \item $J$ : densité de courant (A/m²)
+    \item $\sigma$ : conductivité électrique (S/m)
+    \item Le terme $J^2/\sigma$ représente l'effet Joule (W/m³)
+\end{itemize}
+\end{formulabox}
+
+\subsection{Résistance de contact}
+
+La résistance de contact est le paramètre le plus difficile à modéliser car elle dépend de nombreux facteurs :
+
+\begin{equation}
+    R_c = \frac{\rho_1 + \rho_2}{2} \cdot \frac{H}{F} \cdot f(T, \text{rugosité}, \text{revêtement})
+\end{equation}
+
+Où $H$ est la dureté et $F$ la force appliquée.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.9]
+        % Résistances en série
+        \draw[thick] (0,2) -- (1,2);
+        \draw[thick] (1,1.5) rectangle (2,2.5);
+        \node[font=\footnotesize] at (1.5,2) {R$_e$};
+
+        \draw[thick] (2,2) -- (3,2);
+        \draw[thick, danger] (3,1.5) rectangle (4,2.5);
+        \node[font=\footnotesize] at (3.5,2) {R$_{c1}$};
+
+        \draw[thick] (4,2) -- (5,2);
+        \draw[thick] (5,1.5) rectangle (6,2.5);
+        \node[font=\footnotesize] at (5.5,2) {R$_1$};
+
+        \draw[thick] (6,2) -- (7,2);
+        \draw[thick, danger] (7,1.5) rectangle (8,2.5);
+        \node[font=\footnotesize] at (7.5,2) {R$_{c2}$};
+
+        \draw[thick] (8,2) -- (9,2);
+        \draw[thick] (9,1.5) rectangle (10,2.5);
+        \node[font=\footnotesize] at (9.5,2) {R$_2$};
+
+        \draw[thick] (10,2) -- (11,2);
+        \draw[thick, danger] (11,1.5) rectangle (12,2.5);
+        \node[font=\footnotesize] at (11.5,2) {R$_{c3}$};
+
+        \draw[thick] (12,2) -- (13,2);
+        \draw[thick] (13,1.5) rectangle (14,2.5);
+        \node[font=\footnotesize] at (13.5,2) {R$_e$};
+
+        \draw[thick] (14,2) -- (15,2);
+
+        % Légende
+        \node[font=\tiny] at (3.5,0.8) {Contact électrode/pièce 1};
+        \node[font=\tiny] at (7.5,0.8) {Contact pièce 1/pièce 2};
+        \node[font=\tiny] at (11.5,0.8) {Contact pièce 2/électrode};
+
+        % Schéma physique
+        \fill[gray!50] (2,3.5) rectangle (4,4.5);
+        \node[font=\tiny] at (3,4) {Électrode};
+        \fill[secondary!30] (2,3) rectangle (7,3.5);
+        \node[font=\tiny] at (4.5,3.25) {Pièce 1};
+        \fill[secondary!50] (2,2.5) rectangle (7,3);
+        \node[font=\tiny] at (4.5,2.75) {Pièce 2};
+        \fill[gray!50] (2,2) rectangle (4,2.5);
+        \node[font=\tiny] at (3,2.25) {Électrode};
+
+        % Contacts
+        \draw[danger, very thick] (2,3.5) -- (4,3.5);
+        \draw[danger, very thick] (2,3) -- (7,3);
+        \draw[danger, very thick] (2,2.5) -- (4,2.5);
+    \end{tikzpicture}
+    \caption{Schéma des résistances en série --- les résistances de contact (en rouge) dominent au début}
+\end{figure}
+
+\section{Simulation numérique}
+
+\subsection{Logiciels spécialisés}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{3cm}L{5cm}L{4cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Logiciel} & \textbf{Points forts} & \textbf{Éditeur} \\
+        \midrule
+        SORPAS & Spécialisé RSW, base de données matériaux & SWANTEC (Danemark) \\
+        SYSWELD & Suite complète soudage, couplage métallurgique & ESI Group (France) \\
+        Simufact Welding & Interface intuitive, intégration CAO & Hexagon (Suède) \\
+        ABAQUS + plugins & Flexibilité, personnalisation & Dassault Systèmes \\
+        \bottomrule
+    \end{tabular}
+    \caption{Principaux logiciels de simulation du soudage par points}
+\end{table}
+
+\subsection{Résultats typiques d'une simulation}
+
+Une simulation fournit des informations précieuses :
+
+\begin{itemize}
+    \item \textbf{Champ de température} : évolution T(x,y,z,t)
+    \item \textbf{Géométrie de la zone fondue} : diamètre, pénétration
+    \item \textbf{Contraintes résiduelles} : distribution après refroidissement
+    \item \textbf{Déformations} : retrait, distorsion
+    \item \textbf{Prédiction de défauts} : risque d'expulsion, fissuration
+\end{itemize}
+
+\begin{infobox}[Gain de temps]
+Une campagne de simulation typique (100 combinaisons de paramètres) prend quelques heures de calcul, contre plusieurs jours d'expérimentation physique. Le gain en temps et matière est considérable, surtout pour les aciers coûteux ou les configurations complexes.
+\end{infobox}
+
+\section{Modèles empiriques}
+
+Pour une utilisation quotidienne, des formules empiriques sont utiles :
+
+\subsection{Diamètre du noyau (règle des 5)}
+
+\begin{formulabox}
+\begin{equation}
+    d_n \approx 5 \sqrt{t_{min}}
+\end{equation}
+
+Où $t_{min}$ est l'épaisseur minimale des pièces (en mm) et $d_n$ le diamètre du noyau recommandé (en mm).
+
+\textbf{Exemple :} Pour deux tôles de 1.2 mm, $d_n \approx 5 \times \sqrt{1.2} \approx 5.5$ mm
+\end{formulabox}
+
+\subsection{Diamètre d'électrode}
+
+\begin{equation}
+    d_e \approx 6 \sqrt{t_{min}} \quad \text{(valeur nominale)}
+\end{equation}
+
+\subsection{Force d'électrode}
+
+\begin{equation}
+    F \approx (2 \text{ à } 5) \times d_e^2 \quad \text{(en daN, avec } d_e \text{ en mm)}
+\end{equation}
+
+\begin{keypoints}
+    \item La simulation permet d'optimiser sans essais coûteux
+    \item Les modèles couplent thermique, électrique et mécanique
+    \item La résistance de contact est le paramètre le plus critique
+    \item Des formules empiriques guident les premiers choix
+    \item La validation expérimentale reste toujours nécessaire
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% CHAPITRE 3 : AUTOMATISATION ET ROBOTIQUE
+% ============================================
+\chapter{Automatisation et Robotique}
+
+\begin{objectives}
+    \item Concevoir des systèmes de soudage automatisés
+    \item Intégrer des robots de soudage par points
+    \item Optimiser les temps de cycle
+    \item Mettre en place le contrôle qualité automatisé
+\end{objectives}
+
+\section{L'évolution vers l'automatisation}
+
+L'industrie automobile a été pionnière dans l'automatisation du soudage par points. Aujourd'hui, une voiture moderne contient entre 3000 et 5000 points de soudure, pratiquement tous réalisés par des robots.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\textwidth]{willow-run-bomber-1.jpg}
+    \caption{Usine Willow Run (1943) --- déjà à l'époque, l'industrie cherchait à automatiser le soudage pour augmenter la cadence de production}
+\end{figure}
+
+\section{Types d'automatisation}
+
+\subsection{Semi-automatique}
+
+\begin{itemize}
+    \item Positionnement manuel, soudage automatique
+    \item Opérateur gère le chargement/déchargement
+    \item Adapté aux petites et moyennes séries
+    \item Investissement modéré (10-50 k€)
+\end{itemize}
+
+\subsection{Automatique dédié}
+
+\begin{itemize}
+    \item Machine spéciale pour un produit unique
+    \item Temps de cycle optimisé (0.5-1 s par point)
+    \item Grande série, produit stable
+    \item Investissement élevé (100-500 k€)
+\end{itemize}
+
+\subsection{Robotisé flexible}
+
+\begin{itemize}
+    \item Robot 6 axes avec pince de soudage
+    \item Flexibilité : plusieurs produits sur même ligne
+    \item Reprogrammable rapidement
+    \item Standard automobile actuel
+    \item Investissement : 150-300 k€ par robot équipé
+\end{itemize}
+
+\section{Conception d'une cellule robotisée}
+
+\subsection{Composants principaux}
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[scale=0.85]
+        % Robot (schématique)
+        \fill[gray!30] (0,0) circle (0.8);
+        \draw[thick] (0,0) -- (0,2) -- (2,3) -- (3,2.5);
+        \node[font=\footnotesize] at (0,-1.2) {Robot 6 axes};
+
+        % Pince
+        \fill[secondary!40] (3,2) rectangle (4.5,3);
+        \node[font=\tiny] at (3.75,2.5) {Pince};
+
+        % Pièce
+        \fill[primary!20] (5,1.5) rectangle (8,3.5);
+        \node[font=\footnotesize] at (6.5,2.5) {Pièce};
+
+        % Outillage
+        \draw[thick] (4.8,0.5) -- (4.8,4) -- (8.2,4) -- (8.2,0.5) -- cycle;
+        \node[font=\footnotesize] at (6.5,0.8) {Outillage};
+
+        % Contrôleur
+        \fill[success!30] (-2,0) rectangle (-0.5,2);
+        \node[font=\footnotesize, rotate=90] at (-1.25,1) {Contrôleur};
+
+        % Transformateur
+        \fill[warning!30] (-2,-2) rectangle (0,-0.5);
+        \node[font=\footnotesize] at (-1,-1.25) {Transfo MFDC};
+
+        % Barrières
+        \draw[danger, dashed, thick] (-3,-3) rectangle (9,5);
+        \node[danger, font=\footnotesize] at (3,4.5) {Zone sécurisée};
+
+        % Connexions
+        \draw[->, thick] (-0.5,1) -- (0,0.8);
+        \draw[->, thick] (-1,-0.5) -- (-0.2,0);
+    \end{tikzpicture}
+    \caption{Architecture typique d'une cellule de soudage robotisée}
+\end{figure}
+
+\subsection{Le robot}
+
+Caractéristiques typiques pour le soudage par points :
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{4cm}L{6cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Caractéristique} & \textbf{Valeur typique} \\
+        \midrule
+        Nombre d'axes & 6 (standard) ou 7 (extended reach) \\
+        Charge utile & 150-250 kg (pince + transfo) \\
+        Portée & 2.5-3 m \\
+        Répétabilité & ±0.1 mm \\
+        Vitesse max & 2000 mm/s \\
+        Marques courantes & FANUC, ABB, KUKA, Yaskawa \\
+        \bottomrule
+    \end{tabular}
+    \caption{Caractéristiques robot pour soudage par points}
+\end{table}
+
+\subsection{La pince de soudage}
+
+Deux types principaux :
+
+\begin{description}
+    \item[Pince en C] Accès latéral, très répandue. Effort de réaction déporté.
+    \item[Pince en X] Effort équilibré, plus compacte. Accès plus limité.
+\end{description}
+
+\subsection{Le transformateur MFDC}
+
+\begin{defbox}[MFDC --- Medium Frequency Direct Current]
+Les transformateurs MFDC fonctionnent à 1000-2000 Hz (vs 50 Hz pour les anciens). Avantages :
+\begin{itemize}
+    \item Poids réduit de 70\% → pince plus légère → robot plus rapide
+    \item Contrôle plus précis du courant
+    \item Meilleur rendement énergétique
+    \item Standard actuel dans l'automobile
+\end{itemize}
+\end{defbox}
+
+\section{Optimisation des temps de cycle}
+
+Pour minimiser le temps de cycle :
+
+\begin{enumerate}
+    \item \textbf{Optimisation des trajectoires} : algorithmes TSP (voyageur de commerce)
+    \item \textbf{Regroupement par zone} : minimiser les grands déplacements
+    \item \textbf{Mouvements fluides} : interpolation spline vs point-à-point
+    \item \textbf{Overlap} : démarrer le déplacement avant fin de soudage
+    \item \textbf{Multi-robot} : répartir les points entre robots
+\end{enumerate}
+
+\begin{infobox}[Temps de cycle typique]
+Un robot moderne réalise un point de soudure toutes les \textbf{1 à 2 secondes}, incluant :
+\begin{itemize}
+    \item Déplacement vers le point : 0.4-0.8 s
+    \item Fermeture pince (accostage) : 0.1-0.2 s
+    \item Soudage (pulse) : 0.1-0.3 s
+    \item Ouverture et dégagement : 0.1-0.2 s
+\end{itemize}
+L'optimisation des trajectoires peut réduire ce temps de 10 à 20\%.
+\end{infobox}
+
+\section{Contrôle qualité automatisé}
+
+\subsection{Monitoring en temps réel}
+
+Les systèmes modernes mesurent à chaque point :
+
+\begin{itemize}
+    \item \textbf{Courbe de courant I(t)} : détection de court-circuit, expulsion
+    \item \textbf{Résistance dynamique R(t)} : signature de la formation du noyau
+    \item \textbf{Déplacement des électrodes d(t)} : indentation, expansion thermique
+    \item \textbf{Énergie réellement délivrée} : intégrale I²t
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.65\textwidth]{resistance-dynamique.png}
+    \caption{Courbe de résistance dynamique --- signature caractéristique d'une bonne soudure}
+\end{figure}
+
+\subsection{Contrôle adaptatif}
+
+Le contrôleur ajuste automatiquement les paramètres en fonction des mesures :
+
+\begin{enumerate}
+    \item Mesure de la résistance initiale (indicateur d'état de surface)
+    \item Comparaison à la référence
+    \item Ajustement du courant ou du temps
+    \item Compensation de l'usure des électrodes
+    \item Alerte si hors limites
+\end{enumerate}
+
+\begin{keypoints}
+    \item L'automatisation augmente productivité et répétabilité
+    \item Les robots offrent flexibilité et qualité constante
+    \item Les transformateurs MFDC sont le standard actuel
+    \item L'optimisation des trajectoires réduit les temps de cycle
+    \item Le monitoring en temps réel permet le contrôle adaptatif
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% CHAPITRE 4 : NORMES ET CERTIFICATIONS
+% ============================================
+\chapter{Normes et Certifications}
+
+\begin{objectives}
+    \item Connaître les normes applicables au soudage par points
+    \item Comprendre les exigences de certification
+    \item Mettre en place un système qualité conforme
+    \item Naviguer dans les référentiels automobiles
+\end{objectives}
+
+\section{Normes internationales}
+
+\subsection{Classification du procédé}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{2.5cm}L{3cm}L{6cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Norme} & \textbf{Désignation} & \textbf{Description} \\
+        \midrule
+        ISO 4063 & Procédé 21 & Classification des procédés de soudage \\
+        AWS A3.0 & RSW & Resistance Spot Welding \\
+        ISO 14373 & -- & Spécification du procédé RSW \\
+        ISO 18278-1 & -- & Soudabilité --- Partie 1 : Généralités \\
+        ISO 18278-2 & -- & Soudabilité --- Partie 2 : Aciers \\
+        ISO 14327 & -- & Essai de pelage par arrachement \\
+        \bottomrule
+    \end{tabular}
+    \caption{Principales normes pour le soudage par points}
+\end{table}
+
+\subsection{Exigences ISO 14373}
+
+Cette norme spécifie les exigences pour le soudage par points :
+
+\begin{itemize}
+    \item \textbf{Qualification du mode opératoire (QMOS)} : démontrer que les paramètres choisis produisent des soudures conformes
+    \item \textbf{Qualification des opérateurs} : formation et certification
+    \item \textbf{Exigences sur les équipements} : étalonnage, maintenance
+    \item \textbf{Contrôles à effectuer} : fréquences, méthodes, critères
+    \item \textbf{Documentation requise} : traçabilité complète
+\end{itemize}
+
+\section{Normes automobiles}
+
+L'industrie automobile a ses propres standards, souvent plus stricts que les normes ISO :
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{2cm}L{5cm}L{5cm}}
+        \toprule
+        \rowcolor{primary!20}
+        \textbf{Région} & \textbf{Organismes/Normes} & \textbf{Constructeurs} \\
+        \midrule
+        Allemagne & VDA, BMW GS, VW TL & VW, BMW, Daimler, Audi \\
+        USA & AIAG, CQI-15 & GM, Ford, Chrysler \\
+        Japon & JAMA, JIS & Toyota, Honda, Nissan \\
+        Corée & KS standards & Hyundai, Kia \\
+        \bottomrule
+    \end{tabular}
+    \caption{Standards régionaux automobiles}
+\end{table}
+
+\begin{warningbox}[Exigences automobiles]
+Les constructeurs automobiles imposent des exigences très strictes :
+\begin{itemize}
+    \item \textbf{Cpk > 1.67} sur le diamètre du noyau (capabilité procédé)
+    \item \textbf{Contrôle 100\%} par monitoring temps réel
+    \item \textbf{Traçabilité complète} de chaque point (VIN, position, paramètres)
+    \item \textbf{Audit régulier} des fournisseurs (CQI-15 pour l'Amérique du Nord)
+    \item \textbf{PPAP} (Production Part Approval Process) obligatoire
+\end{itemize}
+\end{warningbox}
+
+\subsection{CQI-15 : Exigences spécifiques soudage}
+
+Le CQI-15 (Special Process: Welding System Assessment) est le référentiel AIAG pour le soudage :
+
+\begin{enumerate}
+    \item \textbf{Section 1} : Gestion et responsabilités
+    \item \textbf{Section 2} : Planification qualité avancée
+    \item \textbf{Section 3} : Installation et équipements
+    \item \textbf{Section 4} : Gestion des processus
+    \item \textbf{Section 5} : Actions correctives et amélioration continue
+    \item \textbf{Job Audit} : Vérification de conformité par produit
+\end{enumerate}
+
+\section{Certification du personnel}
+
+\subsection{Niveaux de qualification}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{2.5cm}L{4.5cm}L{4.5cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Niveau} & \textbf{Responsabilités} & \textbf{Formation requise} \\
+        \midrule
+        Opérateur & Exécution, contrôle visuel, maintenance de base & Formation initiale (40h) + pratique supervisée \\
+        Régleur & Paramétrage, dépannage niveau 1, changement d'outillage & Formation technique (80h) + expérience \\
+        Spécialiste & Développement, qualification, résolution de problèmes complexes & Expertise métallurgie + procédé (160h+) \\
+        Ingénieur RSW & Conception, innovation, support multi-sites & Formation supérieure + certifications \\
+        \bottomrule
+    \end{tabular}
+    \caption{Niveaux de qualification en soudage par points}
+\end{table}
+
+\section{Système qualité}
+
+\subsection{Documentation requise}
+
+\begin{enumerate}
+    \item \textbf{DMOS} (WPS) : Descriptif du Mode Opératoire de Soudage
+    \begin{itemize}
+        \item Configuration matériaux, épaisseurs
+        \item Paramètres de soudage (I, t, F)
+        \item Type d'électrodes, géométrie
+        \item Séquence de soudage
+    \end{itemize}
+
+    \item \textbf{QMOS} (WPQR) : Qualification du Mode Opératoire de Soudage
+    \begin{itemize}
+        \item Essais de qualification (pelage, cisaillement, métallographie)
+        \item Résultats et conformité aux critères
+        \item Domaine de validité
+    \end{itemize}
+
+    \item \textbf{Instructions de travail} : pour chaque poste
+    \item \textbf{Plan de contrôle} : fréquences et méthodes
+    \item \textbf{Enregistrements} : traçabilité des paramètres
+\end{enumerate}
+
+\begin{keypoints}
+    \item ISO 4063 classifie le procédé (n°21)
+    \item ISO 14373 et 18278 définissent les exigences générales
+    \item L'automobile impose des standards plus stricts (CQI-15)
+    \item La qualification du personnel est obligatoire
+    \item Un système documentaire complet (DMOS, QMOS) est requis
+    \item Cpk > 1.67 est l'exigence standard automobile
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% CHAPITRE 5 : ÉTUDES DE CAS INDUSTRIELLES
+% ============================================
+\chapter{Études de Cas Industrielles}
+
+\begin{objectives}
+    \item Analyser des problèmes industriels réels
+    \item Appliquer les connaissances acquises
+    \item Développer une approche systématique de résolution
+    \item Apprendre des succès et des échecs
+\end{objectives}
+
+\section{Cas 1 : Pack batterie véhicule électrique}
+
+\begin{casestudy}[Assemblage d'un pack 96S2P --- Tesla Powerwall]
+\textbf{Contexte :} Fabrication de packs batteries pour systèmes de stockage domestique. 192 cellules 21700 assemblées en configuration 96S2P (345V nominal, 13.5 kWh).
+
+\textbf{Problématique initiale :} Taux de défaut de 3.2\% (objectif < 0.5\%). Cellules endommagées thermiquement détectées lors des tests finaux d'isolation.
+
+\textbf{Investigation :}
+\begin{itemize}
+    \item Monitoring température par caméra IR : pics à 68°C sur certaines cellules
+    \item Analyse de la séquence : points consécutifs sur même cellule (4 points en 8 secondes)
+    \item Mesure de la température de surface : +45°C après le 4ème point
+    \item Autopsie de cellules défaillantes : dégradation visible du séparateur
+\end{itemize}
+
+\textbf{Analyse des causes racines (5 pourquoi) :}
+\begin{enumerate}
+    \item Pourquoi les cellules sont endommagées ? → Température excessive
+    \item Pourquoi température excessive ? → Accumulation de chaleur
+    \item Pourquoi accumulation ? → Points trop rapprochés dans le temps
+    \item Pourquoi séquence non optimisée ? → Trajectoire robot optimisée pour vitesse, pas pour thermique
+    \item Pourquoi pas de simulation thermique ? → Non requis dans le cahier des charges initial
+\end{enumerate}
+
+\textbf{Actions correctives :}
+\begin{enumerate}
+    \item Modification de la séquence : alternance entre cellules (leap-frog pattern)
+    \item Temps inter-points minimum : 5 secondes par cellule
+    \item Réduction de l'énergie par point : 45 J → 38 J (avec validation mécanique)
+    \item Installation de monitoring IR en production
+    \item Alarme si T > 55°C
+\end{enumerate}
+
+\textbf{Résultat :} Taux de défaut réduit à 0.15\% après 3 mois de production.
+
+\textbf{Coût de la non-qualité initiale :} 3.2\% × 50 packs/jour × 2500€/pack = 4000€/jour
+
+\textbf{ROI des actions correctives :} < 2 semaines
+\end{casestudy}
+
+\section{Cas 2 : Carrosserie automobile}
+
+\begin{casestudy}[Fissuration ZAT sur acier DP600 --- BMW Série 3]
+\textbf{Contexte :} Assemblage de longerons en acier Dual Phase 600 MPa. Apparition de fissures en service après 50~000 km sur véhicules clients.
+
+\textbf{Problématique :} 12 cas de fissures initiées dans la ZAT des points de soudure en 6 mois. Mode de rupture par fatigue. Rappel de 15~000 véhicules envisagé.
+
+\textbf{Investigation approfondie :}
+\begin{itemize}
+    \item Métallographie : zone adoucie marquée (180 HV vs 250 HV base)
+    \item Mesure de contraintes résiduelles par DRX : 280 MPa en traction dans la ZAT
+    \item Simulation fatigue : durée de vie prédite 40~000 cycles vs 100~000 requis
+    \item Analyse vibratoire : fréquence de résonance du montant proche de l'excitation moteur
+\end{itemize}
+
+\textbf{Analyse :}
+\begin{itemize}
+    \item La zone adoucie de la ZAT concentre les contraintes
+    \item Les contraintes résiduelles s'ajoutent aux contraintes de service
+    \item La résonance amplifie les cycles de fatigue
+\end{itemize}
+
+\textbf{Actions correctives multi-niveaux :}
+\begin{enumerate}
+    \item \textbf{Procédé} : Cycle thermique optimisé (8 ms au lieu de 14 ms, courant +15\%)
+    \item \textbf{Post-traitement} : Introduction d'un pulse de recuit (30\% I, 100 ms) → réduction des contraintes résiduelles de 40\%
+    \item \textbf{Conception} : Augmentation du nombre de points (8 → 12) → réduction de la contrainte unitaire
+    \item \textbf{Renforcement} : Ajout d'un raidisseur local (modification outillage)
+\end{enumerate}
+
+\textbf{Validation :}
+\begin{itemize}
+    \item Tests de fatigue accélérés : 200~000 cycles sans défaillance
+    \item Validation véhicule complet : 300~000 km équivalent client
+    \item Cpk sur dureté ZAT : 1.89 (vs 0.87 avant)
+\end{itemize}
+
+\textbf{Résultat :} Rappel évité. Coût des modifications : 1.2 M€ vs coût du rappel estimé : 45 M€
+\end{casestudy}
+
+\section{Cas 3 : Optimisation de production}
+
+\begin{casestudy}[Réduction du temps de cycle --- Éviers inox]
+\textbf{Contexte :} Ligne de production d'éviers en acier inoxydable 304. 48 points par pièce. Temps de cycle actuel : 72 secondes. Demande client en hausse de 40\%.
+
+\textbf{Objectif :} Réduire le temps de cycle à 50 secondes sans investissement majeur.
+
+\textbf{Analyse du temps de cycle actuel :}
+\begin{itemize}
+    \item Temps de soudage effectif : 29 s (40\%)
+    \item Déplacements robot : 25 s (35\%)
+    \item Attentes (recharge, maintien) : 18 s (25\%)
+\end{itemize}
+
+\textbf{Identification des gisements d'amélioration :}
+\begin{enumerate}
+    \item Trajectoires non optimisées (ordre des points arbitraire)
+    \item Temps de recharge condensateurs : 1.5 s entre chaque point
+    \item Temps de maintien post-soudage excessif (0.5 s vs 0.2 s nécessaire)
+    \item Vitesses robot conservatrices (70\% du maximum)
+\end{enumerate}
+
+\textbf{Actions mises en œuvre :}
+\begin{enumerate}
+    \item \textbf{Optimisation trajectoires} : Algorithme TSP → réduction déplacements de 35\%
+    \item \textbf{Upgrade alimentation} : Passage à 40 kVA (recharge 0.8 s vs 1.5 s)
+    \item \textbf{Réduction temps de maintien} : 0.5 s → 0.25 s (validé par tests)
+    \item \textbf{Augmentation vitesses robot} : 70\% → 90\% (après vérification trajectoires)
+    \item \textbf{Overlap accostage} : Fermeture pince pendant approche finale
+\end{enumerate}
+
+\textbf{Résultats :}
+\begin{itemize}
+    \item Nouveau temps de cycle : 45 secondes (-37\%)
+    \item Capacité : +60\% (dépasse l'objectif de +40\%)
+    \item Qualité maintenue : 0 défaut sur 10~000 pièces de validation
+\end{itemize}
+
+\textbf{Investissement :} 35 k€ (principalement upgrade alimentation)
+
+\textbf{ROI :} 4 mois (évitement d'investissement ligne supplémentaire estimé 400 k€)
+\end{casestudy}
+
+\section{Cas 4 : Problème de collage d'électrodes}
+
+\begin{casestudy}[Collage répétitif --- Pièces galvanisées]
+\textbf{Contexte :} Assemblage de panneaux de porte en acier galvanisé (Z140). Collage des électrodes toutes les 200-300 soudures, causant des arrêts ligne.
+
+\textbf{Impact :} 8 à 12 arrêts par équipe de 8h. Temps d'arrêt moyen : 3 minutes. Perte de productivité : 5\%.
+
+\textbf{Investigation :}
+\begin{itemize}
+    \item Analyse des électrodes collées : couche de zinc + cuivre alliés
+    \item Mesure de température électrode : 450°C en fin de séquence (vs 250°C en début)
+    \item État de surface des tôles : épaisseur de zinc variable (8-12 µm)
+\end{itemize}
+
+\textbf{Mécanisme identifié :}
+\begin{enumerate}
+    \item Le zinc fond à 420°C pendant le soudage
+    \item Une partie du zinc s'allie avec le cuivre de l'électrode
+    \item L'alliage Cu-Zn (laiton) adhère à la tôle lors du refroidissement
+    \item Le phénomène s'aggrave avec l'échauffement progressif des électrodes
+\end{enumerate}
+
+\textbf{Solutions testées :}
+
+\begin{table}[H]
+    \centering
+    \small
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{4cm}C{2cm}L{5cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Solution} & \textbf{Efficacité} & \textbf{Commentaire} \\
+        \midrule
+        Augmenter la force & 20\% & Améliore mais ne résout pas \\
+        Électrodes Cu-Cr-Zr & 40\% & Meilleure tenue mais coût 3× \\
+        Refroidissement eau & 60\% & Efficace mais modification importante \\
+        Pré-pulse « cleaning » & 80\% & Solution retenue \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\textbf{Solution finale :} Séquence double pulse avec pré-pulse de nettoyage
+\begin{itemize}
+    \item Pulse 1 : 40\% courant, 4 ms → vaporise le zinc de surface
+    \item Pause : 20 ms
+    \item Pulse 2 : 100\% courant, 10 ms → soudage effectif
+\end{itemize}
+
+\textbf{Résultat :} Intervalle de rafraîchissement passé de 250 à 1500 soudures. Arrêts réduits de 85\%.
+\end{casestudy}
+
+\section{Cas 5 : Mise en conformité CQI-15}
+
+\begin{casestudy}[Audit CQI-15 --- Équipementier rang 1]
+\textbf{Contexte :} Équipementier automobile fournissant des sous-ensembles soudés pour General Motors. Audit CQI-15 annoncé avec 3 mois de préparation.
+
+\textbf{Situation initiale :} Auto-évaluation révélant 42 non-conformités sur 180 exigences (score 76\%, minimum requis 85\%).
+
+\textbf{Non-conformités majeures :}
+\begin{enumerate}
+    \item Absence de QMOS formalisés (15 combinaisons matériaux)
+    \item Traçabilité incomplète (paramètres non enregistrés)
+    \item Calibration des équipements non documentée
+    \item Formation des opérateurs non certifiée
+    \item Plan de contrôle insuffisant (pelage 1×/jour vs requis 1×/500 pièces)
+\end{enumerate}
+
+\textbf{Plan d'action (12 semaines) :}
+
+\textbf{Semaines 1-4 :} Documentation
+\begin{itemize}
+    \item Rédaction de 15 DMOS complets
+    \item Réalisation des essais de qualification (QMOS)
+    \item Création des instructions de travail
+\end{itemize}
+
+\textbf{Semaines 5-8 :} Infrastructure
+\begin{itemize}
+    \item Installation système d'acquisition données (monitoring)
+    \item Mise en place étalonnage périodique
+    \item Formation et certification des 24 opérateurs
+\end{itemize}
+
+\textbf{Semaines 9-12 :} Validation
+\begin{itemize}
+    \item Mise en œuvre du nouveau plan de contrôle
+    \item Audit interne (simulation CQI-15)
+    \item Corrections des dernières non-conformités
+\end{itemize}
+
+\textbf{Résultat audit :} Score 94\%. Certification obtenue.
+
+\textbf{Investissement total :} 180 k€ (monitoring, formation, documentation)
+
+\textbf{Bénéfice :} Maintien du contrat GM (CA annuel : 12 M€)
+\end{casestudy}
+
+\begin{keypoints}
+    \item Les problèmes industriels sont souvent multi-factoriels
+    \item L'analyse systématique (5 pourquoi, Ishikawa) est essentielle
+    \item La solution optimale combine souvent plusieurs actions
+    \item Le suivi des résultats valide l'efficacité des actions
+    \item Le ROI des actions qualité est généralement très favorable
+    \item La documentation et la traçabilité sont critiques
+\end{keypoints}
+
+\newpage
+
+% ============================================
+% ANNEXES
+% ============================================
+\appendix
+
+\chapter{Ressources Complémentaires}
+
+\section{Bibliographie recommandée}
+
+\begin{description}
+    \item[Resistance Welding Manual] (RWMA, AWS) --- Référence complète sur le soudage par résistance. 500+ pages de données techniques.
+
+    \item[Weld Quality Handbook] (AWS D8.1) --- Spécifique automobile, critères de qualité détaillés.
+
+    \item[Metallurgy of Welding] (J.F. Lancaster) --- Métallurgie fondamentale du soudage. Indispensable pour comprendre les transformations.
+
+    \item[Battery Pack Design] (John Warner) --- Conception de packs batteries, incluant assemblage.
+
+    \item[Automotive Body Manufacturing Systems] (Mohammed Omar) --- Vue d'ensemble de la production automobile.
+\end{description}
+
+\section{Logiciels de simulation}
+
+\begin{table}[H]
+    \centering
+    \rowcolors{2}{lightgray}{white}
+    \begin{tabular}{L{3cm}L{4cm}L{4cm}}
+        \toprule
+        \rowcolor{secondary!20}
+        \textbf{Logiciel} & \textbf{Spécialité} & \textbf{Contact} \\
+        \midrule
+        SORPAS & Simulation RSW spécialisée & swantec.com \\
+        SYSWELD & Suite soudage complète & esi-group.com \\
+        Simufact Welding & Interface intuitive & simufact.com \\
+        ABAQUS & Personnalisation avancée & 3ds.com \\
+        \bottomrule
+    \end{tabular}
+    \caption{Logiciels de simulation recommandés}
+\end{table}
+
+\section{Organismes et certifications}
+
+\begin{itemize}
+    \item \textbf{AWS} (American Welding Society) --- aws.org
+    \item \textbf{IIW} (International Institute of Welding) --- iiwelding.org
+    \item \textbf{DVS} (Deutscher Verband für Schweißen) --- dvs-ev.de
+    \item \textbf{AIAG} (Automotive Industry Action Group) --- aiag.org
+\end{itemize}
+
+\chapter{Glossaire Expert}
+
+\begin{description}
+    \item[AHSS] Advanced High Strength Steel --- aciers avancés haute résistance (DP, TRIP, TWIP, CP, MS, PHS)
+
+    \item[Cpk] Indice de capabilité du procédé --- mesure la robustesse (Cpk > 1.67 requis en automobile)
+
+    \item[CQI-15] Special Process: Welding System Assessment --- référentiel AIAG pour le soudage
+
+    \item[DMOS] Descriptif du Mode Opératoire de Soudage (WPS en anglais)
+
+    \item[DP] Dual Phase --- acier biphasé (ferrite + martensite)
+
+    \item[EBSD] Electron Backscatter Diffraction --- technique d'analyse cristallographique
+
+    \item[FZ] Fusion Zone --- zone fondue du point de soudure
+
+    \item[MEB] Microscope Électronique à Balayage (SEM en anglais)
+
+    \item[MFDC] Medium Frequency Direct Current --- transformateur moyenne fréquence
+
+    \item[PHS] Press Hardened Steel --- acier trempé sous presse (22MnB5)
+
+    \item[PPAP] Production Part Approval Process --- processus d'approbation pièce
+
+    \item[QMOS] Qualification du Mode Opératoire de Soudage (WPQR en anglais)
+
+    \item[RSW] Resistance Spot Welding --- soudage par points par résistance
+
+    \item[TRIP] Transformation Induced Plasticity --- acier à plasticité induite par transformation
+
+    \item[ZAT] Zone Affectée Thermiquement (HAZ en anglais)
+\end{description}
+
+\chapter{Checklist Expert}
+
+\section{Checklist audit CQI-15}
+
+\begin{table}[H]
+    \centering
+    \small
+    \begin{tabular}{|L{8cm}|C{2cm}|}
+        \hline
+        \rowcolor{primary!20}
+        \textbf{Élément à vérifier} & \textbf{Conforme ?} \\
+        \hline
+        DMOS disponible et à jour pour chaque configuration & $\square$ \\
+        \hline
+        QMOS réalisé et archivé & $\square$ \\
+        \hline
+        Personnel formé et qualifié (preuves) & $\square$ \\
+        \hline
+        Équipements étalonnés (certificats) & $\square$ \\
+        \hline
+        Plan de contrôle défini et appliqué & $\square$ \\
+        \hline
+        Enregistrements de production disponibles & $\square$ \\
+        \hline
+        Traçabilité complète (paramètres, opérateur, date) & $\square$ \\
+        \hline
+        Gestion des non-conformités documentée & $\square$ \\
+        \hline
+        Actions correctives et préventives tracées & $\square$ \\
+        \hline
+        Revue de direction soudage (annuelle) & $\square$ \\
+        \hline
+    \end{tabular}
+    \caption{Checklist simplifiée audit CQI-15}
+\end{table}
+
+\vspace{2cm}
+
+\begin{center}
+    \rule{0.5\textwidth}{1pt}
+
+    \vspace{1cm}
+
+    {\Large\textbf{Fin de la Formation Niveau 3 --- Expert}}
+
+    \vspace{1cm}
+
+    Félicitations ! Vous avez complété l'ensemble du parcours de formation Spot Welding Pro.
+
+    \vspace{0.5cm}
+
+    {\large\textcolor{primary}{Vous êtes maintenant un expert en soudage par points.}}
+
+    \vspace{1cm}
+
+    \textit{Pour aller plus loin : consultations personnalisées,\\
+    audits de production, formations sur site}
+
+    \vspace{0.5cm}
+
+    \textit{www.spotweldingpro.com}
+
+    \vspace{1cm}
+
+    \rule{0.5\textwidth}{1pt}
+\end{center}
+
+\end{document}

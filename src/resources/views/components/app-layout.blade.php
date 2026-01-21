@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ $title ?? config('app.name') }}</title>
-    <meta name="description" content="{{ $metaDescription ?? 'Formations PDF premium sur les soudeuses à points par Mang-Ky Ha, expert industriel batteries lithium.' }}">
+    <meta name="description" content="{{ $metaDescription ?? 'Formations PDF premium sur les soudeuses à points par Kangy Ham, expert industriel batteries lithium.' }}">
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23e94560'><path d='M13 10V3L4 14h7v7l9-11h-7z'/></svg>">
@@ -368,7 +368,7 @@
                         <span class="font-display font-bold text-xl text-white">SPOT WELDING PRO</span>
                     </div>
                     <p class="text-gray-400 max-w-md">
-                        Formations professionnelles sur le soudage par points par Mang-Ky Ha,
+                        Formations professionnelles sur le soudage par points par Kangy Ham,
                         expert industriel avec 15 ans d'expérience dans l'assemblage de batteries lithium.
                     </p>
                 </div>

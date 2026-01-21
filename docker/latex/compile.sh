@@ -25,12 +25,16 @@ echo "=== Compilation de $TEX_FILE ==="
 # Changer vers le répertoire du fichier
 cd "$DIR_NAME"
 
-# Première passe
+# Première passe - génère les fichiers auxiliaires
 echo ">>> Première passe lualatex..."
 lualatex -interaction=nonstopmode -shell-escape "$BASE_NAME.tex"
 
-# Deuxième passe pour les références
+# Deuxième passe - résout les références et TOC
 echo ">>> Deuxième passe lualatex..."
+lualatex -interaction=nonstopmode -shell-escape "$BASE_NAME.tex"
+
+# Troisième passe - finalise les numéros de page
+echo ">>> Troisième passe lualatex..."
 lualatex -interaction=nonstopmode -shell-escape "$BASE_NAME.tex"
 
 # Si un watermark est demandé

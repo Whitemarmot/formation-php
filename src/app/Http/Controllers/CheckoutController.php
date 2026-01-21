@@ -27,9 +27,14 @@ class CheckoutController extends Controller
     }
 
     /**
+     * Secret key for test mode - change this in production!
+     */
+    protected const TEST_MODE_KEY = 'spotwelding2025';
+
+    /**
      * Display the checkout page.
      */
-    public function index(): View|RedirectResponse
+    public function index(Request $request): View|RedirectResponse
     {
         if (Cart::isEmpty()) {
             return redirect()->route('formations.index')
@@ -42,12 +47,16 @@ class CheckoutController extends Controller
         $total = Cart::total();
         $hasBundleDiscount = Cart::hasBundleDiscount();
 
+        // Check if test mode is enabled
+        $testMode = $request->query('testmode') === self::TEST_MODE_KEY;
+
         return view('checkout.index', compact(
             'items',
             'subtotal',
             'discount',
             'total',
-            'hasBundleDiscount'
+            'hasBundleDiscount',
+            'testMode'
         ));
     }
 
@@ -56,10 +65,16 @@ class CheckoutController extends Controller
      */
     public function process(Request $request): RedirectResponse
     {
+        // Determine allowed payment methods based on test mode
+        $allowedMethods = 'stripe,paypal';
+        if ($request->query('testmode') === self::TEST_MODE_KEY) {
+            $allowedMethods .= ',test';
+        }
+
         $request->validate([
             'email' => 'required|email',
             'name' => 'required|string|max:255',
-            'payment_method' => 'required|in:stripe,paypal',
+            'payment_method' => 'required|in:' . $allowedMethods,
         ]);
 
         if (Cart::isEmpty()) {
@@ -100,11 +115,29 @@ class CheckoutController extends Controller
         });
 
         // Redirect to appropriate payment provider
-        if ($request->payment_method === 'stripe') {
+        if ($request->payment_method === 'test') {
+            return $this->processTestPayment($order);
+        } elseif ($request->payment_method === 'stripe') {
             return $this->createStripeSession($order);
         } else {
             return $this->createPayPalSession($order);
         }
+    }
+
+    /**
+     * Process test payment (bypass real payment for testing).
+     */
+    protected function processTestPayment(Order $order): RedirectResponse
+    {
+        Log::info('Test payment processed', [
+            'order_id' => $order->id,
+            'order_number' => $order->order_number,
+        ]);
+
+        $order->update(['payment_id' => 'TEST_' . uniqid()]);
+        $this->completeOrder($order);
+
+        return redirect()->route('checkout.success', ['order' => $order->order_number]);
     }
 
     /**
@@ -304,6 +337,7 @@ class CheckoutController extends Controller
             }
         }
 
+        // Test payments are already completed, no additional verification needed
         if (!$order->isCompleted()) {
             return redirect()->route('checkout.index')
                 ->with('error', 'Le paiement n\'a pas été confirmé.');
@@ -315,7 +349,10 @@ class CheckoutController extends Controller
         // Get downloads
         $downloads = $order->downloads()->with('formation')->get();
 
-        return view('checkout.success', compact('order', 'downloads'));
+        // Flag for test mode display
+        $isTestPayment = str_starts_with($order->payment_id ?? '', 'TEST_');
+
+        return view('checkout.success', compact('order', 'downloads', 'isTestPayment'));
     }
 
     /**

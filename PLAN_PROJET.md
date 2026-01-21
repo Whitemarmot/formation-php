@@ -3,7 +3,7 @@
 ## Vision Globale
 
 **Projet** : Plateforme e-commerce de formations PDF premium sur le soudage par points
-**Formateur** : Mang-Ky Ha - Expert batteries & procédés de soudage industriel
+**Formateur** : Kangy Ham - Expert batteries & procédés de soudage industriel
 **Cible** : Professionnels, industriels, makers avancés, ingénieurs
 **Stack** : Laravel 11 + MySQL + Docker + LaTeX pour PDFs
 
@@ -20,7 +20,7 @@
 │   ├── /formations/debutant
 │   ├── /formations/intermediaire
 │   └── /formations/expert
-├── /formateur (Bio Mang-Ky Ha)
+├── /formateur (Bio Kangy Ham)
 ├── /contact
 ├── /mentions-legales
 ├── /cgv
@@ -77,7 +77,7 @@ VISITEUR → PROSPECT → ACHETEUR → CLIENT
 > Maîtrisez le Soudage par Points comme un Ingénieur Industriel
 
 **Subheadline :**
-> Formations techniques 100% PDF par Mang-Ky Ha — 15 ans d'expertise en soudage de batteries lithium pour l'industrie automobile et aéronautique
+> Formations techniques 100% PDF par Kangy Ham — 15 ans d'expertise en soudage de batteries lithium pour l'industrie automobile et aéronautique
 
 **CTA Principal :**
 > [Accéder aux Formations] → /formations
@@ -105,11 +105,11 @@ VISITEUR → PROSPECT → ACHETEUR → CLIENT
 
 ---
 
-### 2.3 Storytelling - Mang-Ky Ha
+### 2.3 Storytelling - Kangy Ham
 
 ```
 ╔═══════════════════════════════════════════════════════════════════╗
-║                     QUI EST MANG-KY HA ?                          ║
+║                     QUI EST KANGY HAM ?                          ║
 ╠═══════════════════════════════════════════════════════════════════╣
 ║                                                                   ║
 ║  "J'ai passé 15 ans à souder des batteries pour des              ║

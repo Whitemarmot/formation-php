@@ -54,10 +54,9 @@ Route::prefix('checkout')->name('checkout.')->group(function () {
     Route::get('/paypal/capture/{order}', [CheckoutController::class, 'capturePayPal'])->name('paypal.capture');
 });
 
-// Download (signed URLs)
+// Download (token-based protection)
 Route::get('/telecharger/{token}', [DownloadController::class, 'download'])
-    ->name('download.file')
-    ->middleware('signed');
+    ->name('download.file');
 
 // Stripe webhook (no CSRF)
 Route::post('/webhook/stripe', [CheckoutController::class, 'stripeWebhook'])
@@ -82,7 +81,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             ->name('downloads.regenerate');
 
         Route::get('/commandes', function () {
-            $orders = auth()->user()->orders()->with('items.formation')->latest()->get();
+            $orders = auth()->user()->orders()->with('items.formation')->latest()->paginate(10);
             return view('account.orders', compact('orders'));
         })->name('orders');
 
