@@ -185,3 +185,14 @@ Propriétaire - Tous droits réservés.
 ## Support
 
 Pour toute question : contact@formation-soudure.com
+
+
+---
+
+<p align="center">
+  <a href="https://www.copyright01.com/certificat/5047F6AABA84728F147ADF6BF64F8CAA">
+    <img src="https://www.copyright01.com/badge/5047F6AABA84728F147ADF6BF64F8CAA.svg" alt="Protected by Copyright01" />
+  </a>
+  <br>
+  <sub>Protected by <a href="https://www.copyright01.com">Copyright01</a> - Ref: CR-2026-83691 - Certified 2026-02-20</sub>
+</p>
